@@ -1,0 +1,4 @@
+build
+maven/target
+*~
+__pycache__

@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>uk.ac.dur.cosma</groupId>
+  <artifactId>flamingo</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>FLAMINGO webapp</name>
+  <dependencies>
+
+    <!-- <!-\- Servlet API for tomcat 9 or earlier -\-> -->
+    <!-- <dependency> -->
+    <!--   <groupId>javax.servlet</groupId> -->
+    <!--   <artifactId>javax.servlet-api</artifactId> -->
+    <!--   <version>4.0.1</version> -->
+    <!--   <scope>provided</scope> -->
+    <!-- </dependency> -->
+
+  </dependencies>
+
+  <build>
+    <finalName>flamingo</finalName>
+    <plugins>
+      <!-- Use a newer than default compiler plugin to avoid java version issue -->
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-compiler-plugin</artifactId>
+	<version>3.10.1</version>
+      </plugin>
+      <!-- Copy sphinx generated docs to the web app -->
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <executions>
+          <execution>
+            <id>default-war</id>
+            <phase>package</phase>
+            <goals>
+              <goal>war</goal>
+            </goals>
+            <configuration>
+              <webResources>
+                <resource>
+                  <directory>${project.build.directory}/../../build/html</directory>
+                  <targetPath>/</targetPath>
+                  <includes>
+                    <include>**/*</include>
+                  </includes>
+                </resource>
+              </webResources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>11</maven.compiler.release>
+  </properties>
+
+</project>

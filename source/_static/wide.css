@@ -1,0 +1,30 @@
+/*
+  Maximum page width for file browser with RTD sphinx theme
+*/
+.wy-nav-content {
+    max-width: 100% !important;
+}
+
+/*
+  Maximum page width for file browser with Piccolo sphinx theme
+
+  Use full page width including the space normally reserved for
+  the page contents sidebar.
+*/
+div.body {
+    min-width: 360px;
+    max-width: 100% !important;
+}
+
+div.document div.documentwrapper {
+    margin-right: 1em !important;
+    max-width: 100% !important;
+}
+
+/*
+  Maximum page width for file browser with Immaterial theme
+*/
+.md-main__inner {
+    max-width: 100rem !important;
+}
+

@@ -1,0 +1,3 @@
+This builds a trivial .war archive that contains just static content. This is
+so that we can easily deploy the FLAMINGO documentation and file browser on
+the same Tomcat server as the data access API, which is useful for testing.
