@@ -38,7 +38,7 @@ html_title = 'COLIBRE Documentation'
 # Keep the short title as plain text. The logo is injected by the custom
 # layout template so Sphinx can generate the correct relative path on every
 # page, including nested sections.
-html_short_title = 'COLIBRE Data Release'
+html_short_title = 'COLIBRE Data Products'
 
 #
 # Theme selection

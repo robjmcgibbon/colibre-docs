@@ -114,3 +114,13 @@ table.hybrid-table.row-divider tr:nth-child(2) td {
 table.hybrid-table.row-divider tr:nth-child(5) td {
     border-bottom: 2px solid #333 !important;
 }
+
+/* Grid of tables used for list of snapshot redshifts*/
+div.table-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+div.table-grid > table {
+  border: 2px solid #444;     /* Add border to tables within grid */
+}

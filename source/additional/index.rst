@@ -5,13 +5,12 @@ This section contains a number of additional data products
 
 Please let us know if a data product is not available and you want it to be
 
-  - soap eagle
-  - soap subfind
-  - ex situ fraction
-  - line-of-sight files
-  - Initial snapshot
+  - soap subfind (Move to halo catalogues)
+  - ex situ fraction (Move to snapshots)
+  - line-of-sight files (Move to separate section, mention specwizard)
+  - Initial snapshot (Move to snapshots)
 
 Equilibrium tables
 
-Additional SOAP properties? Place in halo catalogues folder?
+soap eagle
 

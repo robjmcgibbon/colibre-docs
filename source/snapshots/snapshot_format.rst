@@ -1,7 +1,7 @@
 Snapshot file format
 ====================
 
-Here we describe the basic features of FLAMINGO snapshots. For full
+Here we describe the basic features of COLIBRE snapshots. For full
 details of the SWIFT simulation format, see the `SWIFT documentation
 <https://swift.strw.leidenuniv.nl/docs/Snapshots/index.html>`__.
 
@@ -18,17 +18,19 @@ Snapshots contain a ``Header`` group which contains similar
 information to the header in Gadget-2 snapshots. Some of the more
 useful attributes are:
 
-+-------------------------+-----------------------------------------------------------------------+
-| Attribute name          | Description                                                           |
-+=========================+=======================================================================+
-| ``Redshift``            | Redshift of this snapshot                                             |
-+-------------------------+-----------------------------------------------------------------------+
-| ``Scale-factor``        | Expansion factor at this snapshot                                     |
-+-------------------------+-----------------------------------------------------------------------+
-| ``BoxSize``             | Size of the box in each dimension (FLAMINGO runs are all cubic boxes) |
-+-------------------------+-----------------------------------------------------------------------+
-| ``NumFilesPerSnapshot`` | Number of files in the snapshot. Always 1 for virtual snapshots.      |
-+-------------------------+-----------------------------------------------------------------------+
+.. list-table::
+   :header-rows: 1
+
+   * - Attribute name
+     - Description
+   * - ``Redshift``
+     - Redshift of this snapshot
+   * - ``Scale-factor``
+     - Expansion factor at this snapshot
+   * - ``BoxSize``
+     - Size of the box in each dimension (COLIBRE runs are all cubic boxes)
+   * - ``NumFilesPerSnapshot``
+     - Number of files in the snapshot. Always 1 for virtual snapshots.
 
 Code version
 ~~~~~~~~~~~~
@@ -36,19 +38,21 @@ Code version
 The ``Code`` group contains attributes which can be used to determine
 the precise version of SWIFT which was used to run the simulation.
 
-+---------------------------+-----------------------------------------------------------------------+
-| Attribute name            | Description                                                           |
-+===========================+=======================================================================+
-| ``Code Version``          | SWIFT code version number, as a string                                |
-+---------------------------+-----------------------------------------------------------------------+
-| ``Git Branch``            | Name of the git branch which was used                                 |
-+---------------------------+-----------------------------------------------------------------------+
-| ``Git Revision``          | Identifies the exact git revision which was used                      |
-+---------------------------+-----------------------------------------------------------------------+
-| ``Git Date``              | Date associated with this revision                                    |
-+---------------------------+-----------------------------------------------------------------------+
-| ``Configuration options`` | Configure script flags which were used for this run                   |
-+---------------------------+-----------------------------------------------------------------------+
+.. list-table::
+   :header-rows: 1
+
+   * - Attribute name
+     - Description
+   * - ``Code Version``
+     - SWIFT code version number, as a string
+   * - ``Git Branch``
+     - Name of the git branch which was used
+   * - ``Git Revision``
+     - Identifies the exact git revision which was used
+   * - ``Git Date``
+     - Date associated with this revision
+   * - ``Configuration options``
+     - Configure script flags which were used for this run
 
 Cosmology
 ^^^^^^^^^
@@ -57,29 +61,31 @@ The ``Cosmology`` group stores the values of the cosmological
 parameters used in the simulation and the redshift of the snapshot
 output. It includes the following HDF5 attributes:
 
-+-------------------------+--------------------------------------------------------------------------------------------------------+
-| Attribute name          | Description                                                                                            |
-+=========================+========================================================================================================+
-| ``Redshift``            | Redshift of this snapshot                                                                              |
-+-------------------------+--------------------------------------------------------------------------------------------------------+
-| ``Scale-factor``        | Expansion factor at this snapshot                                                                      |
-+-------------------------+--------------------------------------------------------------------------------------------------------+
-| ``Omega_b``             | Baryon density parameter :math:`\Omega_\mathrm{b}` at z=0                                              |
-+-------------------------+--------------------------------------------------------------------------------------------------------+
-| ``Omega_cdm``           | Cold dark matter density parameter :math:`\Omega_{\mathrm{cdm}}` at z=0                                |
-+-------------------------+--------------------------------------------------------------------------------------------------------+
-| ``Omega_lambda``        | Dark energy density parameter :math:`\Omega_{\mathrm{\Lambda}}` at z=0                                 |
-+-------------------------+--------------------------------------------------------------------------------------------------------+
-| ``Omega_m``             | Matter density parameter :math:`\Omega_\mathrm{m} = \Omega_{\mathrm{cdm}} + \Omega_\mathrm{b}` at z=0  |
-+-------------------------+--------------------------------------------------------------------------------------------------------+
-| ``Omega_nu``            | Neutrino density parameter :math:`\Omega_{\mathrm{\nu}}` at the snapshot redshift                      |
-+-------------------------+--------------------------------------------------------------------------------------------------------+
-| ``Omega_nu_0``          | Neutrino density parameter :math:`\Omega_{\mathrm{\nu}}` at z=0                                        |
-+-------------------------+--------------------------------------------------------------------------------------------------------+
-| ``Omega_r``             | Radiation density parameter :math:`\Omega_\mathrm{r}` at z=0                                           |
-+-------------------------+--------------------------------------------------------------------------------------------------------+
-| ``Omega_k``             | Curvature density parameter :math:`\Omega_\mathrm{k}` at z=0                                           |
-+-------------------------+--------------------------------------------------------------------------------------------------------+
+.. list-table::
+   :header-rows: 1
+
+   * - Attribute name
+     - Description
+   * - ``Redshift``
+     - Redshift of this snapshot
+   * - ``Scale-factor``
+     - Expansion factor at this snapshot
+   * - ``Omega_b``
+     - Baryon density parameter :math:`\Omega_\mathrm{b}` at z=0
+   * - ``Omega_cdm``
+     - Cold dark matter density parameter :math:`\Omega_{\mathrm{cdm}}` at z=0
+   * - ``Omega_lambda``
+     - Dark energy density parameter :math:`\Omega_{\mathrm{\Lambda}}` at z=0
+   * - ``Omega_m``
+     - Matter density parameter :math:`\Omega_\mathrm{m} = \Omega_{\mathrm{cdm}} + \Omega_\mathrm{b}` at z=0
+   * - ``Omega_nu``
+     - Neutrino density parameter :math:`\Omega_{\mathrm{\nu}}` at the snapshot redshift
+   * - ``Omega_nu_0``
+     - Neutrino density parameter :math:`\Omega_{\mathrm{\nu}}` at z=0
+   * - ``Omega_r``
+     - Radiation density parameter :math:`\Omega_\mathrm{r}` at z=0
+   * - ``Omega_k``
+     - Curvature density parameter :math:`\Omega_\mathrm{k}` at z=0
 
 .. note:: `swiftsimio
           <https://swiftsimio.readthedocs.io/en/latest/loading_data/index.html>`__
@@ -94,24 +100,26 @@ Units
 The ``Units`` group describes the system of units used in the
 snapshot. It defines basic units of length, mass, time and temperature
 in terms of CGS units. Most quantities in the snapshot are expressed
-in combinations of these base units. In FLAMINGO, the base units used
+in combinations of these base units. In COLIBRE, the base units used
 are as follows:
 
-+-------------+-------------------------------------------+
-| Dimension   | Unit                                      |
-+=============+===========================================+
-| Length      | :math:`\mathrm{Mpc}`                      |
-+-------------+-------------------------------------------+
-| Mass        | :math:`10^{10}\mathrm{M}_{\odot}`         |
-+-------------+-------------------------------------------+
-| Time        | :math:`\mathrm{Mpc} \mathrm{(km/s)}^{-1}` |
-+-------------+-------------------------------------------+
-| Temperature | :math:`\mathrm{K}`                        |
-+-------------+-------------------------------------------+
+.. list-table::
+   :header-rows: 1
+
+   * - Dimension
+     - Unit
+   * - Length
+     - :math:`\mathrm{Mpc}`
+   * - Mass
+     - :math:`10^{10}\mathrm{M}_{\odot}`
+   * - Time
+     - :math:`\mathrm{Mpc} \mathrm{(km/s)}^{-1}`
+   * - Temperature
+     - :math:`\mathrm{K}`
 
 A few attributes in the snapshot file are expressed in the "internal"
 system of units used to run the simulation. This unit system is
-described in the ``InternalCodeUnits`` group. In FLAMINGO, the
+described in the ``InternalCodeUnits`` group. In COLIBRE, the
 snapshot and internal unit systems are the same.
 
 The exact units used for each particle property are documented in
@@ -120,7 +128,7 @@ The exact units used for each particle property are documented in
 Particle types
 --------------
 
-The FLAMINGO simulations contain gas, dark matter, star, black hole
+The COLIBRE simulations contain gas, dark matter, star, black hole
 and neutrino particles. There is an HDF5 group for each particle
 type. Within these groups particle properties (position, mass,
 velocity etc) are stored as HDF5 datasets. The particle type groups
@@ -129,7 +137,6 @@ symbolic links to the groups with more descriptive names.
 
 .. list-table::
    :header-rows: 1
-   :stub-columns: 1
 
    * - Particle type
      - HDF5 group name
@@ -176,7 +183,6 @@ base unit for that quantity.
 
 .. list-table::
    :header-rows: 1
-   :stub-columns: 1
 
    * - Attribute name
      - Attribute description
@@ -189,7 +195,7 @@ base unit for that quantity.
    * - ``U_t exponent``
      - Exponent of the time unit
    * - ``U_I exponent``
-     - Exponent of the current unit (not used in FLAMINGO)
+     - Exponent of the current unit (not used in COLIBRE)
 
 For example, particle velocities have ``U_L exponent`` = 1 and
 ``U_t exponent`` = -1.
@@ -203,7 +209,7 @@ particle positions have ``a-scale exponent`` = 1.
 
 There is also a ``h-scale exponent`` attribute which indicates when
 units contain powers of the Hubble parameter, :math:`h`. This is
-always zero in FLAMINGO. Particle positions are stored in
+always zero in COLIBRE. Particle positions are stored in
 :math:`\mathrm{Mpc}` and not :math:`\mathrm{Mpc/h}`, for example.
 
 There are also attributes which directly give the conversion factor to
@@ -212,14 +218,13 @@ CGS, with and without any :math:`a` factors included.
 Compression
 ^^^^^^^^^^^
 
-Many FLAMINGO datasets use lossy compression to save disk space when
+Many COLIBRE datasets use lossy compression to save disk space when
 very precise values are not required. This is indicated by the ``Lossy
 compression filter`` attribute. The possible values of this attribute
 are:
 
 .. list-table::
    :header-rows: 1
-   :stub-columns: 1
 
    * - Filter name
      - Description

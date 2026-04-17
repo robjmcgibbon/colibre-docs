@@ -93,3 +93,5 @@ Each property is returned as a `cosmo_array
 which is is a numpy array with unit and cosmology information
 attached. Units are handled using the `unyt
 <https://unyt.readthedocs.io/en/stable/>`__ module.
+
+TODO: Ask Kyle if we should add a swiftgalaxy example?

@@ -2,81 +2,80 @@ Snapshot directory layout
 =========================
 
 The layout of the snapshot files for each simulation is shown in the
-diagram below. Each simulation has a ``snapshots`` directory with one
-``flamingo_XXXX`` subdirectory for each output time, where ``XXXX`` is
-the snapshot number. See :doc:`snapshot_redshifts` for the relation
+diagram below. The ``snapshots`` directory is output by SWIFT, with one
+``colibre_XXXX`` subdirectory for each output time, where ``XXXX`` is
+the snapshot number.
+See :doc:`snapshot_redshifts` for the relation
 between snapshot number and redshift.
+The ``SOAP-HBT`` directory contains particle membership
+information (what subhalo each particle is bound to).
 
 .. tip:: The easiest way to access particle data is to use :doc:`swiftsimio
          </snapshots/swiftsimio>` to read the :ref:`virtual-snapshot`
          so that you don't need to concatenate data from multiple
          files and unit metadata is read automatically.
 
-TODO: Update layout, tell people to use colibre_with_soap_membership
-
 .. mermaid::
 
-  flowchart TD
-    snapshots["snapshots/"]
+  flowchart LR
+    run["`**Run directory**
+    `"]
+
+    run --> snapshots["`**Snapshots**
+    snapshots/`"]
 
     snapshots --> s0000["`**Snapshot 0**
-    flamingo_0000/`"]
-    snapshots --> s0001["`**Snapshot 1**
-    flamingo_0001/`"]
+    colibre_0000/`"]
+
+    s0000 --> swift_files["`**Snapshot chunks**
+    colibre_0000.0.hdf5
+    colibre_0000.1.hdf5
+    ...`"]
 
     s0000 --> s0000_v["`**Virtual snapshot**
-    flamingo_0000.hdf5`"]
+    colibre_0000.hdf5`"]
 
-    s0000 --> swift_dir["`**SWIFT output**
-    swift_snapshot_0000/`"]
+    run --> soap["`**SOAP**
+    SOAP-HBT/`"]
 
-    s0000 --> xray_dir["`**Recomputed X-rays**
-    xray_0000/`"]
+    soap --> soap_v["`**Virtual snapshot**
+    colibre_with_soap_membership_0000.hdf5`"]
 
-    s0000 --> mem_dir["`**Subhalo membership**
+    soap --> m0000["`**Membership 0**
     membership_0000/`"]
 
-    swift_dir --> swift_files["`**Snapshot chunks**
-    flamingo_0000.0.hdf5
-    flamingo_0000.1.hdf5
-    ...`"]
-
-    xray_dir --> xray_files["`**Xray chunks**
-    xray_0000.0.hdf5
-    xray_0000.1.hdf5
-    ...`"]
-
-    mem_dir --> mem_files["`**Membership chunks**
+    m0000 --> membership["`**Membership chunks**
     membership_0000.0.hdf5
     membership_0000.1.hdf5
     ...`"]
 
-    s0001 --> s0001_exp["..."]
-
-As an example, see `/FLAMINGO/L1_m9/L1_m9/snapshots/
-</flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/snapshots>`__ for
-the ``L1_m9`` snapshot data.
 
 .. _virtual-snapshot:
 
 Virtual snapshot file
 ---------------------
 
-Each snapshot directory contains a "virtual" snapshot file which has a
-name of the form ``flamingo_XXXX.hdf5``. This file contains HDF5
+The ``SOAP-HBT`` directories contains "virtual" snapshot files which have
+names of the form ``colibre_with_soap_membership_XXXX.hdf5``. 
+These files contains HDF5
 virtual datasets which refer to particle data distributed over a
-number of additional HDF5 files in the same directory. This file can
+number of additional HDF5 files. This file can
 be treated as a single, large snapshot file which contains all of the
-particles.
+particle properties.
+
+Each snapshot directory (``snapshots/colibre_XXXX``) also contains a virtual 
+snapshot file named ``colibre_XXXX.hdf5``. This 
+should only be used if the ``colibre_with_soap_membership_XXXX.hdf5`` file
+is missing, since it does not contain subhalo membership information.
 
 Snapshot data files
 -------------------
 
 The virtual snapshot file does not contain any particle data itself.
-Instead, the data for each snapshot is split across three (two for DMO)
-sets of HDF5 files: the SWIFT output, recomputed X-rays,
+Instead, the data for each snapshot is split across two
+sets of HDF5 files: the SWIFT output
 and subhalo membership information. Within these sets, the files follow
-naming conventions such as ``flamingo_XXXX.Y.hdf5``, where ``XXXX`` is
+naming conventions such as ``colibre_XXXX.Y.hdf5``, where ``XXXX`` is
 the snapshot number and ``Y`` numbers the files that make up the snapshot.
 Each one of these files contains the properties of particles for part of
 the simulation volume. To read the complete data for a snapshot, it is necessary
