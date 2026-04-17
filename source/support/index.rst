@@ -1,9 +1,6 @@
 Support
 =======
 
-Questions
----------
-
 The following pages contain resources that might be useful to solve issues
 
 .. toctree::

@@ -32,9 +32,4 @@ particles have responded hydrodynamically to the energy
 injection, such dense and hot gas can artificially distort the
 observational properties of galaxies, such as their X-ray
 emission. We therefore advise to test the effect of excluding recently heated/kicked particles, which can be done
-using the particle property tracking the last time a particle was injected with AGN feedback energy. For some
-observables (Gas and Spectroscopic-like temperatures, ComptonY properties, X-ray
-properties) the SOAP catalogues provide versions that exclude particles that were subject to direct AGN heating
-in the last 15 Myr and whose temperatures are between
-:math:`10^{-1}\Delta T_\text{AGN}` and :math:`10^{0.3}\Delta T_\text{AGN}`, where :math:`\Delta T_\text{AGN}` is the AGN heating temperature
-
+using the particle property tracking the last time a particle was injected with AGN feedback energy.

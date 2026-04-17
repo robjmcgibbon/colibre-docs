@@ -67,6 +67,7 @@ div.document div.documentwrapper {
 /*
   Removes the background and border from download links
 */
+
 a.download code.literal {
     background: none;
     border: none;
@@ -74,4 +75,42 @@ a.download code.literal {
     font-family: inherit;
     font-size: inherit;
     color: #2980b9;
+}
+
+
+/*
+  Styling for tables
+*/
+
+/* Header Styling: Light background with a strong border */
+table.docutils thead th {
+    background-color: #f8f9fb;
+    color: #333;
+    border-bottom: 2px solid #dee2e6;
+    text-align: center !important;
+}
+
+/* Zebra Striping: Makes long lists easier to read */
+table.docutils tbody tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+/* Hover effect: Highlights the current row */
+/* Only applying to the simulation tables */
+table.simulation-table tbody tr:hover {
+    background-color: #f1f4f9;
+}
+
+/* Custom class for horizontal dividers, place a line after each resolution end */
+table.thermal-table.row-divider tr:nth-child(4) td {
+    border-bottom: 2px solid #333 !important;
+}
+table.thermal-table.row-divider tr:nth-child(8) td {
+    border-bottom: 2px solid #333 !important;
+}
+table.hybrid-table.row-divider tr:nth-child(2) td {
+    border-bottom: 2px solid #333 !important;
+}
+table.hybrid-table.row-divider tr:nth-child(5) td {
+    border-bottom: 2px solid #333 !important;
 }
