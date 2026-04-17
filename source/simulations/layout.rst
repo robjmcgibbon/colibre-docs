@@ -2,14 +2,13 @@ Directory layout
 ================
 
 The simulations are divided into subdirectories based on their box
-size and mass resolution. For example, the directory `/FLAMINGO/L1_m9
-</flamingo/viewer.html?path=/FLAMINGO/L1_m9>`__ contains all
-simulations run in a 1Gpc box at ``m9`` resolution. Within each
+size and mass resolution. For example, the directory ``L100_m6`` contains all
+simulations run in a 1Gpc box at ``m6`` resolution. Within each
 simulation directory there are subdirectories for the available data
 products: :doc:`snapshots </snapshots/index>`, :doc:`power spectra
-</power_spectra>`, :doc:`halo catalogues </soap/index>` and
-:doc:`lightcone outputs </lightcones/index>`.
+</power_spectra>`, :doc:`halo catalogues </soap/index>`.
 
+# TODO: Update chart
 .. mermaid::
 
    flowchart LR

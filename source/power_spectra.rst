@@ -268,16 +268,12 @@ The files follow the naming convention ``power_<type>_<index>.txt``. The followi
 
 * **Cross-spectra**:
     * ``cdm-gas``: CDM and gas
-    * ``cdm-neutrino``: CDM and neutrinos
     * ``cdm-starBH``: CDM and stars/Black Holes
     * ``gas-matter``: Gas and total matter
-    * ``gas-neutrino``: Gas and neutrinos
     * ``gas-starBH``: Gas and stars/Black Holes
     * ``matter-pressure``: Total matter and electron pressure
-    * ``starBH-neutrino``: Stars/Black Holes and neutrinos
-    * ``neutrino0-neutrino1``: Cross-correlation between the two neutrino particle realisations (used for shot-noise suppression)
 
-The power spectra do contain some small artifacts (such as the small peak in the middle of the z=2 line if you run the example below for the L1_m9 outputs) which are due to combining foldings, and are not real. An example set of power spectrum files (for the ``L1_m9`` run) can be seen in the directory `L1_m9/L1_m9/power_spectra </flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/power_spectra>`__.
+The power spectra do contain some small artifacts which are due to combining foldings, and are not real.
 
 The files are stored as plain text with a descriptive header. The data is organized into three space-separated columns:
 
@@ -315,12 +311,4 @@ The example below shows how to load two files and plot the results.
 
    plt.show()
 
-Baryonic response emulator
---------------------------
-
-A Gaussian process emulator to model the effect of baryons on the matter power spectrum for all the simulations varying feedback in the FLAMINGO suite has been developed as part of `Schaller et al. (2025)
-<https://ui.adsabs.harvard.edu/abs/2025MNRAS.539.1337S/abstract>`__. It is available via PyPI index ( ``pip install FlamingoBaryonResponseEmulator`` ) or `from github
-<https://github.com/FLAMINGOSIM/FlamingoBaryonResponseEmulator>`__, where examples are also available.
-
-The emulator can be used to predict the deviation of the matter power spectrum for the hydrodynamical simulation from the corresponding dark matter only simulation due to baryon and galaxy formation physics. The response as a function of wavenumber k is returned by the emulator as a function of redshift and three parameters characterizing the galaxy and cluster properties in the simulations. These are (i) the offset in the gas fraction in clusters from the Xray-based data used for the calibration of the simulations, (ii) the offset in the galaxy masses from the stellar mass function data used for the calibration, and (iii) the fraction of the AGN feedback taking place in the form of collimated jets as opposed to thermally-driven winds. The emulator is accurate to better than 1% for redshifts lower than 2 and for comoving scales up to k=10h/Mpc. Evaluation of the response for a given model is fast (1ms on 1 CPU core). 
 

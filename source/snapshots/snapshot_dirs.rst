@@ -12,6 +12,8 @@ between snapshot number and redshift.
          so that you don't need to concatenate data from multiple
          files and unit metadata is read automatically.
 
+TODO: Update layout, tell people to use colibre_with_soap_membership
+
 .. mermaid::
 
   flowchart TD
@@ -82,26 +84,11 @@ to read from all of the files in the corresponding set.
 
 If you download the virtual snapshot file, it will only be readable
 if you also download all the snapshot data files and
-maintain the original directory structure. The
-easiest way to ensure this is to use the full directory download link
-for the snapshot you're interested in. See
-:doc:`/service_docs/web_interface` for details.
+maintain the original directory structure.
 
 .. warning:: If HDF5 can't find the data for a virtual dataset, it
    silently returns incorrect "fill" values! So if you download a
    virtual snapshot and get strange results, it may be that HDF5 isn't
    finding the real data files.
 
-If you use the hdfstream module to read from a virtual snapshot, the
-server automatically reads the underlying datasets in the real
-snapshot files.
-
-.. _warning_buggy_datasets:
-
-.. warning:: Since the simulation was run, 
-   :ref:`the values of the Xray properties (now stored in the xray chunk files)<issues_xray_uvb>`
-   and :ref:`the values of the FOF IDs (now stored in the membership chunk files)<issues_rerun_fof>`
-   have been updated. Loading the virtual file will give access to the correct datasets
-   , but the original datasets are still present
-   in the SWIFT output chunk files. These original datasets should not be used.
 

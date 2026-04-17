@@ -8,9 +8,9 @@ from sphinx.application import Sphinx
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'FLAMINGO Data Release'
-copyright = '2025, John Helly'
-author = 'John Helly'
+project = 'COLIBRE Documentation'
+copyright = '2026, The COLIBRE Team'
+author = 'John Helly & Rob McGibbon'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -33,10 +33,12 @@ html_sidebars = {
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_static_path = ['_static']
-html_title = 'FLAMINGO Data Release'
+html_title = 'COLIBRE Documentation'
 
-# The piccolo theme doesn't have an option to have a logo AND text in the nav bar, hence this hack
-html_short_title = '<image src="/flamingo/_static/FLAMINGO_navbar_brand_stroke.png" class="flamingo_logo"> FLAMINGO Data Release'
+# Keep the short title as plain text. The logo is injected by the custom
+# layout template so Sphinx can generate the correct relative path on every
+# page, including nested sections.
+html_short_title = 'COLIBRE Data Release'
 
 #
 # Theme selection
@@ -60,17 +62,18 @@ html_theme = 'piccolo_theme'
 # responses, highlight.js syntax highlighter, dompurify and some CSS
 # customization.
 #
+# TODO Decide which files we need, comment so it is clear what they do
 html_css_files = [
     'custom.css',
-    'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/default.min.css',
+    # 'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/default.min.css',
 ]
-html_js_files = [
-    'https://unpkg.com/@msgpack/msgpack@2.8.0',
-    'https://unpkg.com/dompurify@3.2.3/dist/purify.min.js',
-    'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js',
-    'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/python.min.js',
-    'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/yaml.min.js',
-]
+# html_js_files = [
+#     'https://unpkg.com/@msgpack/msgpack@2.8.0',
+#     'https://unpkg.com/dompurify@3.2.3/dist/purify.min.js',
+#     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js',
+#     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/python.min.js',
+#     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/yaml.min.js',
+# ]
 
 
 # Coloured inline roles for the SOAP property table.

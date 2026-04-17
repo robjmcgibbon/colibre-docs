@@ -13,3 +13,14 @@ make html
 ## TODO:
 
 - Add script to generate a table of currently available data products
+- Add extra data products
+  - soap eagle
+  - soap subfind
+  - ex situ fraction
+  - line-of-sight files
+  - Initial snapshot
+Equilibrium tables
+Plotting colours
+Use of cosma-analyse queue vs notebooks on the login node
+COLIBRE policies
+Snapshot issues
