@@ -51,8 +51,9 @@ div.document div.documentwrapper {
   Sidebar behavior for the Piccolo theme.
 */
 
-/* Hide the right-hand page contents sidebar */
-#right_sidebar {
+/* Hide the right-hand page contents sidebar and its toggle */
+#right_sidebar,
+#show_right_sidebar {
     display: none;
 }
 
@@ -61,4 +62,16 @@ div.document div.documentwrapper {
   #toggle_sidebar {
       display: none;
   }
+}
+
+/*
+  Removes the background and border from download links
+*/
+a.download code.literal {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: #2980b9;
 }

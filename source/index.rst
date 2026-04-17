@@ -6,9 +6,10 @@ Welcome to the COLIBRE documentation
 
    introduction
    simulations/index
-   power_spectra
    snapshots/index
    Halo catalogues <soap/index>
+   power_spectra
+   additional/index
    support/index
 
 
