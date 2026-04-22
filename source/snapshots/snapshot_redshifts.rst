@@ -11,8 +11,7 @@ snapshot or a snipshot.
 This information is also available in the ``output_list.txt`` file contained
 in each simulation directory.
 
-TODO Link to initial conditions page
-For a number of simulations a snapshot of initial conditions at :math:`z=63` is available.
+For a number of simulations a snapshot of initial conditions at :math:`z=63` is available. See :doc:`snapshot_initial`.
 
 .. note::
    The L050m6 simulation only has 124 outputs

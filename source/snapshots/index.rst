@@ -40,6 +40,7 @@ The following sections describe the layout and contents of the snapshots.
    Output redshifts <snapshot_redshifts>
    Particle properties <snapshot_particle_properties>
    Reading with swiftsimio <swiftsimio.rst>
+   snapshot_initial.rst
 
 For more information about the SWIFT simulation snapshot format used
 here, see the `SWIFT documentation
