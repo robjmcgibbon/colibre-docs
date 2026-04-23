@@ -51,6 +51,15 @@ Dark matter particles
           * **Compression:** Store less bits
      - Friends-Of-Friends ID of the group the particles belong to
      - ✅
+   * - .. dropdown:: ``halo_catalogue_index``
+
+          * **HDF5 name:** ``HaloCatalogueIndex``
+          * **Shape:** 1
+          * **Datatype:** int64
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - Index of halo in which this particle is a bound member, or -1 if none
+     - ❌
    * - .. dropdown:: ``masses``
 
           * **HDF5 name:** ``Masses``
@@ -78,6 +87,24 @@ Dark matter particles
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - Gravitational potentials of the particles
      - ✅
+   * - .. dropdown:: ``rank_bound``
+
+          * **HDF5 name:** ``Rank_bound``
+          * **Shape:** 1
+          * **Datatype:** int64
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - Ranking by binding energy of the bound particles (first in halo=0), or -1 if not bound
+     - ❌
+   * - .. dropdown:: ``specific_potential_energies``
+
+          * **HDF5 name:** ``SpecificPotentialEnergies``
+          * **Shape:** 1
+          * **Datatype:** float32
+          * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
+          * **Compression:** no compression
+     - Specific potential energy of the bound particles
+     - ❌
    * - .. dropdown:: ``velocities``
 
           * **HDF5 name:** ``Velocities``
@@ -223,6 +250,15 @@ Gas particles
           * **Units:** :math:`\rm{Mpc} \cdot \rm{s} / \rm{km}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.3669{\rm{}e}10`
      - Time until particle is in HII region. See :ref:`hii_end_time`
+     - ❌
+   * - .. dropdown:: ``halo_catalogue_index``
+
+          * **HDF5 name:** ``HaloCatalogueIndex``
+          * **Shape:** 1
+          * **Datatype:** int64
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - Index of halo in which this particle is a bound member, or -1 if none
      - ❌
    * - .. dropdown:: ``internal_energies``
 
@@ -557,6 +593,15 @@ Gas particles
           * **Compression:** Store less bits
      - ID of the progenitor of this particle. If this particle is the result of one (or many) splitting events, this ID corresponds to the ID of the particle in the initial conditions that its lineage can be traced back to. If the particle was never split, this is the same as ParticleIDs.
      - ✅
+   * - .. dropdown:: ``rank_bound``
+
+          * **HDF5 name:** ``Rank_bound``
+          * **Shape:** 1
+          * **Datatype:** int64
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - Ranking by binding energy of the bound particles (first in halo=0), or -1 if not bound
+     - ❌
    * - .. dropdown:: ``smoothing_lengths``
 
           * **HDF5 name:** ``SmoothingLengths``
@@ -574,6 +619,15 @@ Gas particles
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - Species fractions array for all ions and molecules in the CHIMES network. The fraction of species i is defined in terms of its number density relative to hydrogen, i.e. :math:`n_i` / :math:`n_{H_{tot}}`. ``ReducedSpeciesFractions`` is available for snipshots. See :ref:`species-names`.
+     - ❌
+   * - .. dropdown:: ``specific_potential_energies``
+
+          * **HDF5 name:** ``SpecificPotentialEnergies``
+          * **Shape:** 1
+          * **Datatype:** float32
+          * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
+          * **Compression:** no compression
+     - Specific potential energy of the bound particles
      - ❌
    * - .. dropdown:: ``split_counts``
 
@@ -948,6 +1002,15 @@ Star particles
           * **Compression:** Store less bits
      - Friends-Of-Friends ID of the group the particles belong to
      - ✅
+   * - .. dropdown:: ``halo_catalogue_index``
+
+          * **HDF5 name:** ``HaloCatalogueIndex``
+          * **Shape:** 1
+          * **Datatype:** int64
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - Index of halo in which this particle is a bound member, or -1 if none
+     - ❌
    * - .. dropdown:: ``initial_masses``
 
           * **HDF5 name:** ``InitialMasses``
@@ -1209,6 +1272,15 @@ Star particles
           * **Compression:** Store less bits
      - Progenitor ID of the gas particle that became this star. If this particle is the result of one (or many) splitting events, this ID corresponds to the ID of the particle in the initial conditions that its lineage can be traced back to. If the particle was never split, this is the same as ParticleIDs.
      - ✅
+   * - .. dropdown:: ``rank_bound``
+
+          * **HDF5 name:** ``Rank_bound``
+          * **Shape:** 1
+          * **Datatype:** int64
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - Ranking by binding energy of the bound particles (first in halo=0), or -1 if not bound
+     - ❌
    * - .. dropdown:: ``sniifeedback_energy_fractions``
 
           * **HDF5 name:** ``SNIIFeedbackEnergyFractions``
@@ -1236,6 +1308,15 @@ Star particles
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - Co-moving smoothing lengths (FWHM of the kernel) of the particles
      - ✅
+   * - .. dropdown:: ``specific_potential_energies``
+
+          * **HDF5 name:** ``SpecificPotentialEnergies``
+          * **Shape:** 1
+          * **Datatype:** float32
+          * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
+          * **Compression:** no compression
+     - Specific potential energy of the bound particles
+     - ❌
    * - .. dropdown:: ``split_counts``
 
           * **HDF5 name:** ``SplitCounts``
@@ -1764,6 +1845,15 @@ Black hole particles
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - Velocity dispersion (3D) of the gas particles around the black holes. This is :math:`a \sqrt{<|dx/dt|^2> - <|dx/dt|>^2}` where x is the co-moving position of the particles relative to the black holes.
      - ✅
+   * - .. dropdown:: ``halo_catalogue_index``
+
+          * **HDF5 name:** ``HaloCatalogueIndex``
+          * **Shape:** 1
+          * **Datatype:** int64
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - Index of halo in which this particle is a bound member, or -1 if none
+     - ❌
    * - .. dropdown:: ``iron_masses_from_snia``
 
           * **HDF5 name:** ``IronMassesFromSNIa``
@@ -2016,6 +2106,15 @@ Black hole particles
           * **Compression:** Store less bits
      - Progenitor ID of the gas particle that became the seed BH. If this particle is the result of one (or many) splitting events, this ID corresponds to the ID of the particle in the initial conditions that its lineage can be traced back to. If the particle was never split, this is the same as ParticleIDs.
      - ✅
+   * - .. dropdown:: ``rank_bound``
+
+          * **HDF5 name:** ``Rank_bound``
+          * **Shape:** 1
+          * **Datatype:** int64
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - Ranking by binding energy of the bound particles (first in halo=0), or -1 if not bound
+     - ❌
    * - .. dropdown:: ``smoothing_lengths``
 
           * **HDF5 name:** ``SmoothingLengths``
@@ -2025,6 +2124,15 @@ Black hole particles
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - Co-moving smoothing lengths (FWHM of the kernel) of the particles
      - ✅
+   * - .. dropdown:: ``specific_potential_energies``
+
+          * **HDF5 name:** ``SpecificPotentialEnergies``
+          * **Shape:** 1
+          * **Datatype:** float32
+          * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
+          * **Compression:** no compression
+     - Specific potential energy of the bound particles
+     - ❌
    * - .. dropdown:: ``split_counts``
 
           * **HDF5 name:** ``SplitCounts``

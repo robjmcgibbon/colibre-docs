@@ -111,77 +111,120 @@ applied to it. If a halo does not satisfy the filter then the variation
 will not be calculated for that halo. More information on filters can be
 found :doc:`in the next section <soap_filters>`.
 
-+----------------------------------------+------------+-------------+
-| Group name                             | Inclusive? |  Filter     |
-+========================================+============+=============+
-| ``bound_subhalo``                      | n          | basic       |
-+----------------------------------------+------------+-------------+
-| ``spherical_overdensity_200_crit``     | y          | basic       |
-+----------------------------------------+------------+-------------+
-| ``spherical_overdensity_50_crit``      | y          | general     |
-+----------------------------------------+------------+-------------+
-| ``spherical_overdensity_100_crit``     | y          | general     |
-+----------------------------------------+------------+-------------+
-| ``spherical_overdensity_200_mean``     | y          | basic       |
-+----------------------------------------+------------+-------------+
-| ``spherical_overdensity_500_crit``     | y          | basic       |
-+----------------------------------------+------------+-------------+
-| ``spherical_overdensity_5xr_500_crit`` | y          | general     |
-+----------------------------------------+------------+-------------+
-| ``spherical_overdensity_1000_crit``    | y          | general     |
-+----------------------------------------+------------+-------------+
-| ``spherical_overdensity_2500_crit``    | y          | general     |
-+----------------------------------------+------------+-------------+
-| ``spherical_overdensity_bn98``         | y          | general     |
-+----------------------------------------+------------+-------------+
-| ``exclusive_sphere_10kpc``             | n          | basic       |
-+----------------------------------------+------------+-------------+
-| ``exclusive_sphere_30kpc``             | n          | basic       |
-+----------------------------------------+------------+-------------+
-| ``exclusive_sphere_50kpc``             | n          | basic       |
-+----------------------------------------+------------+-------------+
-| ``exclusive_sphere_100kpc``            | n          | basic       |
-+----------------------------------------+------------+-------------+
-| ``exclusive_sphere_300kpc``            | n          | basic       |
-+----------------------------------------+------------+-------------+
-| ``exclusive_sphere_500kpc``            | n          | general     |
-+----------------------------------------+------------+-------------+
-| ``exclusive_sphere_1000kpc``           | n          | general     |
-+----------------------------------------+------------+-------------+
-| ``exclusive_sphere_3000kpc``           | n          | general     |
-+----------------------------------------+------------+-------------+
-| ``inclusive_sphere_10kpc``             | y          | basic       |
-+----------------------------------------+------------+-------------+
-| ``inclusive_sphere_30kpc``             | y          | basic       |
-+----------------------------------------+------------+-------------+
-| ``inclusive_sphere_50kpc``             | y          | basic       |
-+----------------------------------------+------------+-------------+
-| ``inclusive_sphere_100kpc``            | y          | basic       |
-+----------------------------------------+------------+-------------+
-| ``inclusive_sphere_300kpc``            | y          | basic       |
-+----------------------------------------+------------+-------------+
-| ``inclusive_sphere_500kpc``            | y          | general     |
-+----------------------------------------+------------+-------------+
-| ``inclusive_sphere_1000kpc``           | y          | general     |
-+----------------------------------------+------------+-------------+
-| ``inclusive_sphere_3000kpc``           | y          | general     |
-+----------------------------------------+------------+-------------+
-| ``projected_aperture_10kpc_projP``     | n          | general     |
-+----------------------------------------+------------+-------------+
-| ``projected_aperture_30kpc_projP``     | n          | general     |
-+----------------------------------------+------------+-------------+
-| ``projected_aperture_50kpc_projP``     | n          | general     |
-+----------------------------------------+------------+-------------+
-| ``projected_aperture_100kpc_projP``    | n          | general     |
-+----------------------------------------+------------+-------------+
-| ``soap``                               | \-         | basic       |
-+----------------------------------------+------------+-------------+
-| ``input_halos``                        | \-         | basic       |
-+----------------------------------------+------------+-------------+
-| ``input_halos_hbtplus``                | \-         | basic       |
-+----------------------------------------+------------+-------------+
-| ``input_halos_fof``                    | \-         | basic       |
-+----------------------------------------+------------+-------------+
+.. list-table::
+   :header-rows: 1
+
+   * - Group name
+     - Inclusive?
+     - Filter
+   * - ``bound_subhalo``
+     - ❌
+     - basic
+   * - ``spherical_overdensity_200_crit``
+     - ✅
+     - basic
+   * - ``spherical_overdensity_200_mean``
+     - ✅
+     - basic
+   * - ``spherical_overdensity_500_crit``
+     - ✅
+     - basic
+   * - ``spherical_overdensity_bn98``
+     - ✅
+     - general
+   * - ``exclusive_sphere_100pc``
+     - ❌
+     - basic
+   * - ``exclusive_sphere_300pc``
+     - ❌
+     - basic
+   * - ``exclusive_sphere_1kpc``
+     - ❌
+     - basic
+   * - ``exclusive_sphere_3kpc``
+     - ❌
+     - basic
+   * - ``exclusive_sphere_10kpc``
+     - ❌
+     - basic
+   * - ``exclusive_sphere_30kpc``
+     - ❌
+     - basic
+   * - ``exclusive_sphere_50kpc``
+     - ❌
+     - basic
+   * - ``exclusive_sphere_100kpc``
+     - ❌
+     - basic
+   * - ``exclusive_sphere_2xhalfmassradiusstars``
+     - ❌
+     - basic
+   * - ``inclusive_sphere_100pc``
+     - ✅
+     - basic
+   * - ``inclusive_sphere_300pc``
+     - ✅
+     - basic
+   * - ``inclusive_sphere_1kpc``
+     - ✅
+     - basic
+   * - ``inclusive_sphere_3kpc``
+     - ✅
+     - basic
+   * - ``inclusive_sphere_10kpc``
+     - ✅
+     - basic
+   * - ``inclusive_sphere_30kpc``
+     - ✅
+     - basic
+   * - ``inclusive_sphere_50kpc``
+     - ✅
+     - basic
+   * - ``inclusive_sphere_100kpc``
+     - ✅
+     - basic
+   * - ``inclusive_sphere_2xhalfmassradiusstars``
+     - ✅
+     - basic
+   * - ``projected_aperture_100pc_projP``
+     - ❌
+     - basic
+   * - ``projected_aperture_300pc_projP``
+     - ❌
+     - basic
+   * - ``projected_aperture_1kpc_projP``
+     - ❌
+     - basic
+   * - ``projected_aperture_3kpc_projP``
+     - ❌
+     - basic
+   * - ``projected_aperture_10kpc_projP``
+     - ❌
+     - basic
+   * - ``projected_aperture_30kpc_projP``
+     - ❌
+     - basic
+   * - ``projected_aperture_50kpc_projP``
+     - ❌
+     - basic
+   * - ``projected_aperture_100kpc_projP``
+     - ❌
+     - basic
+   * - ``projected_aperture_2xhalfmassradiusstars_projP``
+     - ❌
+     - basic
+   * - ``soap``
+     - \
+     - basic
+   * - ``input_halos``
+     - \
+     - basic
+   * - ``input_halos_hbtplus``
+     - \
+     - basic
+   * - ``input_halos_fof``
+     - \
+     - basic
 
 
 Spherical overdensity calculations

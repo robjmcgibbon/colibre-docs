@@ -18,6 +18,6 @@ For a number of runs we have produced an "initial snapshot". This was created by
 
 The initial snapshots can be found within the ``initial_snapshot/`` directory of the following runs:
 
-* L400m7/Thermal
-* L200m6/Thermal
+* ``L400_m7/Thermal``
+* ``L200_m6/Thermal``
 

@@ -3,7 +3,7 @@ HBT-HERONS merger trees
 
 Full merger trees are provided in the form of HBT-HERONS
 `(Forouhar Moreno et al. 2025) <https://ui.adsabs.harvard.edu/abs/2025MNRAS.543.1339F>`__
-outputs. A more detailed description of the quantities
+outputs. A more detailed description of the quantities, and additional examples,
 can be found on the
 `HBT-HERONS website. <https://hbt-herons.strw.leidenuniv.nl/>`__
 The source code is available `on github
@@ -143,8 +143,6 @@ In order to get access to :doc:`all the halo/galaxy properties calculated by SOA
 Evolution of a subhalo example
 ------------------------------
 
-TODO: Update and test once HBT files are served
-
 .. code-block:: python
 
     import h5py
@@ -152,12 +150,12 @@ TODO: Update and test once HBT files are served
     import numpy as np
     import swiftsimio as sw
 
-    # Connect to the hdfstream service and open the root directory
-    root_dir = hdfstream.open("cosma", "/")
+    root_dir = '/cosma8/data/dp004/colibre/Runs'
+    sim = 'L0025N0188/Thermal'
+    final_snap_nr = 127
 
     # Load the z=0 SOAP catalogue from the L1_m9 simulation
-    final_snap_nr = 77
-    soap = sw.load(root_dir[f"FLAMINGO/L1_m9/L1_m9/SOAP-HBT/halo_properties_{final_snap_nr:04}.hdf5"])
+    soap = sw.load(f"{root_dir}/{sim}/SOAP-HBT/halo_properties_{final_snap_nr:04}.hdf5")
 
     # Pick the most massive satellite which has lost at least 70% of its mass
     mask = soap.input_halos.is_central.value == 0
@@ -178,7 +176,7 @@ TODO: Update and test once HBT files are served
     scale_factor = np.zeros(n_exist)
 
     # Loop through the catalogues and extract the mass for this object
-    hbt_basename = f"FLAMINGO/L1_m9/L1_m9/sorted_hbt/OrderedSubSnap_{{snap_nr:03}}.hdf5"
+    hbt_basename = f"{root_dir}/{sim}/HBT-HERONS/sorted_hbt/OrderedSubSnap_{{snap_nr:03}}.hdf5"
     for i in range(n_exist):
         hbt_filename = hbt_basename.format(snap_nr=birth_snap_nr+i)
         with hdfstream.open('cosma', hbt_filename) as file:

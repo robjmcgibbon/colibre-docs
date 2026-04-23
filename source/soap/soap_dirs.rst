@@ -13,21 +13,11 @@ between snapshot number and redshift.
          swiftsimio so that unit metadata is read automatically. See
          :doc:`swiftsimio` for an example.
 
-As an example, see `/FLAMINGO/L1_m9/L1_m9/SOAP-HBT/
-</flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/SOAP-HBT>`__ for
-the ``L1_m9`` SOAP catalogues.
-
-
 .. _hbt_directory_layout:
 
 HBT-HERONS catalgoues
 ---------------------
 
-Each simulation has an ``HBT-HERONS`` directory with one
+Each simulation has an ``HBT-HERONS/sorted_catalogues`` directory with one
 ``OrderedSubSnap_XXX.hdf5`` file for each output time, where ``XXX`` is
 the snapshot number.
-
-As an example, see `/FLAMINGO/L1_m9/L1_m9/HBT-HERONS/
-</flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/HBT-HERONS>`__ for
-the ``L1_m9`` HBT-HERONS catalogues.
-

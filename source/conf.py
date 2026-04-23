@@ -40,40 +40,14 @@ html_title = 'COLIBRE Documentation'
 # page, including nested sections.
 html_short_title = 'COLIBRE Data Products'
 
-#
-# Theme selection
-#
-# Read the Docs
-#html_theme = 'sphinx_rtd_theme'
-
-# Piccolo
+# Select the piccolo theme
 html_theme = 'piccolo_theme'
-# Don't collapse toc when using Piccolo theme
-#html_theme_options = {
-#    "globaltoc_collapse": False
-#}
 
-# Immaterial
-#extensions = ["sphinx_immaterial"]
-#html_theme = 'sphinx_immaterial'
-
-#
-# Additional files needed for the file browser: msgpack library for decoding
-# responses, highlight.js syntax highlighter, dompurify and some CSS
-# customization.
-#
-# TODO Decide which files we need, comment so it is clear what they do
+# Customization
 html_css_files = [
     'custom.css',
-    # 'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/default.min.css',
 ]
-# html_js_files = [
-#     'https://unpkg.com/@msgpack/msgpack@2.8.0',
-#     'https://unpkg.com/dompurify@3.2.3/dist/purify.min.js',
-#     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js',
-#     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/python.min.js',
-#     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/yaml.min.js',
-# ]
+html_js_files = []
 
 
 # Coloured inline roles for the SOAP property table.
@@ -102,3 +76,4 @@ def setup(app: Sphinx):
     app.add_role("avail", _highlight_role("#c8e6c9"))     # light green
     app.add_role("snaponly", _highlight_role("#bbdefb"))  # light blue
     app.add_role("unavail", _highlight_role("#ffcdd2"))   # light red
+

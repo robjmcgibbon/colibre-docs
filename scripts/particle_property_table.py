@@ -28,7 +28,7 @@ corrections = {
 colibre_dir = '/cosma8/data/dp004/colibre/Runs/'
 snapshots = {
     'snip': f'{colibre_dir}/L100_m7/HYBRID_AGN_m7/snapshots/colibre_0126/colibre_0126.hdf5',
-    'thermal': f'{colibre_dir}/L400_m7/Thermal/snapshots/colibre_0127/colibre_0127.hdf5',
+    'thermal': f'{colibre_dir}/L400_m7/Thermal/SOAP-HBT/colibre_with_SOAP_membership_0127.hdf5',
     'hybrid': f'{colibre_dir}/L100_m7/HYBRID_AGN_m7/snapshots/colibre_0127/colibre_0127.hdf5',
     'gcs': '/cosma8/data/dp004/jlvc76/COLIBRE/ScienceRuns/L0050N1504/Thermal_Ppivot1p5e4_npivot1p0/snapshots/colibre_0048/colibre_0048.hdf5',
     'gcs_snip': '/cosma8/data/dp004/jlvc76/COLIBRE/ScienceRuns/L0050N1504/Thermal_Ppivot1p5e4_npivot1p0/snapshots/colibre_0047/colibre_0047.hdf5',
@@ -103,6 +103,8 @@ def format_units(attrs):
     return f":math:`{latex}`"
 
 def get_compression(attrs):
+    if 'Lossy compression filter' not in attrs:
+        return 'no compression'
     compression_filter = attrs['Lossy compression filter'].decode()
     compression = compression_description[compression_filter]
     if '$' in compression:

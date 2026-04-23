@@ -25,17 +25,6 @@ input subhalo catalogue.
 **General quantities (general)** use a filter based on the total number of particles bound to the
 subhalo.
 
-**Gas quantities (gas)** use a filter based on the number of gas particles bound to the subhalo.
-
-**Dark matter quantities (dm)** use a filter based on the number of dark matter particles bound to the subhalo.
-
-**Stellar quantities (star)** use a filter based on the number of star particles bound to the subhalo.
-
-**Baryon quantities (baryon)** use a filter based on the number of gas and star particles bound to the subhalo.
-
-Note that there are no quantities that use a black hole or neutrino particle
-number filter.
-
 The criteria defining
 the different categories are listed in the table below.
 
@@ -46,12 +35,3 @@ the different categories are listed in the table below.
 +---------+-----------------------------------------------------------------------+
 | general | :math:`N_{\rm{}gas}+N_{\rm{}dm}+N_{\rm{}star}+N_{\rm{}BH} \geq{} 100` |
 +---------+-----------------------------------------------------------------------+
-| gas     | :math:`N_{\rm{}gas} \geq{} 100`                                       |
-+---------+-----------------------------------------------------------------------+
-| dm      | :math:`N_{\rm{}dm} \geq{} 100`                                        |
-+---------+-----------------------------------------------------------------------+
-| star    | :math:`N_{\rm{}star} \geq{} 100`                                      |
-+---------+-----------------------------------------------------------------------+
-| baryon  | :math:`N_{\rm{}gas}+N_{\rm{}star} \geq{} 100`                         |
-+---------+-----------------------------------------------------------------------+
-

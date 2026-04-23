@@ -9,7 +9,6 @@ Welcome to the COLIBRE documentation
    snapshots/index
    Halo catalogues <soap/index>
    power_spectra
-   additional/index
    support/index
 
 

@@ -7,7 +7,7 @@ The third table contains the properties which are only calculated for the HYDRO 
 The final table contains the datasets copied over from the HBT-HERONS and FoF catalogues.
 Within each table the properties are sorted based on their filters.
 
-The first column gives the name of the property when opened using the `swiftsimio library <https://swiftsimio.readthedocs.io/en/latest/soap/index.html>`_. Clicking on each property name will open a dropdown box, which contains information about the dataset within the HDF5 file. The second column gives the filter applied to that property, as described in :doc:`soap_filters`. The third column indicates the halo variations for which this property is available (green if the property is computed for a certain variation, red if not). The variations are as follows:
+The first column gives the name of the property when opened using the `swiftsimio library <https://swiftsimio.readthedocs.io/en/latest/soap/index.html>`_. Clicking on each property name will open a dropdown box, which contains information about the dataset within the HDF5 file. The second column gives the filter applied to that property, as described in :doc:`soap_filters`. The third column indicates the halo variations for which this property is available (:avail:`green` if the property is computed for a certain variation, :snaponly:`blue` if the property is available for :ref:`snapshots but not snipshots <snapshot-redshifts>`, :unavail:`red` if not computed for that variation). The variations are as follows:
 
 * ``BS`` - :ref:`bound_subhalo_description`
 * ``ES`` - :ref:`exclusive_sphere_description`
@@ -48,7 +48,7 @@ Input halo properties
           * **Compression:** 1 pc accurate
      - basic
      - \-
-     - The centre of the subhalo as given by the halo finder. Used as reference for all relative positions. For HBT-HERONS this is equal to the position of the most bound particle in the subhalo.
+     - The centre of the subhalo as given by the halo finder. Used as reference for all relative positions. For VR and HBTplus this is equal to the position of the most bound particle in the subhalo.
    * - .. dropdown:: ``input_halos.is_central``
 
           * **HDF5 name:** ``InputHalos/IsCentral``
@@ -141,6 +141,36 @@ Dark matter only properties
      - basic
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
      - Radius of the particle furthest from the halo centre
+   * - .. dropdown:: ``half_mass_radius_total``
+
+          * **HDF5 name:** ``HalfMassRadiusTotal``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`a \cdot \rm{Mpc}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Total half mass radius. `[3] <footnote-3_>`_
+   * - .. dropdown:: ``mass_fraction_external``
+
+          * **HDF5 name:** ``MassFractionExternal``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Fraction of mass that is bound to a satellite outside this FoF group. `[4] <footnote-4_>`_
+   * - .. dropdown:: ``mass_fraction_satellites``
+
+          * **HDF5 name:** ``MassFractionSatellites``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Fraction of mass that is bound to a satellite in the same FoF group. `[4] <footnote-4_>`_
    * - .. dropdown:: ``maximum_circular_velocity``
 
           * **HDF5 name:** ``MaximumCircularVelocity``
@@ -149,8 +179,8 @@ Dark matter only properties
           * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Maximum circular velocity when accounting for particle softening lengths. `[3] <footnote-3_>`_
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
+     - Maximum circular velocity when accounting for particle softening lengths. `[5] <footnote-5_>`_
    * - .. dropdown:: ``maximum_circular_velocity_radius``
 
           * **HDF5 name:** ``MaximumCircularVelocityRadius``
@@ -159,7 +189,7 @@ Dark matter only properties
           * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
      - Radius at which MaximumCircularVelocity is reached.
    * - .. dropdown:: ``maximum_circular_velocity_radius_unsoftened``
 
@@ -170,7 +200,7 @@ Dark matter only properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Radius at which MaximumCircularVelocityUnsoftened is reached. `[3] <footnote-3_>`_
+     - Radius at which MaximumCircularVelocityUnsoftened is reached. `[5] <footnote-5_>`_
    * - .. dropdown:: ``maximum_circular_velocity_unsoftened``
 
           * **HDF5 name:** ``MaximumCircularVelocityUnsoftened``
@@ -180,17 +210,7 @@ Dark matter only properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Maximum circular velocity when not accounting for particle softening lengths. `[3] <footnote-3_>`_
-   * - .. dropdown:: ``noise_suppressed_neutrino_mass``
-
-          * **HDF5 name:** ``NoiseSuppressedNeutrinoMass``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - basic
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Noise suppressed total neutrino mass. `[4] <footnote-4_>`_
+     - Maximum circular velocity when not accounting for particle softening lengths. `[5] <footnote-5_>`_
    * - .. dropdown:: ``number_of_dark_matter_particles``
 
           * **HDF5 name:** ``NumberOfDarkMatterParticles``
@@ -201,16 +221,6 @@ Dark matter only properties
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - Number of dark matter particles.
-   * - .. dropdown:: ``raw_neutrino_mass``
-
-          * **HDF5 name:** ``RawNeutrinoMass``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - basic
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total neutrino particle mass. `[4] <footnote-4_>`_
    * - .. dropdown:: ``soradius``
 
           * **HDF5 name:** ``SORadius``
@@ -231,36 +241,76 @@ Dark matter only properties
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - Total mass.
-   * - .. dropdown:: ``half_mass_radius_total``
+   * - .. dropdown:: ``angular_momentum_dark_matter``
 
-          * **HDF5 name:** ``HalfMassRadiusTotal``
+          * **HDF5 name:** ``AngularMomentumDarkMatter``
+          * **Shape:** 3
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{Mpc} \cdot \rm{M}_\odot \cdot \rm{km} / \rm{s}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
+     - Total angular momentum of the dark matter, relative to the HaloCentre and DM centre of mass velocity. `[6] <footnote-6_>`_
+   * - .. dropdown:: ``dark_matter_inertia_tensor_noniterative``
+
+          * **HDF5 name:** ``DarkMatterInertiaTensorNoniterative``
+          * **Shape:** 6
+          * **Type:** float32
+          * **Units:** :math:`\rm{Mpc}^{2}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - 3D inertia tensor computed in a single interation from the DM mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
+   * - .. dropdown:: ``dark_matter_inertia_tensor_reduced_noniterative``
+
+          * **HDF5 name:** ``DarkMatterInertiaTensorReducedNoniterative``
+          * **Shape:** 6
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Reduced 3D inertia tensor computed in a single interation from the DM mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
+   * - .. dropdown:: ``dark_matter_mass_flow_rate``
+
+          * **HDF5 name:** ``DarkMatterMassFlowRate``
+          * **Shape:** 6
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Mass flow rate of dark matter particles through spherical shells. Contains 6 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``dark_matter_projected_velocity_dispersion``
+
+          * **HDF5 name:** ``DarkMatterProjectedVelocityDispersion``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{km} / \rm{s}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
+     - Mass-weighted velocity dispersion of the DM along the projection axis, relative to the DM centre of mass velocity. `[8] <footnote-8_>`_
+   * - .. dropdown:: ``dark_matter_velocity_dispersion_matrix``
+
+          * **HDF5 name:** ``DarkMatterVelocityDispersionMatrix``
+          * **Shape:** 6
+          * **Type:** float32
+          * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Mass-weighted velocity dispersion of the dark matter. Measured relative to the DM centre of mass velocity. The order of the components of the dispersion tensor is XX YY ZZ XY XZ YZ. `[9] <footnote-9_>`_
+   * - .. dropdown:: ``half_mass_radius_dark_matter``
+
+          * **HDF5 name:** ``HalfMassRadiusDarkMatter``
           * **Shape:** 1
           * **Type:** float32
           * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Total half mass radius. `[5] <footnote-5_>`_
-   * - .. dropdown:: ``mass_fraction_external``
-
-          * **HDF5 name:** ``MassFractionExternal``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Fraction of mass that is bound to a satellite outside this FoF group. `[6] <footnote-6_>`_
-   * - .. dropdown:: ``mass_fraction_satellites``
-
-          * **HDF5 name:** ``MassFractionSatellites``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Fraction of mass that is bound to a satellite in the same FoF group. `[6] <footnote-6_>`_
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
+     - Dark matter half mass radius. `[3] <footnote-3_>`_
    * - .. dropdown:: ``spin_parameter``
 
           * **HDF5 name:** ``SpinParameter``
@@ -270,17 +320,7 @@ Dark matter only properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Bullock et al. (2001) spin parameter. `[7] <footnote-7_>`_
-   * - .. dropdown:: ``total_inertia_tensor``
-
-          * **HDF5 name:** ``TotalInertiaTensor``
-          * **Shape:** 6
-          * **Type:** float32
-          * **Units:** :math:`\rm{Mpc}^{2}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - 3D inertia tensor computed iteratively from the total mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles. `[8] <footnote-8_>`_
+     - Bullock et al. (2001) spin parameter. `[10] <footnote-10_>`_
    * - .. dropdown:: ``total_inertia_tensor_noniterative``
 
           * **HDF5 name:** ``TotalInertiaTensorNoniterative``
@@ -290,17 +330,7 @@ Dark matter only properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - 3D inertia tensor computed in a single iteration from the total mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles. `[8] <footnote-8_>`_
-   * - .. dropdown:: ``total_inertia_tensor_reduced``
-
-          * **HDF5 name:** ``TotalInertiaTensorReduced``
-          * **Shape:** 6
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Reduced 3D inertia tensor computed iteratively from the total mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles. `[8] <footnote-8_>`_
+     - 3D inertia tensor computed in a single iteration from the total mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles. `[11] <footnote-11_>`_
    * - .. dropdown:: ``total_inertia_tensor_reduced_noniterative``
 
           * **HDF5 name:** ``TotalInertiaTensorReducedNoniterative``
@@ -310,87 +340,7 @@ Dark matter only properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Reduced 3D inertia tensor computed in a single iteration from the total mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles. `[8] <footnote-8_>`_
-   * - .. dropdown:: ``angular_momentum_dark_matter``
-
-          * **HDF5 name:** ``AngularMomentumDarkMatter``
-          * **Shape:** 3
-          * **Type:** float32
-          * **Units:** :math:`10^{10}\ \rm{Mpc} \cdot \rm{M}_\odot \cdot \rm{km} / \rm{s}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - dm
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total angular momentum of the dark matter, relative to the HaloCentre and DM centre of mass velocity. `[9] <footnote-9_>`_
-   * - .. dropdown:: ``dark_matter_inertia_tensor``
-
-          * **HDF5 name:** ``DarkMatterInertiaTensor``
-          * **Shape:** 6
-          * **Type:** float32
-          * **Units:** :math:`\rm{Mpc}^{2}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - dm
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - 3D inertia tensor computed iteratively from the DM mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
-   * - .. dropdown:: ``dark_matter_inertia_tensor_noniterative``
-
-          * **HDF5 name:** ``DarkMatterInertiaTensorNoniterative``
-          * **Shape:** 6
-          * **Type:** float32
-          * **Units:** :math:`\rm{Mpc}^{2}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - dm
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - 3D inertia tensor computed in a single interation from the DM mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
-   * - .. dropdown:: ``dark_matter_inertia_tensor_reduced``
-
-          * **HDF5 name:** ``DarkMatterInertiaTensorReduced``
-          * **Shape:** 6
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - dm
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Reduced 3D inertia tensor computed iteratively from the DM mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
-   * - .. dropdown:: ``dark_matter_inertia_tensor_reduced_noniterative``
-
-          * **HDF5 name:** ``DarkMatterInertiaTensorReducedNoniterative``
-          * **Shape:** 6
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - dm
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Reduced 3D inertia tensor computed in a single interation from the DM mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
-   * - .. dropdown:: ``dark_matter_projected_velocity_dispersion``
-
-          * **HDF5 name:** ``DarkMatterProjectedVelocityDispersion``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{km} / \rm{s}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - dm
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
-     - Mass-weighted velocity dispersion of the DM along the projection axis, relative to the DM centre of mass velocity. `[10] <footnote-10_>`_
-   * - .. dropdown:: ``dark_matter_velocity_dispersion_matrix``
-
-          * **HDF5 name:** ``DarkMatterVelocityDispersionMatrix``
-          * **Shape:** 6
-          * **Type:** float32
-          * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - dm
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Mass-weighted velocity dispersion of the dark matter. Measured relative to the DM centre of mass velocity. The order of the components of the dispersion tensor is XX YY ZZ XY XZ YZ. `[11] <footnote-11_>`_
-   * - .. dropdown:: ``half_mass_radius_dark_matter``
-
-          * **HDF5 name:** ``HalfMassRadiusDarkMatter``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`a \cdot \rm{Mpc}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - dm
-     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
-     - Dark matter half mass radius. `[5] <footnote-5_>`_
+     - Reduced 3D inertia tensor computed in a single iteration from the total mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles. `[11] <footnote-11_>`_
 
 Hydrodynamical properties
 -------------------------
@@ -403,6 +353,26 @@ Hydrodynamical properties
      - Filter
      - Variations
      - Description
+   * - .. dropdown:: ``atomic_hydrogen_mass``
+
+          * **HDF5 name:** ``AtomicHydrogenMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
+     - Total gas mass in atomic hydrogen.
+   * - .. dropdown:: ``averaged_star_formation_rate``
+
+          * **HDF5 name:** ``AveragedStarFormationRate``
+          * **Shape:** 2
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :snaponly:`BS` :snaponly:`ES` :snaponly:`IS` :snaponly:`EP` :snaponly:`SO`
+     - Total star formation rate, averaged over past 100Myr and past 10Myr. If the time between this snapshot and the previous one was less than the averaging time, then the value is averaged over the time between the snapshots. `[12] <footnote-12_>`_
    * - .. dropdown:: ``black_holes_dynamical_mass``
 
           * **HDF5 name:** ``BlackHolesDynamicalMass``
@@ -413,6 +383,16 @@ Hydrodynamical properties
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - Total BH dynamical mass.
+   * - .. dropdown:: ``black_holes_last_event_scalefactor``
+
+          * **HDF5 name:** ``BlackHolesLastEventScalefactor``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Scale-factor of last AGN event.
    * - .. dropdown:: ``black_holes_subgrid_mass``
 
           * **HDF5 name:** ``BlackHolesSubgridMass``
@@ -423,26 +403,276 @@ Hydrodynamical properties
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - Total BH subgrid mass.
-   * - .. dropdown:: ``dark_matter_concentration``
+   * - .. dropdown:: ``black_holes_total_injected_thermal_energy``
 
-          * **HDF5 name:** ``DarkMatterConcentration``
+          * **HDF5 name:** ``BlackHolesTotalInjectedThermalEnergy``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** dimensionless
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Concentration of dark matter particles assuming an NFW profile. Minimum particle radius set to softening length `[2] <footnote-2_>`_
-   * - .. dropdown:: ``dark_matter_concentration_unsoftened``
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Total thermal energy injected into gas particles by all black holes.
+   * - .. dropdown:: ``compton_y``
 
-          * **HDF5 name:** ``DarkMatterConcentrationUnsoftened``
+          * **HDF5 name:** ``ComptonY``
+          * **Shape:** 1
+          * **Type:** float64
+          * **Units:** :math:`\rm{Mpc}^{2}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :snaponly:`SO`
+     - Total Compton y parameter. `[13] <footnote-13_>`_
+   * - .. dropdown:: ``dark_matter_centre_of_mass``
+
+          * **HDF5 name:** ``DarkMatterCentreOfMass``
+          * **Shape:** 3
+          * **Type:** float64
+          * **Units:** :math:`a \cdot \rm{Mpc}`
+          * **Compression:** 1 pc accurate
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Centre of mass of dark matter.
+   * - .. dropdown:: ``diffuse_carbon_mass``
+
+          * **HDF5 name:** ``DiffuseCarbonMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** dimensionless
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total gas mass in carbon that is not contained in dust. `[14] <footnote-14_>`_
+   * - .. dropdown:: ``diffuse_iron_mass``
+
+          * **HDF5 name:** ``DiffuseIronMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total gas mass in iron that is not contained in dust. `[14] <footnote-14_>`_
+   * - .. dropdown:: ``diffuse_magnesium_mass``
+
+          * **HDF5 name:** ``DiffuseMagnesiumMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total gas mass in magnesium that is not contained in dust. `[14] <footnote-14_>`_
+   * - .. dropdown:: ``diffuse_oxygen_mass``
+
+          * **HDF5 name:** ``DiffuseOxygenMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total gas mass in oxygen that is not contained in dust. `[14] <footnote-14_>`_
+   * - .. dropdown:: ``diffuse_silicon_mass``
+
+          * **HDF5 name:** ``DiffuseSiliconMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total gas mass in silicon that is not contained in dust. `[14] <footnote-14_>`_
+   * - .. dropdown:: ``dust_graphite_mass``
+
+          * **HDF5 name:** ``DustGraphiteMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in graphite grains. `[15] <footnote-15_>`_
+   * - .. dropdown:: ``dust_graphite_mass_in_atomic_gas``
+
+          * **HDF5 name:** ``DustGraphiteMassInAtomicGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in graphite grains in atomic gas (estimated from hydrogen). `[15] <footnote-15_>`_
+   * - .. dropdown:: ``dust_graphite_mass_in_cold_dense_gas``
+
+          * **HDF5 name:** ``DustGraphiteMassInColdDenseGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in graphite grains in cold, dense gas. `[16] <footnote-16_>`_
+   * - .. dropdown:: ``dust_graphite_mass_in_molecular_gas``
+
+          * **HDF5 name:** ``DustGraphiteMassInMolecularGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in graphite grains in molecular gas (estimated from hydrogen). `[15] <footnote-15_>`_
+   * - .. dropdown:: ``dust_large_grain_mass``
+
+          * **HDF5 name:** ``DustLargeGrainMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in large grains. `[15] <footnote-15_>`_
+   * - .. dropdown:: ``dust_large_grain_mass_in_cold_dense_gas``
+
+          * **HDF5 name:** ``DustLargeGrainMassInColdDenseGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in large grains in cold, dense gas. `[16] <footnote-16_>`_
+   * - .. dropdown:: ``dust_large_grain_mass_in_molecular_gas``
+
+          * **HDF5 name:** ``DustLargeGrainMassInMolecularGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in large grains in molecular gas (estimated from hydrogen). `[15] <footnote-15_>`_
+   * - .. dropdown:: ``dust_large_grain_mass_sfrweighted``
+
+          * **HDF5 name:** ``DustLargeGrainMassSFRWeighted``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - The dust mass in large grains, weighted by the SFR of the particles.
+   * - .. dropdown:: ``dust_mass``
+
+          * **HDF5 name:** ``DustMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
+     - Total dust mass.
+   * - .. dropdown:: ``dust_silicates_mass``
+
+          * **HDF5 name:** ``DustSilicatesMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in silicate grains. `[15] <footnote-15_>`_
+   * - .. dropdown:: ``dust_silicates_mass_in_atomic_gas``
+
+          * **HDF5 name:** ``DustSilicatesMassInAtomicGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in silicate grains in atomic gas (estimated from hydrogen). `[15] <footnote-15_>`_
+   * - .. dropdown:: ``dust_silicates_mass_in_cold_dense_gas``
+
+          * **HDF5 name:** ``DustSilicatesMassInColdDenseGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in silicate grains in cold, dense gas. `[16] <footnote-16_>`_
+   * - .. dropdown:: ``dust_silicates_mass_in_molecular_gas``
+
+          * **HDF5 name:** ``DustSilicatesMassInMolecularGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in silicate grains in molecular gas (estimated from hydrogen). `[15] <footnote-15_>`_
+   * - .. dropdown:: ``dust_small_grain_mass``
+
+          * **HDF5 name:** ``DustSmallGrainMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in small grains. `[15] <footnote-15_>`_
+   * - .. dropdown:: ``dust_small_grain_mass_in_cold_dense_gas``
+
+          * **HDF5 name:** ``DustSmallGrainMassInColdDenseGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in small grains in cold, dense gas. `[16] <footnote-16_>`_
+   * - .. dropdown:: ``dust_small_grain_mass_in_molecular_gas``
+
+          * **HDF5 name:** ``DustSmallGrainMassInMolecularGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total dust mass in small grains in molecular gas (estimated from hydrogen). `[15] <footnote-15_>`_
+   * - .. dropdown:: ``dust_small_grain_mass_sfrweighted``
+
+          * **HDF5 name:** ``DustSmallGrainMassSFRWeighted``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - The dust mass in small grains, weighted by the SFR of the particles.
+   * - .. dropdown:: ``gas_centre_of_mass``
+
+          * **HDF5 name:** ``GasCentreOfMass``
+          * **Shape:** 3
+          * **Type:** float64
+          * **Units:** :math:`a \cdot \rm{Mpc}`
+          * **Compression:** 1 pc accurate
+     - basic
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Concentration of dark matter particles assuming an NFW profile. No particle softening `[2] <footnote-2_>`_
+     - Centre of mass of gas.
+   * - .. dropdown:: ``gas_centre_of_mass_velocity``
+
+          * **HDF5 name:** ``GasCentreOfMassVelocity``
+          * **Shape:** 3
+          * **Type:** float32
+          * **Units:** :math:`\rm{km} / \rm{s}`
+          * **Compression:** 0.1 km/s accurate
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Centre of mass velocity of gas.
    * - .. dropdown:: ``gas_mass``
 
           * **HDF5 name:** ``GasMass``
@@ -453,6 +683,16 @@ Hydrodynamical properties
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - Total gas mass.
+   * - .. dropdown:: ``gas_mass_fraction_in_iron``
+
+          * **HDF5 name:** ``GasMassFractionInIron``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :snaponly:`SO`
+     - Total gas mass fraction in iron.
    * - .. dropdown:: ``gas_mass_fraction_in_metals``
 
           * **HDF5 name:** ``GasMassFractionInMetals``
@@ -461,8 +701,108 @@ Hydrodynamical properties
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Total gas mass fraction in metals.
+   * - .. dropdown:: ``gas_mass_fraction_in_oxygen``
+
+          * **HDF5 name:** ``GasMassFractionInOxygen``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :snaponly:`SO`
+     - Total gas mass in oxygen.
+   * - .. dropdown:: ``gas_mass_in_cold_dense_diffuse_metals``
+
+          * **HDF5 name:** ``GasMassInColdDenseDiffuseMetals``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Sum of the diffuse metal mass in cold, dense gas. `[16] <footnote-16_>`_
+   * - .. dropdown:: ``gas_mass_in_cold_dense_gas``
+
+          * **HDF5 name:** ``GasMassInColdDenseGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Total mass of gas in cold, dense gas. `[16] <footnote-16_>`_
+   * - .. dropdown:: ``gas_temperature``
+
+          * **HDF5 name:** ``GasTemperature``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{K}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total gas mass fraction in metals. `[12] <footnote-12_>`_
+     - Mass-weighted mean gas temperature. `[18] <footnote-18_>`_
+   * - .. dropdown:: ``gas_temperature_core_excision``
+
+          * **HDF5 name:** ``GasTemperatureCoreExcision``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{K}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Mass-weighted mean gas temperature, excluding the inner excised core. `[19] <footnote-19_>`_
+   * - .. dropdown:: ``gas_temperature_without_cool_gas``
+
+          * **HDF5 name:** ``GasTemperatureWithoutCoolGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{K}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Mass-weighted mean gas temperature, excluding cool gas with a temperature below 1e5 K. `[18] <footnote-18_>`_
+   * - .. dropdown:: ``gas_temperature_without_cool_gas_and_recent_agnheating``
+
+          * **HDF5 name:** ``GasTemperatureWithoutCoolGasAndRecentAGNHeating``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{K}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Mass-weighted mean gas temperature, excluding cool gas with a temperature below 1e5 K and gas that was recently heated by AGN. `[18] <footnote-18_>`_
+   * - .. dropdown:: ``gas_temperature_without_recent_agnheating``
+
+          * **HDF5 name:** ``GasTemperatureWithoutRecentAGNHeating``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{K}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Mass-weighted mean gas temperature, excluding gas that was recently heated by AGN. `[18] <footnote-18_>`_
+   * - .. dropdown:: ``half_mass_radius_atomic_hydrogen``
+
+          * **HDF5 name:** ``HalfMassRadiusAtomicHydrogen``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`a \cdot \rm{Mpc}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
+     - Atomic hydrogen half mass radius.
+   * - .. dropdown:: ``half_mass_radius_molecular_hydrogen``
+
+          * **HDF5 name:** ``HalfMassRadiusMolecularHydrogen``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`a \cdot \rm{Mpc}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
+     - Molecular hydrogen half mass radius.
    * - .. dropdown:: ``half_mass_radius_stars``
 
           * **HDF5 name:** ``HalfMassRadiusStars``
@@ -472,7 +812,397 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
-     - Stellar half mass radius. `[5] <footnote-5_>`_
+     - Stellar half mass radius. `[3] <footnote-3_>`_
+   * - .. dropdown:: ``helium_mass``
+
+          * **HDF5 name:** ``HeliumMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
+     - Total gas mass in helium.
+   * - .. dropdown:: ``hot_gas_mass``
+
+          * **HDF5 name:** ``HotGasMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Total mass of gas with a temperature above 1e5 K.
+   * - .. dropdown:: ``hydrogen_mass``
+
+          * **HDF5 name:** ``HydrogenMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
+     - Total gas mass in hydrogen.
+   * - .. dropdown:: ``kinetic_energy_total``
+
+          * **HDF5 name:** ``KineticEnergyTotal``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Total kinetic energy of the particles, relative to the centre of mass velocity. `[20] <footnote-20_>`_
+   * - .. dropdown:: ``last_supernova_event_maximum_gas_density``
+
+          * **HDF5 name:** ``LastSupernovaEventMaximumGasDensity``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot}{\rm{Mpc}^{3}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :snaponly:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Maximum gas density at the last supernova event for the last supernova event of each gas particle.
+   * - .. dropdown:: ``linear_mass_weighted_diffuse_oxygen_over_hydrogen_of_gas``
+
+          * **HDF5 name:** ``LinearMassWeightedDiffuseOxygenOverHydrogenOfGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Linear sum of the diffuse oxygen over hydrogen ratio of gas, multiplied with the gas mass. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``linear_mass_weighted_iron_from_snia_over_hydrogen_of_stars``
+
+          * **HDF5 name:** ``LinearMassWeightedIronFromSNIaOverHydrogenOfStars``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Sum of the iron over hydrogen ratio of stars, multiplied with the stellar mass, where only iron from SNIa is included. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``linear_mass_weighted_iron_over_hydrogen_of_stars``
+
+          * **HDF5 name:** ``LinearMassWeightedIronOverHydrogenOfStars``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Linear sum of the iron over hydrogen ratio of stars, multiplied with the stellar mass. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``linear_mass_weighted_magnesium_over_hydrogen_of_stars``
+
+          * **HDF5 name:** ``LinearMassWeightedMagnesiumOverHydrogenOfStars``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Linear sum of the magnesium over hydrogen ratio of stars, multiplied with the stellar mass. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``linear_mass_weighted_oxygen_over_hydrogen_of_gas``
+
+          * **HDF5 name:** ``LinearMassWeightedOxygenOverHydrogenOfGas``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Linear sum of the oxygen over hydrogen ratio of gas, multiplied with the gas mass. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_atomic_gas_high_limit``
+
+          * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfAtomicGasHighLimit``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of atomic gas, multiplied with the gas mass. Imposes a lower limit of 1.e-3 times solar O/H. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_atomic_gas_low_limit``
+
+          * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfAtomicGasLowLimit``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of atomic gas, multiplied with the gas mass. Imposes a lower limit of 1.e-4 times solar O/H. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_gas_high_limit``
+
+          * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfGasHighLimit``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of gas, multiplied with the gas mass. Imposes a lower limit of 1.e-3 times solar O/H. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_gas_low_limit``
+
+          * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfGasLowLimit``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of gas, multiplied with the gas mass. Imposes a lower limit of 1.e-4 times solar O/H. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_molecular_gas_high_limit``
+
+          * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfMolecularGasHighLimit``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of molecular gas, multiplied with the gas mass. Imposes a lower limit of 1.e-3 times solar O/H. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_molecular_gas_low_limit``
+
+          * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfMolecularGasLowLimit``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of molecular gas, multiplied with the gas mass. Imposes a lower limit of 1.e-4 times solar O/H. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``logarithmic_mass_weighted_iron_from_snia_over_hydrogen_of_stars_low_limit``
+
+          * **HDF5 name:** ``LogarithmicMassWeightedIronFromSNIaOverHydrogenOfStarsLowLimit``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Logarithmic sum of the iron over hydrogen ratio of stars, multiplied with the stellar mass, where only iron from SNIa is included. Imposes a lower limit of 1.e-4 times solar Fe/H. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``logarithmic_mass_weighted_iron_over_hydrogen_of_stars_high_limit``
+
+          * **HDF5 name:** ``LogarithmicMassWeightedIronOverHydrogenOfStarsHighLimit``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Logarithmic sum of the iron over hydrogen ratio of stars, multiplied with the stellar mass. Imposes a lower limit of 1.e-3 times solar Fe/H. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``logarithmic_mass_weighted_iron_over_hydrogen_of_stars_low_limit``
+
+          * **HDF5 name:** ``LogarithmicMassWeightedIronOverHydrogenOfStarsLowLimit``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Logarithmic sum of the iron over hydrogen ratio of stars, multiplied with the stellar mass. Imposes a lower limit of 1.e-4 times solar Fe/H. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``logarithmic_mass_weighted_magnesium_over_hydrogen_of_stars_high_limit``
+
+          * **HDF5 name:** ``LogarithmicMassWeightedMagnesiumOverHydrogenOfStarsHighLimit``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Logarithmic sum of the magnesium over hydrogen ratio of stars, multiplied with the stellar mass. Imposes a lower limit of 1.e-3 times solar Fe/H. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``logarithmic_mass_weighted_magnesium_over_hydrogen_of_stars_low_limit``
+
+          * **HDF5 name:** ``LogarithmicMassWeightedMagnesiumOverHydrogenOfStarsLowLimit``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Logarithmic sum of the magnesium over hydrogen ratio of stars, multiplied with the stellar mass. Imposes a lower limit of 1.e-4 times solar Fe/H. `[21] <footnote-21_>`_
+   * - .. dropdown:: ``luminosity_weighted_mean_stellar_age``
+
+          * **HDF5 name:** ``LuminosityWeightedMeanStellarAge``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{Mpc} \cdot \rm{s} / \rm{km}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Luminosity weighted mean stellar age. The weight is the r band luminosity.
+   * - .. dropdown:: ``mass_weighted_mean_stellar_age``
+
+          * **HDF5 name:** ``MassWeightedMeanStellarAge``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{Mpc} \cdot \rm{s} / \rm{km}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Mass weighted mean stellar age.
+   * - .. dropdown:: ``maximum_dark_matter_circular_velocity``
+
+          * **HDF5 name:** ``MaximumDarkMatterCircularVelocity``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{km} / \rm{s}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Maximum circular velocity calculated using dark matter particles when accounting for particle softening lengths..
+   * - .. dropdown:: ``maximum_dark_matter_circular_velocity_radius``
+
+          * **HDF5 name:** ``MaximumDarkMatterCircularVelocityRadius``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`a \cdot \rm{Mpc}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Radius at which MaximumDarkMatterCircularVelocity is reached.
+   * - .. dropdown:: ``maximum_stellar_birth_density``
+
+          * **HDF5 name:** ``MaximumStellarBirthDensity``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot}{\rm{Mpc}^{3}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Maximum density of gas that was converted into a star particle.
+   * - .. dropdown:: ``maximum_stellar_birth_pressure``
+
+          * **HDF5 name:** ``MaximumStellarBirthPressure``
+          * **Shape:** 1
+          * **Type:** float64
+          * **Units:** :math:`\frac{\rm{K}}{\rm{Mpc}^{3}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Maximum pressure of gas that was converted into a star particle.
+   * - .. dropdown:: ``maximum_stellar_birth_temperature``
+
+          * **HDF5 name:** ``MaximumStellarBirthTemperature``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{K}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Maximum temperature of gas that was converted into a star particle.
+   * - .. dropdown:: ``median_stellar_birth_density``
+
+          * **HDF5 name:** ``MedianStellarBirthDensity``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot}{\rm{Mpc}^{3}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Median density of gas particles that were converted into a star particle.
+   * - .. dropdown:: ``median_stellar_birth_pressure``
+
+          * **HDF5 name:** ``MedianStellarBirthPressure``
+          * **Shape:** 1
+          * **Type:** float64
+          * **Units:** :math:`\frac{\rm{K}}{\rm{Mpc}^{3}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Median pressure of gas particles that were converted into a star particle.
+   * - .. dropdown:: ``median_stellar_birth_temperature``
+
+          * **HDF5 name:** ``MedianStellarBirthTemperature``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{K}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Median temperature of gas particles that were converted into a star particle.
+   * - .. dropdown:: ``minimum_stellar_birth_density``
+
+          * **HDF5 name:** ``MinimumStellarBirthDensity``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot}{\rm{Mpc}^{3}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Minimum density of gas that was converted into a star particle.
+   * - .. dropdown:: ``minimum_stellar_birth_pressure``
+
+          * **HDF5 name:** ``MinimumStellarBirthPressure``
+          * **Shape:** 1
+          * **Type:** float64
+          * **Units:** :math:`\frac{\rm{K}}{\rm{Mpc}^{3}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Minimum pressure of gas that was converted into a star particle.
+   * - .. dropdown:: ``minimum_stellar_birth_temperature``
+
+          * **HDF5 name:** ``MinimumStellarBirthTemperature``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{K}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Minimum temperature of gas that was converted into a star particle.
+   * - .. dropdown:: ``molecular_hydrogen_mass``
+
+          * **HDF5 name:** ``MolecularHydrogenMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
+     - Total gas mass in molecular hydrogen.
+   * - .. dropdown:: ``most_massive_black_hole_accretion_rate``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleAccretionRate``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Gas accretion rate of most massive black hole.
+   * - .. dropdown:: ``most_massive_black_hole_averaged_accretion_rate``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleAveragedAccretionRate``
+          * **Shape:** 2
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Gas accretion rate of the most massive black hole, averaged over past 100Myr and past 10Myr. If the time between this snapshot and the previous one was less than the averaging time, then the value is averaged over the time between the snapshots. `[12] <footnote-12_>`_
+   * - .. dropdown:: ``most_massive_black_hole_formation_scalefactor``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleFormationScalefactor``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.3669{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Scale-factor when most massive black hole was formed.
+   * - .. dropdown:: ``most_massive_black_hole_gwmass_loss``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleGWMassLoss``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Cumulative mass lost to GW via BH-BH mergers over the history of the most massive black holes. This includes the mass loss from all the progenitors.
    * - .. dropdown:: ``most_massive_black_hole_id``
 
           * **HDF5 name:** ``MostMassiveBlackHoleID``
@@ -483,6 +1213,26 @@ Hydrodynamical properties
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - ID of most massive black hole.
+   * - .. dropdown:: ``most_massive_black_hole_injected_thermal_energy``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleInjectedThermalEnergy``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Total thermal energy injected into gas particles by the most massive black hole.
+   * - .. dropdown:: ``most_massive_black_hole_last_event_scalefactor``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleLastEventScalefactor``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.3669{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Scale-factor of last thermal AGN event for most massive black hole.
    * - .. dropdown:: ``most_massive_black_hole_mass``
 
           * **HDF5 name:** ``MostMassiveBlackHoleMass``
@@ -492,7 +1242,47 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
-     - Mass of most massive black hole. `[13] <footnote-13_>`_
+     - Mass of most massive black hole. `[22] <footnote-22_>`_
+   * - .. dropdown:: ``most_massive_black_hole_number_of_agnevents``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleNumberOfAGNEvents``
+          * **Shape:** 1
+          * **Type:** int32
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Number of thermal AGN events the most massive black hole has had so far
+   * - .. dropdown:: ``most_massive_black_hole_position``
+
+          * **HDF5 name:** ``MostMassiveBlackHolePosition``
+          * **Shape:** 3
+          * **Type:** float64
+          * **Units:** :math:`a \cdot \rm{Mpc}`
+          * **Compression:** 1 pc accurate
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Position of most massive black hole.
+   * - .. dropdown:: ``most_massive_black_hole_total_accreted_mass``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleTotalAccretedMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - The total mass accreted by the most massive black hole.
+   * - .. dropdown:: ``most_massive_black_hole_velocity``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleVelocity``
+          * **Shape:** 3
+          * **Type:** float32
+          * **Units:** :math:`\rm{km} / \rm{s}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Velocity of most massive black hole relative to the simulation volume.
    * - .. dropdown:: ``number_of_black_hole_particles``
 
           * **HDF5 name:** ``NumberOfBlackHoleParticles``
@@ -513,16 +1303,6 @@ Hydrodynamical properties
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - Number of gas particles.
-   * - .. dropdown:: ``number_of_neutrino_particles``
-
-          * **HDF5 name:** ``NumberOfNeutrinoParticles``
-          * **Shape:** 1
-          * **Type:** uint32
-          * **Units:** dimensionless
-          * **Compression:** no compression
-     - basic
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Number of neutrino particles.
    * - .. dropdown:: ``number_of_star_particles``
 
           * **HDF5 name:** ``NumberOfStarParticles``
@@ -533,6 +1313,36 @@ Hydrodynamical properties
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - Number of star particles.
+   * - .. dropdown:: ``potential_energy_total``
+
+          * **HDF5 name:** ``PotentialEnergyTotal``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Total potential energy of the subhalo.
+   * - .. dropdown:: ``spectroscopic_like_temperature``
+
+          * **HDF5 name:** ``SpectroscopicLikeTemperature``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{K}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Spectroscopic-like gas temperature. `[23] <footnote-23_>`_
+   * - .. dropdown:: ``spectroscopic_like_temperature_core_excision``
+
+          * **HDF5 name:** ``SpectroscopicLikeTemperatureCoreExcision``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{K}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Spectroscopic-like gas temperature. Excludes gas in the inner excised core `[19] <footnote-19_>`_ `[23] <footnote-23_>`_
    * - .. dropdown:: ``star_formation_rate``
 
           * **HDF5 name:** ``StarFormationRate``
@@ -542,7 +1352,27 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
-     - Total star formation rate. `[14] <footnote-14_>`_
+     - Total star formation rate. `[24] <footnote-24_>`_
+   * - .. dropdown:: ``star_forming_gas_mass``
+
+          * **HDF5 name:** ``StarFormingGasMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Total mass of star-forming gas. `[24] <footnote-24_>`_
+   * - .. dropdown:: ``star_forming_gas_mass_fraction_in_iron``
+
+          * **HDF5 name:** ``StarFormingGasMassFractionInIron``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total gas mass fraction in iron for gas that is star-forming. `[24] <footnote-24_>`_
    * - .. dropdown:: ``star_forming_gas_mass_fraction_in_metals``
 
           * **HDF5 name:** ``StarFormingGasMassFractionInMetals``
@@ -551,8 +1381,58 @@ Hydrodynamical properties
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total gas mass fraction in metals for gas that is star-forming. `[12] <footnote-12_>`_ `[14] <footnote-14_>`_
+     - :avail:`BS` :snaponly:`ES` :snaponly:`IS` :avail:`EP` :avail:`SO`
+     - Total gas mass fraction in metals for gas that is star-forming. `[24] <footnote-24_>`_
+   * - .. dropdown:: ``star_forming_gas_mass_fraction_in_oxygen``
+
+          * **HDF5 name:** ``StarFormingGasMassFractionInOxygen``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
+     - Total gas mass fraction in oxygen for gas that is star-forming. `[24] <footnote-24_>`_
+   * - .. dropdown:: ``stellar_centre_of_mass``
+
+          * **HDF5 name:** ``StellarCentreOfMass``
+          * **Shape:** 3
+          * **Type:** float64
+          * **Units:** :math:`a \cdot \rm{Mpc}`
+          * **Compression:** 1 pc accurate
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Centre of mass of stars.
+   * - .. dropdown:: ``stellar_centre_of_mass_velocity``
+
+          * **HDF5 name:** ``StellarCentreOfMassVelocity``
+          * **Shape:** 3
+          * **Type:** float32
+          * **Units:** :math:`\rm{km} / \rm{s}`
+          * **Compression:** 0.1 km/s accurate
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
+     - Centre of mass velocity of stars.
+   * - .. dropdown:: ``stellar_initial_mass``
+
+          * **HDF5 name:** ``StellarInitialMass``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Total stellar initial mass.
+   * - .. dropdown:: ``stellar_luminosity``
+
+          * **HDF5 name:** ``StellarLuminosity``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Total stellar luminosity in the 9 GAMA bands. `[25] <footnote-25_>`_
    * - .. dropdown:: ``stellar_mass``
 
           * **HDF5 name:** ``StellarMass``
@@ -563,6 +1443,26 @@ Hydrodynamical properties
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - Total stellar mass.
+   * - .. dropdown:: ``stellar_mass_fraction_in_iron``
+
+          * **HDF5 name:** ``StellarMassFractionInIron``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Total stellar mass fraction in iron.
+   * - .. dropdown:: ``stellar_mass_fraction_in_magnesium``
+
+          * **HDF5 name:** ``StellarMassFractionInMagnesium``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
+     - Total stellar mass fraction in magnesium.
    * - .. dropdown:: ``stellar_mass_fraction_in_metals``
 
           * **HDF5 name:** ``StellarMassFractionInMetals``
@@ -571,328 +1471,18 @@ Hydrodynamical properties
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - Total stellar mass fraction in metals.
-   * - .. dropdown:: ``black_holes_last_event_scalefactor``
+   * - .. dropdown:: ``stellar_mass_fraction_in_oxygen``
 
-          * **HDF5 name:** ``BlackHolesLastEventScalefactor``
+          * **HDF5 name:** ``StellarMassFractionInOxygen``
           * **Shape:** 1
           * **Type:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
-     - Scale-factor of last AGN event.
-   * - .. dropdown:: ``compton_y``
-
-          * **HDF5 name:** ``ComptonY``
-          * **Shape:** 1
-          * **Type:** float64
-          * **Units:** :math:`\rm{Mpc}^{2}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total Compton y parameter. `[15] <footnote-15_>`_
-   * - .. dropdown:: ``compton_ywithout_recent_agnheating``
-
-          * **HDF5 name:** ``ComptonYWithoutRecentAGNHeating``
-          * **Shape:** 1
-          * **Type:** float64
-          * **Units:** :math:`\rm{Mpc}^{2}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total Compton y parameter. Excludes gas that was recently heated by AGN. `[15] <footnote-15_>`_
-   * - .. dropdown:: ``doppler_b``
-
-          * **HDF5 name:** ``DopplerB``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`a`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Kinetic Sunyaey-Zel'dovich effect, assuming a line of sight towards the position of the first lightcone observer. `[16] <footnote-16_>`_
-   * - .. dropdown:: ``gas_compton_ytemperature``
-
-          * **HDF5 name:** ``GasComptonYTemperature``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - ComptonY-weighted mean gas temperature. `[17] <footnote-17_>`_
-   * - .. dropdown:: ``gas_compton_ytemperature_core_excision``
-
-          * **HDF5 name:** ``GasComptonYTemperatureCoreExcision``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - ComptonY-weighted mean gas temperature, excluding the inner excised core. `[17] <footnote-17_>`_ `[18] <footnote-18_>`_
-   * - .. dropdown:: ``gas_compton_ytemperature_without_recent_agnheating``
-
-          * **HDF5 name:** ``GasComptonYTemperatureWithoutRecentAGNHeating``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - ComptonY-weighted mean gas temperature, excluding gas that was recently heated by AGN. `[17] <footnote-17_>`_
-   * - .. dropdown:: ``gas_compton_ytemperature_without_recent_agnheating_core_excision``
-
-          * **HDF5 name:** ``GasComptonYTemperatureWithoutRecentAGNHeatingCoreExcision``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - ComptonY-weighted mean gas temperature, excluding the inner excised core and gas that was recently heated by AGN. `[17] <footnote-17_>`_ `[18] <footnote-18_>`_
-   * - .. dropdown:: ``gas_mass_fraction_in_iron``
-
-          * **HDF5 name:** ``GasMassFractionInIron``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total gas mass fraction in iron. `[12] <footnote-12_>`_
-   * - .. dropdown:: ``gas_mass_fraction_in_oxygen``
-
-          * **HDF5 name:** ``GasMassFractionInOxygen``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total gas mass in oxygen. `[12] <footnote-12_>`_
-   * - .. dropdown:: ``gas_temperature``
-
-          * **HDF5 name:** ``GasTemperature``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass-weighted mean gas temperature. `[19] <footnote-19_>`_
-   * - .. dropdown:: ``gas_temperature_core_excision``
-
-          * **HDF5 name:** ``GasTemperatureCoreExcision``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass-weighted mean gas temperature, excluding the inner excised core. `[18] <footnote-18_>`_
-   * - .. dropdown:: ``gas_temperature_without_cool_gas``
-
-          * **HDF5 name:** ``GasTemperatureWithoutCoolGas``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass-weighted mean gas temperature, excluding cool gas with a temperature below 1e5 K. `[19] <footnote-19_>`_
-   * - .. dropdown:: ``gas_temperature_without_cool_gas_and_recent_agnheating``
-
-          * **HDF5 name:** ``GasTemperatureWithoutCoolGasAndRecentAGNHeating``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass-weighted mean gas temperature, excluding cool gas with a temperature below 1e5 K and gas that was recently heated by AGN. `[19] <footnote-19_>`_
-   * - .. dropdown:: ``gas_temperature_without_cool_gas_and_recent_agnheating_core_excision``
-
-          * **HDF5 name:** ``GasTemperatureWithoutCoolGasAndRecentAGNHeatingCoreExcision``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass-weighted mean gas temperature, excluding the inner excised core, gas below 1e5 K and gas that was recently heated by AGN. `[18] <footnote-18_>`_
-   * - .. dropdown:: ``gas_temperature_without_cool_gas_core_excision``
-
-          * **HDF5 name:** ``GasTemperatureWithoutCoolGasCoreExcision``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass-weighted mean gas temperature, excluding the inner excised core and gas below 1e5 K. `[18] <footnote-18_>`_
-   * - .. dropdown:: ``gas_temperature_without_recent_agnheating``
-
-          * **HDF5 name:** ``GasTemperatureWithoutRecentAGNHeating``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass-weighted mean gas temperature, excluding gas that was recently heated by AGN. `[19] <footnote-19_>`_
-   * - .. dropdown:: ``gas_temperature_without_recent_agnheating_core_excision``
-
-          * **HDF5 name:** ``GasTemperatureWithoutRecentAGNHeatingCoreExcision``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass-weighted mean gas temperature, excluding the inner excised core, and gas that was recently heated by AGN. `[18] <footnote-18_>`_
-   * - .. dropdown:: ``hot_gas_mass``
-
-          * **HDF5 name:** ``HotGasMass``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total mass of gas with a temperature above 1e5 K.
-   * - .. dropdown:: ``most_massive_black_hole_accretion_rate``
-
-          * **HDF5 name:** ``MostMassiveBlackHoleAccretionRate``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
-     - Gas accretion rate of most massive black hole.
-   * - .. dropdown:: ``most_massive_black_hole_last_event_scalefactor``
-
-          * **HDF5 name:** ``MostMassiveBlackHoleLastEventScalefactor``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.3669{\rm{}e}10`
-     - general
-     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
-     - Scale-factor of last thermal AGN event for most massive black hole.
-   * - .. dropdown:: ``most_massive_black_hole_position``
-
-          * **HDF5 name:** ``MostMassiveBlackHolePosition``
-          * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`a \cdot \rm{Mpc}`
-          * **Compression:** 1 pc accurate
-     - general
-     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
-     - Position of most massive black hole.
-   * - .. dropdown:: ``most_massive_black_hole_velocity``
-
-          * **HDF5 name:** ``MostMassiveBlackHoleVelocity``
-          * **Shape:** 3
-          * **Type:** float32
-          * **Units:** :math:`\rm{km} / \rm{s}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
-     - Velocity of most massive black hole relative to the simulation volume.
-   * - .. dropdown:: ``projected_total_inertia_tensor_noniterative``
-
-          * **HDF5 name:** ``ProjectedTotalInertiaTensorNoniterative``
-          * **Shape:** 3
-          * **Type:** float32
-          * **Units:** :math:`\rm{Mpc}^{2}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
-     - 2D inertia tensor computed in a single iteration from the total mass distribution, relative to the halo centre. Diagonal components and one off-diagonal value as (1,1), (2,2), (1,2). Only calculated when we have more than 20 particles. `[8] <footnote-8_>`_
-   * - .. dropdown:: ``projected_total_inertia_tensor_reduced_noniterative``
-
-          * **HDF5 name:** ``ProjectedTotalInertiaTensorReducedNoniterative``
-          * **Shape:** 3
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
-     - Reduced 2D inertia tensor computed in a single iteration from the total mass distribution, relative to the halo centre. Diagonal components and one off-diagonal value as (1,1), (2,2), (1,2). Only calculated when we have more than 20 particles. `[8] <footnote-8_>`_
-   * - .. dropdown:: ``spectroscopic_like_temperature``
-
-          * **HDF5 name:** ``SpectroscopicLikeTemperature``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Spectroscopic-like gas temperature. `[20] <footnote-20_>`_
-   * - .. dropdown:: ``spectroscopic_like_temperature_core_excision``
-
-          * **HDF5 name:** ``SpectroscopicLikeTemperatureCoreExcision``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Spectroscopic-like gas temperature. Excludes gas in the inner excised core `[18] <footnote-18_>`_ `[20] <footnote-20_>`_
-   * - .. dropdown:: ``spectroscopic_like_temperature_without_recent_agnheating``
-
-          * **HDF5 name:** ``SpectroscopicLikeTemperatureWithoutRecentAGNHeating``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Spectroscopic-like gas temperature. Exclude gas that was recently heated by AGN `[20] <footnote-20_>`_
-   * - .. dropdown:: ``spectroscopic_like_temperature_without_recent_agnheating_core_excision``
-
-          * **HDF5 name:** ``SpectroscopicLikeTemperatureWithoutRecentAGNHeatingCoreExcision``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{K}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Spectroscopic-like gas temperature. Exclude gas that was recently heated by AGN. Excludes gas in the inner excised core `[18] <footnote-18_>`_ `[20] <footnote-20_>`_
-   * - .. dropdown:: ``star_forming_gas_mass``
-
-          * **HDF5 name:** ``StarFormingGasMass``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Total mass of star-forming gas. `[14] <footnote-14_>`_
-   * - .. dropdown:: ``star_forming_gas_mass_fraction_in_iron``
-
-          * **HDF5 name:** ``StarFormingGasMassFractionInIron``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Total gas mass fraction in iron for gas that is star-forming. `[12] <footnote-12_>`_ `[14] <footnote-14_>`_
-   * - .. dropdown:: ``star_forming_gas_mass_fraction_in_oxygen``
-
-          * **HDF5 name:** ``StarFormingGasMassFractionInOxygen``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Total gas mass fraction in oxygen for gas that is star-forming. `[12] <footnote-12_>`_ `[14] <footnote-14_>`_
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Total stellar mass fraction in oxygen.
    * - .. dropdown:: ``thermal_energy_gas``
 
           * **HDF5 name:** ``ThermalEnergyGas``
@@ -900,9 +1490,19 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total thermal energy of the gas. `[21] <footnote-21_>`_
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Total thermal energy of the gas. `[26] <footnote-26_>`_
+   * - .. dropdown:: ``total_snia_rate``
+
+          * **HDF5 name:** ``TotalSNIaRate``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Total SNIa rate.
    * - .. dropdown:: ``xray_luminosity``
 
           * **HDF5 name:** ``XRayLuminosity``
@@ -910,9 +1510,9 @@ Hydrodynamical properties
           * **Type:** float64
           * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total observer-frame Xray luminosity in three bands. `[22] <footnote-22_>`_
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :snaponly:`SO`
+     - Total observer-frame Xray luminosity in three bands. `[27] <footnote-27_>`_
    * - .. dropdown:: ``xray_luminosity_core_excision``
 
           * **HDF5 name:** ``XRayLuminosityCoreExcision``
@@ -920,69 +1520,29 @@ Hydrodynamical properties
           * **Type:** float64
           * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total observer-frame Xray luminosity in three bands. Excludes gas in the inner excised core `[18] <footnote-18_>`_
-   * - .. dropdown:: ``xray_luminosity_in_restframe``
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :snaponly:`SO`
+     - Total observer-frame Xray luminosity in three bands. Excludes gas in the inner excised core `[19] <footnote-19_>`_
+   * - .. dropdown:: ``xray_luminosity_core_excision_no_sat``
 
-          * **HDF5 name:** ``XRayLuminosityInRestframe``
+          * **HDF5 name:** ``XRayLuminosityCoreExcisionNoSat``
           * **Shape:** 3
           * **Type:** float64
           * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total rest-frame Xray luminosity in three bands. `[22] <footnote-22_>`_
-   * - .. dropdown:: ``xray_luminosity_in_restframe_core_excision``
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :snaponly:`SO`
+     - Total observer-frame Xray luminosity in three bands. Excludes gas in the inner excised core, and excludes particles bound to satellites
+   * - .. dropdown:: ``xray_luminosity_no_sat``
 
-          * **HDF5 name:** ``XRayLuminosityInRestframeCoreExcision``
+          * **HDF5 name:** ``XRayLuminosityNoSat``
           * **Shape:** 3
           * **Type:** float64
           * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total rest-frame Xray luminosity in three bands. Excludes gas in the inner excised core
-   * - .. dropdown:: ``xray_luminosity_in_restframe_without_recent_agnheating``
-
-          * **HDF5 name:** ``XRayLuminosityInRestframeWithoutRecentAGNHeating``
-          * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total rest-frame Xray luminosity in three bands. Excludes gas that was recently heated by AGN.
-   * - .. dropdown:: ``xray_luminosity_in_restframe_without_recent_agnheating_core_excision``
-
-          * **HDF5 name:** ``XRayLuminosityInRestframeWithoutRecentAGNHeatingCoreExcision``
-          * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total rest-frame Xray luminosity in three bands. Excludes gas that was recently heated by AGN. Excludes gas in the inner excised core
-   * - .. dropdown:: ``xray_luminosity_without_recent_agnheating``
-
-          * **HDF5 name:** ``XRayLuminosityWithoutRecentAGNHeating``
-          * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total observer-frame Xray luminosity in three bands. Excludes gas that was recently heated by AGN.
-   * - .. dropdown:: ``xray_luminosity_without_recent_agnheating_core_excision``
-
-          * **HDF5 name:** ``XRayLuminosityWithoutRecentAGNHeatingCoreExcision``
-          * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total observer-frame Xray luminosity in three bands. Excludes gas that was recently heated by AGN. Excludes gas in the inner excised core `[18] <footnote-18_>`_
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :snaponly:`SO`
+     - Total observer-frame Xray luminosity in three bands. Excludes particles bound to satellites
    * - .. dropdown:: ``xray_photon_luminosity``
 
           * **HDF5 name:** ``XRayPhotonLuminosity``
@@ -990,9 +1550,9 @@ Hydrodynamical properties
           * **Type:** float64
           * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total observer-frame Xray photon luminosity in three bands. `[22] <footnote-22_>`_
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :snaponly:`SO`
+     - Total observer-frame Xray photon luminosity in three bands. `[27] <footnote-27_>`_
    * - .. dropdown:: ``xray_photon_luminosity_core_excision``
 
           * **HDF5 name:** ``XRayPhotonLuminosityCoreExcision``
@@ -1000,69 +1560,19 @@ Hydrodynamical properties
           * **Type:** float64
           * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total observer-frame Xray photon luminosity in three bands. Excludes gas in the inner excised core `[18] <footnote-18_>`_
-   * - .. dropdown:: ``xray_photon_luminosity_in_restframe``
+     - basic
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :snaponly:`SO`
+     - Total observer-frame Xray photon luminosity in three bands. Excludes gas in the inner excised core `[19] <footnote-19_>`_
+   * - .. dropdown:: ``angular_momentum_baryons``
 
-          * **HDF5 name:** ``XRayPhotonLuminosityInRestframe``
+          * **HDF5 name:** ``AngularMomentumBaryons``
           * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{Mpc} \cdot \rm{M}_\odot \cdot \rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total rest-frame Xray photon luminosity in three bands. `[22] <footnote-22_>`_
-   * - .. dropdown:: ``xray_photon_luminosity_in_restframe_core_excision``
-
-          * **HDF5 name:** ``XRayPhotonLuminosityInRestframeCoreExcision``
-          * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total rest-frame Xray photon luminosity in three bands. Excludes gas in the inner excised core
-   * - .. dropdown:: ``xray_photon_luminosity_in_restframe_without_recent_agnheating``
-
-          * **HDF5 name:** ``XRayPhotonLuminosityInRestframeWithoutRecentAGNHeating``
-          * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total rest-frame Xray photon luminosity in three bands. Exclude gas that was recently heated by AGN.
-   * - .. dropdown:: ``xray_photon_luminosity_in_restframe_without_recent_agnheating_core_excision``
-
-          * **HDF5 name:** ``XRayPhotonLuminosityInRestframeWithoutRecentAGNHeatingCoreExcision``
-          * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total rest-frame Xray photon luminosity in three bands. Exclude gas that was recently heated by AGN. Excludes gas in the inner excised core
-   * - .. dropdown:: ``xray_photon_luminosity_without_recent_agnheating``
-
-          * **HDF5 name:** ``XRayPhotonLuminosityWithoutRecentAGNHeating``
-          * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total observer-frame Xray photon luminosity in three bands. Exclude gas that was recently heated by AGN.
-   * - .. dropdown:: ``xray_photon_luminosity_without_recent_agnheating_core_excision``
-
-          * **HDF5 name:** ``XRayPhotonLuminosityWithoutRecentAGNHeatingCoreExcision``
-          * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - general
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Total observer-frame Xray photon luminosity in three bands. Exclude gas that was recently heated by AGN. Excludes gas in the inner excised core `[18] <footnote-18_>`_
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
+     - Total angular momentum of baryons (gas and stars), relative to the HaloCentre and baryonic centre of mass velocity. `[6] <footnote-6_>`_
    * - .. dropdown:: ``angular_momentum_gas``
 
           * **HDF5 name:** ``AngularMomentumGas``
@@ -1070,9 +1580,99 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`10^{10}\ \rm{Mpc} \cdot \rm{M}_\odot \cdot \rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
+     - general
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total angular momentum of the gas, relative to the HaloCentre and gas centre of mass velocity. `[9] <footnote-9_>`_
+     - Total angular momentum of the gas, relative to the HaloCentre and gas centre of mass velocity. `[6] <footnote-6_>`_
+   * - .. dropdown:: ``angular_momentum_stars``
+
+          * **HDF5 name:** ``AngularMomentumStars``
+          * **Shape:** 3
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{Mpc} \cdot \rm{M}_\odot \cdot \rm{km} / \rm{s}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
+     - Total angular momentum of the stars, relative to the HaloCentre and stellar centre of mass velocity. `[6] <footnote-6_>`_
+   * - .. dropdown:: ``cold_gas_energy_flow_rate``
+
+          * **HDF5 name:** ``ColdGasEnergyFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Energy flow rate of cold gas particles ($\log T < 3$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``cold_gas_mass_flow_rate``
+
+          * **HDF5 name:** ``ColdGasMassFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Mass flow rate of cold gas particles ($\log T < 3$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``cold_gas_momentum_flow_rate``
+
+          * **HDF5 name:** ``ColdGasMomentumFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{Mpc} \cdot \rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Momentum flow rate of cold gas particles ($\log T < 3$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``cool_gas_energy_flow_rate``
+
+          * **HDF5 name:** ``CoolGasEnergyFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Energy flow rate of cool gas particles ($3 < \log T < 5$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``cool_gas_mass_flow_rate``
+
+          * **HDF5 name:** ``CoolGasMassFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Mass flow rate of cool gas particles ($3 < \log T < 5$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``cool_gas_momentum_flow_rate``
+
+          * **HDF5 name:** ``CoolGasMomentumFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{Mpc} \cdot \rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Momentum flow rate of cool gas particles ($3 < \log T < 5$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``dark_matter_concentration``
+
+          * **HDF5 name:** ``DarkMatterConcentration``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Concentration of dark matter particles assuming an NFW profile. Minimum particle radius set to softening length `[2] <footnote-2_>`_
+   * - .. dropdown:: ``dark_matter_concentration_unsoftened``
+
+          * **HDF5 name:** ``DarkMatterConcentrationUnsoftened``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Concentration of dark matter particles assuming an NFW profile. No particle softening `[2] <footnote-2_>`_
    * - .. dropdown:: ``disc_to_total_gas_mass_fraction``
 
           * **HDF5 name:** ``DiscToTotalGasMassFraction``
@@ -1080,39 +1680,19 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
+     - general
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Fraction of the total gas mass that is in the disc. `[23] <footnote-23_>`_
-   * - .. dropdown:: ``gas_centre_of_mass``
+     - Fraction of the total gas mass that is in the disc. `[28] <footnote-28_>`_
+   * - .. dropdown:: ``disc_to_total_stellar_mass_fraction``
 
-          * **HDF5 name:** ``GasCentreOfMass``
-          * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`a \cdot \rm{Mpc}`
-          * **Compression:** 1 pc accurate
-     - gas
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Centre of mass of gas.
-   * - .. dropdown:: ``gas_centre_of_mass_velocity``
-
-          * **HDF5 name:** ``GasCentreOfMassVelocity``
-          * **Shape:** 3
+          * **HDF5 name:** ``DiscToTotalStellarMassFraction``
+          * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{km} / \rm{s}`
-          * **Compression:** 0.1 km/s accurate
-     - gas
-     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Centre of mass velocity of gas.
-   * - .. dropdown:: ``gas_inertia_tensor``
-
-          * **HDF5 name:** ``GasInertiaTensor``
-          * **Shape:** 6
-          * **Type:** float32
-          * **Units:** :math:`\rm{Mpc}^{2}`
+          * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - 3D inertia tensor computed iteratively from the gas mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
+     - general
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
+     - Fraction of the total stellar mass that is in the disc. `[28] <footnote-28_>`_
    * - .. dropdown:: ``gas_inertia_tensor_noniterative``
 
           * **HDF5 name:** ``GasInertiaTensorNoniterative``
@@ -1120,19 +1700,9 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
+     - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
      - 3D inertia tensor computed in a single iteration from the gas mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
-   * - .. dropdown:: ``gas_inertia_tensor_reduced``
-
-          * **HDF5 name:** ``GasInertiaTensorReduced``
-          * **Shape:** 6
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Reduced 3D inertia tensor computed iteratively from the gas mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
    * - .. dropdown:: ``gas_inertia_tensor_reduced_noniterative``
 
           * **HDF5 name:** ``GasInertiaTensorReducedNoniterative``
@@ -1140,7 +1710,7 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
+     - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
      - Reduced 3D inertia tensor computed in a single iteration from the gas mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
    * - .. dropdown:: ``gas_projected_velocity_dispersion``
@@ -1150,9 +1720,9 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
+     - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
-     - Mass-weighted velocity dispersion of the gas along the projection axis, relative to the gas centre of mass velocity. `[10] <footnote-10_>`_
+     - Mass-weighted velocity dispersion of the gas along the projection axis, relative to the gas centre of mass velocity. `[8] <footnote-8_>`_
    * - .. dropdown:: ``gas_velocity_dispersion_matrix``
 
           * **HDF5 name:** ``GasVelocityDispersionMatrix``
@@ -1160,9 +1730,39 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Mass-weighted velocity dispersion of the gas. Measured relative to the gas centre of mass velocity. The order of the components of the dispersion tensor is XX YY ZZ XY XZ YZ. `[11] <footnote-11_>`_
+     - general
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Mass-weighted velocity dispersion of the gas. Measured relative to the gas centre of mass velocity. The order of the components of the dispersion tensor is XX YY ZZ XY XZ YZ. `[9] <footnote-9_>`_
+   * - .. dropdown:: ``h2_mass_flow_rate``
+
+          * **HDF5 name:** ``H2MassFlowRate``
+          * **Shape:** 6
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Mass flow rate of gas particles through spherical shells weighted by H2 fraction. Does not include Helium. Contains 6 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``half_mass_radius_baryons``
+
+          * **HDF5 name:** ``HalfMassRadiusBaryons``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`a \cdot \rm{Mpc}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
+     - Baryonic (gas and stars) half mass radius.
+   * - .. dropdown:: ``half_mass_radius_dust``
+
+          * **HDF5 name:** ``HalfMassRadiusDust``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`a \cdot \rm{Mpc}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
+     - Dust half mass radius.
    * - .. dropdown:: ``half_mass_radius_gas``
 
           * **HDF5 name:** ``HalfMassRadiusGas``
@@ -1170,9 +1770,59 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
+     - general
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
-     - Gas half mass radius. `[5] <footnote-5_>`_
+     - Gas half mass radius. `[3] <footnote-3_>`_
+   * - .. dropdown:: ``himass_flow_rate``
+
+          * **HDF5 name:** ``HIMassFlowRate``
+          * **Shape:** 6
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Mass flow rate of gas particles through spherical shells weighted by HI fraction. Contains 6 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``hot_gas_energy_flow_rate``
+
+          * **HDF5 name:** ``HotGasEnergyFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Energy flow rate of hot gas particles ($7 < \log T$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``hot_gas_mass_flow_rate``
+
+          * **HDF5 name:** ``HotGasMassFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Mass flow rate of hot gas particles ($7 < \log T$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``hot_gas_momentum_flow_rate``
+
+          * **HDF5 name:** ``HotGasMomentumFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{Mpc} \cdot \rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Momentum flow rate of hot gas particles ($7 < \log T$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``kappa_corot_baryons``
+
+          * **HDF5 name:** ``KappaCorotBaryons``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Kappa-corot for baryons (gas and stars), relative to the HaloCentre and the centre of mass velocity of the baryons. `[29] <footnote-29_>`_
    * - .. dropdown:: ``kappa_corot_gas``
 
           * **HDF5 name:** ``KappaCorotGas``
@@ -1180,9 +1830,19 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
+     - general
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Kappa-corot for gas, relative to the HaloCentre and the centre of mass velocity of the gas. `[24] <footnote-24_>`_
+     - Kappa-corot for gas, relative to the HaloCentre and the centre of mass velocity of the gas. `[29] <footnote-29_>`_
+   * - .. dropdown:: ``kappa_corot_stars``
+
+          * **HDF5 name:** ``KappaCorotStars``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
+     - Kappa-corot for stars, relative to the HaloCentre and the centre of mass velocity of the stars. `[29] <footnote-29_>`_
    * - .. dropdown:: ``kinetic_energy_gas``
 
           * **HDF5 name:** ``KineticEnergyGas``
@@ -1190,9 +1850,29 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
+     - general
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total kinetic energy of the gas, relative to the gas centre of mass velocity. `[25] <footnote-25_>`_
+     - Total kinetic energy of the gas, relative to the gas centre of mass velocity. `[20] <footnote-20_>`_
+   * - .. dropdown:: ``kinetic_energy_stars``
+
+          * **HDF5 name:** ``KineticEnergyStars``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
+     - Total kinetic energy of the stars, relative to the stellar centre of mass velocity. `[20] <footnote-20_>`_
+   * - .. dropdown:: ``metal_mass_flow_rate``
+
+          * **HDF5 name:** ``MetalMassFlowRate``
+          * **Shape:** 6
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Mass flow rate of gas particles through spherical shells weighted by metal fraction. Contains 6 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``projected_gas_inertia_tensor_noniterative``
 
           * **HDF5 name:** ``ProjectedGasInertiaTensorNoniterative``
@@ -1200,7 +1880,7 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
+     - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
      - 2D inertia tensor computed in a single iteration from the gas mass distribution, relative to the halo centre. Diagonal components and one off-diagonal value as (1,1), (2,2), (1,2). Only calculated when we have more than 20 particles.
    * - .. dropdown:: ``projected_gas_inertia_tensor_reduced_noniterative``
@@ -1210,89 +1890,9 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - gas
+     - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
      - Reduced 2D inertia tensor computed in a single iteration from the gas mass distribution, relative to the halo centre. Diagonal components and one off-diagonal value as (1,1), (2,2), (1,2). Only calculated when we have more than 20 particles.
-   * - .. dropdown:: ``maximum_dark_matter_circular_velocity``
-
-          * **HDF5 name:** ``MaximumDarkMatterCircularVelocity``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{km} / \rm{s}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - dm
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Maximum circular velocity calculated using dark matter particles when accounting for particle softening lengths..
-   * - .. dropdown:: ``maximum_dark_matter_circular_velocity_radius``
-
-          * **HDF5 name:** ``MaximumDarkMatterCircularVelocityRadius``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`a \cdot \rm{Mpc}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - dm
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Radius at which MaximumDarkMatterCircularVelocity is reached.
-   * - .. dropdown:: ``angular_momentum_stars``
-
-          * **HDF5 name:** ``AngularMomentumStars``
-          * **Shape:** 3
-          * **Type:** float32
-          * **Units:** :math:`10^{10}\ \rm{Mpc} \cdot \rm{M}_\odot \cdot \rm{km} / \rm{s}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total angular momentum of the stars, relative to the HaloCentre and stellar centre of mass velocity. `[9] <footnote-9_>`_
-   * - .. dropdown:: ``disc_to_total_stellar_mass_fraction``
-
-          * **HDF5 name:** ``DiscToTotalStellarMassFraction``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Fraction of the total stellar mass that is in the disc. `[23] <footnote-23_>`_
-   * - .. dropdown:: ``kappa_corot_stars``
-
-          * **HDF5 name:** ``KappaCorotStars``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Kappa-corot for stars, relative to the HaloCentre and the centre of mass velocity of the stars. `[24] <footnote-24_>`_
-   * - .. dropdown:: ``kinetic_energy_stars``
-
-          * **HDF5 name:** ``KineticEnergyStars``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total kinetic energy of the stars, relative to the stellar centre of mass velocity. `[25] <footnote-25_>`_
-   * - .. dropdown:: ``luminosity_weighted_mean_stellar_age``
-
-          * **HDF5 name:** ``LuminosityWeightedMeanStellarAge``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{Mpc} \cdot \rm{s} / \rm{km}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Luminosity weighted mean stellar age. The weight is the r band luminosity.
-   * - .. dropdown:: ``mass_weighted_mean_stellar_age``
-
-          * **HDF5 name:** ``MassWeightedMeanStellarAge``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{Mpc} \cdot \rm{s} / \rm{km}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Mass weighted mean stellar age.
    * - .. dropdown:: ``projected_stellar_inertia_tensor_noniterative``
 
           * **HDF5 name:** ``ProjectedStellarInertiaTensorNoniterative``
@@ -1300,7 +1900,7 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
+     - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
      - 2D inertia tensor computed in a single iteration from the stellar mass distribution, relative to the halo centre. Diagonal components and one off-diagonal value as (1,1), (2,2), (1,2). Only calculated when we have more than 20 particles.
    * - .. dropdown:: ``projected_stellar_inertia_tensor_reduced_noniterative``
@@ -1310,39 +1910,39 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
+     - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
      - Reduced 2D inertia tensor computed in a single iteration from the stellar mass distribution, relative to the halo centre. Diagonal components and one off-diagonal value as (1,1), (2,2), (1,2). Only calculated when we have more than 20 particles.
-   * - .. dropdown:: ``stellar_centre_of_mass``
+   * - .. dropdown:: ``projected_total_inertia_tensor_noniterative``
 
-          * **HDF5 name:** ``StellarCentreOfMass``
+          * **HDF5 name:** ``ProjectedTotalInertiaTensorNoniterative``
           * **Shape:** 3
-          * **Type:** float64
-          * **Units:** :math:`a \cdot \rm{Mpc}`
-          * **Compression:** 1 pc accurate
-     - star
-     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Centre of mass of stars.
-   * - .. dropdown:: ``stellar_centre_of_mass_velocity``
-
-          * **HDF5 name:** ``StellarCentreOfMassVelocity``
-          * **Shape:** 3
-          * **Type:** float32
-          * **Units:** :math:`\rm{km} / \rm{s}`
-          * **Compression:** 0.1 km/s accurate
-     - star
-     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Centre of mass velocity of stars.
-   * - .. dropdown:: ``stellar_inertia_tensor``
-
-          * **HDF5 name:** ``StellarInertiaTensor``
-          * **Shape:** 6
           * **Type:** float32
           * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
+     - 2D inertia tensor computed in a single iteration from the total mass distribution, relative to the halo centre. Diagonal components and one off-diagonal value as (1,1), (2,2), (1,2). Only calculated when we have more than 20 particles. `[11] <footnote-11_>`_
+   * - .. dropdown:: ``projected_total_inertia_tensor_reduced_noniterative``
+
+          * **HDF5 name:** ``ProjectedTotalInertiaTensorReducedNoniterative``
+          * **Shape:** 3
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
+     - Reduced 2D inertia tensor computed in a single iteration from the total mass distribution, relative to the halo centre. Diagonal components and one off-diagonal value as (1,1), (2,2), (1,2). Only calculated when we have more than 20 particles. `[11] <footnote-11_>`_
+   * - .. dropdown:: ``stellar_cylindrical_velocity_dispersion``
+
+          * **HDF5 name:** ``StellarCylindricalVelocityDispersion``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{km} / \rm{s}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - 3D inertia tensor computed iteratively from the stellar mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
+     - One-dimensional mass-weighted velocity dispersion of the star, in a cylindrical coordinate system where the axes are centred on the halo centre, the z axis is aligned with the mass-weighted stellar angular momentum, and stellar velocities are relative to the stellar centre of mass velocity.
    * - .. dropdown:: ``stellar_inertia_tensor_noniterative``
 
           * **HDF5 name:** ``StellarInertiaTensorNoniterative``
@@ -1350,19 +1950,9 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
+     - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
      - 3D inertia tensor computed in a single iteration from the stellar mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
-   * - .. dropdown:: ``stellar_inertia_tensor_reduced``
-
-          * **HDF5 name:** ``StellarInertiaTensorReduced``
-          * **Shape:** 6
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Reduced 3D inertia tensor computed iteratively from the stellar mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
    * - .. dropdown:: ``stellar_inertia_tensor_reduced_noniterative``
 
           * **HDF5 name:** ``StellarInertiaTensorReducedNoniterative``
@@ -1370,49 +1960,19 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
+     - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
      - Reduced 3D inertia tensor computed in a single iteration from the stellar mass distribution, relative to the halo centre. Diagonal components and one off-diagonal triangle as (1,1), (2,2), (3,3), (1,2), (1,3), (2,3). Only calculated when we have more than 20 particles.
-   * - .. dropdown:: ``stellar_initial_mass``
+   * - .. dropdown:: ``stellar_mass_flow_rate``
 
-          * **HDF5 name:** ``StellarInitialMass``
-          * **Shape:** 1
+          * **HDF5 name:** ``StellarMassFlowRate``
+          * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
-     - Total stellar initial mass.
-   * - .. dropdown:: ``stellar_luminosity``
-
-          * **HDF5 name:** ``StellarLuminosity``
-          * **Shape:** 9
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
-     - Total stellar luminosity in the 9 GAMA bands. `[26] <footnote-26_>`_
-   * - .. dropdown:: ``stellar_mass_fraction_in_iron``
-
-          * **HDF5 name:** ``StellarMassFractionInIron``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total stellar mass fraction in iron.
-   * - .. dropdown:: ``stellar_mass_fraction_in_oxygen``
-
-          * **HDF5 name:** ``StellarMassFractionInOxygen``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total stellar mass fraction in oxygen.
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Mass flow rate of star particles through spherical shells. Contains 6 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``stellar_projected_velocity_dispersion``
 
           * **HDF5 name:** ``StellarProjectedVelocityDispersion``
@@ -1420,9 +1980,19 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
+     - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
-     - Mass-weighted velocity dispersion of the stars along the projection axis, relative to the stellar centre of mass velocity. `[10] <footnote-10_>`_
+     - Mass-weighted velocity dispersion of the stars along the projection axis, relative to the stellar centre of mass velocity. `[8] <footnote-8_>`_
+   * - .. dropdown:: ``stellar_rotational_velocity``
+
+          * **HDF5 name:** ``StellarRotationalVelocity``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`\rm{km} / \rm{s}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Mass-weighted mean rotational velocity of the stars, in a cylindrical coordinate system where the axes are centred on the halo centre, the z axis is aligned with the mass-weighted stellar angular momentum, and stellar velocities are relative to the stellar centre of mass velocity.
    * - .. dropdown:: ``stellar_velocity_dispersion_matrix``
 
           * **HDF5 name:** ``StellarVelocityDispersionMatrix``
@@ -1430,39 +2000,39 @@ Hydrodynamical properties
           * **Type:** float32
           * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - star
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Mass-weighted velocity dispersion of the stars. Measured relative to the stellar centre of mass velocity. The order of the components of the dispersion tensor is XX YY ZZ XY XZ YZ. `[11] <footnote-11_>`_
-   * - .. dropdown:: ``angular_momentum_baryons``
-
-          * **HDF5 name:** ``AngularMomentumBaryons``
-          * **Shape:** 3
-          * **Type:** float32
-          * **Units:** :math:`10^{10}\ \rm{Mpc} \cdot \rm{M}_\odot \cdot \rm{km} / \rm{s}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - baryon
-     - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
-     - Total angular momentum of baryons (gas and stars), relative to the HaloCentre and baryonic centre of mass velocity. `[9] <footnote-9_>`_
-   * - .. dropdown:: ``half_mass_radius_baryons``
-
-          * **HDF5 name:** ``HalfMassRadiusBaryons``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`a \cdot \rm{Mpc}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - baryon
-     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
-     - Baryonic (gas and stars) half mass radius.
-   * - .. dropdown:: ``kappa_corot_baryons``
-
-          * **HDF5 name:** ``KappaCorotBaryons``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** dimensionless
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - baryon
+     - general
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Kappa-corot for baryons (gas and stars), relative to the HaloCentre and the centre of mass velocity of the baryons. `[24] <footnote-24_>`_
+     - Mass-weighted velocity dispersion of the stars. Measured relative to the stellar centre of mass velocity. The order of the components of the dispersion tensor is XX YY ZZ XY XZ YZ. `[9] <footnote-9_>`_
+   * - .. dropdown:: ``warm_gas_energy_flow_rate``
+
+          * **HDF5 name:** ``WarmGasEnergyFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Energy flow rate of warm gas particles ($5 < \log T < 7$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``warm_gas_mass_flow_rate``
+
+          * **HDF5 name:** ``WarmGasMassFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Mass flow rate of warm gas particles ($5 < \log T < 7$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+   * - .. dropdown:: ``warm_gas_momentum_flow_rate``
+
+          * **HDF5 name:** ``WarmGasMomentumFlowRate``
+          * **Shape:** 9
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{Mpc} \cdot \rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - general
+     - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
+     - Momentum flow rate of warm gas particles ($5 < \log T < 7$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
 
 Copied properties
 -----------------
@@ -1605,6 +2175,16 @@ Copied properties
      - basic
      - \-
      - Mass of the host FoF halo of this subhalo. Zero for satellite and hostless subhalos.
+   * - .. dropdown:: ``input_halos_fof.radii``
+
+          * **HDF5 name:** ``InputHalos/FOF/Radii``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`a \cdot \rm{Mpc}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - \-
+     - Radius of the particle furthest from the FoF centre of mass. Zero for satellite and hostless subhalos. Missing for older runs.
    * - .. dropdown:: ``input_halos_fof.sizes``
 
           * **HDF5 name:** ``InputHalos/FOF/Sizes``
@@ -1615,6 +2195,16 @@ Copied properties
      - basic
      - \-
      - Number of particles in the host FoF halo of this subhalo. Zero for satellite and hostless subhalos.
+   * - .. dropdown:: ``soap.descendant_index``
+
+          * **HDF5 name:** ``SOAP/DescendantIndex``
+          * **Shape:** 1
+          * **Type:** int32
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - basic
+     - \-
+     - Index (within the next snapshot SOAP arrays) of the main descendant of this subhalo. `[30] <footnote-30_>`_
    * - .. dropdown:: ``soap.host_halo_index``
 
           * **HDF5 name:** ``SOAP/HostHaloIndex``
@@ -1635,6 +2225,16 @@ Copied properties
      - basic
      - \-
      - Whether this halo is included in the reduced snapshot.
+   * - .. dropdown:: ``soap.progenitor_index``
+
+          * **HDF5 name:** ``SOAP/ProgenitorIndex``
+          * **Shape:** 1
+          * **Type:** int32
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - basic
+     - \-
+     - Index (within the previous snapshot SOAP arrays) of the main progenitor of this subhalo. `[30] <footnote-30_>`_
    * - .. dropdown:: ``soap.subhalo_rank_by_bound_mass``
 
           * **HDF5 name:** ``SOAP/SubhaloRankByBoundMass``
@@ -1645,6 +2245,120 @@ Copied properties
      - basic
      - \-
      - Ranking by mass of the halo within its parent field halo. Zero for the most massive halo in the field halo.
+
+Hybrid properties
+-----------------
+
+These are properties which are only available in SOAP catalogues for the simulations with hybrid AGN feedback.
+
+.. list-table::
+   :widths: 25 10 15 50
+   :header-rows: 1
+
+   * - Name
+     - Filter
+     - Variations
+     - Description
+   * - .. dropdown:: ``black_holes_total_injected_jet_energy``
+ 
+          * **HDF5 name:** ``BlackHolesTotalInjectedJetEnergy``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Total jet energy injected into gas particles by all black holes.
+   * - .. dropdown:: ``most_massive_black_hole_accretion_mode``
+ 
+          * **HDF5 name:** ``MostMassiveBlackHoleAccretionMode``
+          * **Shape:** 1
+          * **Type:** int32
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Accretion flow regime of the most massive black hole. 0 - Thick disk, 1 - Thin disk, 2 - Slim disk
+   * - .. dropdown:: ``most_massive_black_hole_injected_jet_energy_by_mode``
+ 
+          * **HDF5 name:** ``MostMassiveBlackHoleInjectedJetEnergyByMode``
+          * **Shape:** 3
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - The total energy injected in the kinetic jet AGN feedback mode by the mostmassive black hole, split by accretion mode. The components correspond to the jet energy dumped in the thick, thin and slim disc modes, respectively.
+   * - .. dropdown:: ``most_massive_black_hole_last_jet_event_scalefactor``
+ 
+          * **HDF5 name:** ``MostMassiveBlackHoleLastJetEventScalefactor``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.3669{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Scale-factor of last jet event for most massive black hole.
+   * - .. dropdown:: ``most_massive_black_hole_number_of_agnjet_events``
+ 
+          * **HDF5 name:** ``MostMassiveBlackHoleNumberOfAGNJetEvents``
+          * **Shape:** 1
+          * **Type:** int32
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Number of jet events the most massive black hole has had so far
+   * - .. dropdown:: ``most_massive_black_hole_number_of_mergers``
+ 
+          * **HDF5 name:** ``MostMassiveBlackHoleNumberOfMergers``
+          * **Shape:** 1
+          * **Type:** int32
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Number of mergers experienced by the most massive black hole.
+   * - .. dropdown:: ``most_massive_black_hole_injected_jet_energy_by_mode``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleInjectedJetEnergyByMode``
+          * **Shape:** 3
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - The total energy injected in the kinetic jet AGN feedback mode by the mostmassive black hole, split by accretion mode. The components correspond to the jet energy dumped in the thick, thin and slim disc modes, respectively.
+   * - .. dropdown:: ``most_massive_black_hole_spin``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleSpin``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** dimensionless
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - Dimensionless spin of the most massive black hole. Negative values indicate retrograde accretion.
+   * - .. dropdown:: ``most_massive_black_hole_total_accreted_masses_by_mode``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleTotalAccretedMassesByMode``
+          * **Shape:** 3
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - The total mass accreted by the most massive black hole in each accretion mode. The components correspond to the mass accreted in the thick, thin and slim disc modes, respectively.
+   * - .. dropdown:: ``most_massive_black_hole_wind_energy_by_mode``
+
+          * **HDF5 name:** ``MostMassiveBlackHoleWindEnergyByMode``
+          * **Shape:** 3
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
+     - The total energy launched into accretion disc winds by the most massive black hole, split by accretion mode. The components correspond to the radiative energy dumped in the thick, thin and slim disc modes, respectively.
 
 Footnotes
 ---------
@@ -1670,7 +2384,22 @@ value and assuming an NFW profile.
 
 .. _footnote-3:
 
-**[3]** **The maximum circular velocity and the radius where it is reached** are
+**[3]** **The half mass radius** is determined by linear interpolation of the
+cumulative mass profile obtained after sorting all particles by radius. For the projected apertures, SOAP 
+uses the 2D radius (distance to the projection axis) instead of the 3D radius.
+
+.. _footnote-4:
+
+**[4]** **The satellite mass fractions** is obtained by summing the masses of all
+particles within the inclusive sphere that are bound to a subhalo that is not the central subhalo, and 
+dividing this by :math:`M_{SO}`. This uses the same membership information as is used to decide what 
+particles need to be included in the exclusive sphere and projected aperture properties. For MassFractionSatellites
+we only consider particles with the same FoF ID as the most bound particle in the central subhalo. For
+MassFractionExternal we include all particles with a FoF ID not equal to the most bound particle in the central subhalo.
+
+.. _footnote-5:
+
+**[5]** **The maximum circular velocity and the radius where it is reached** are
 computed using
 
 .. math::
@@ -1687,72 +2416,9 @@ equal, then their radii will also be equal. If the values are not equal, then th
 softened maximum circular velocity will be the simulation softening length.
 Note that the softened vmax is :math:`*not*` the :math:`v_{max}` computed using a softened potential.
 
-.. _footnote-4:
-
-**[4]** **The neutrino masses** exist in two flavours. ``RawNeutrinoMass`` is
-obtained by simply summing the neutrino particle masses, while the noise suppressed version, 
-``NoiseSuppressedNeutrinoMass`` is defined as
-
-.. math::
-
-   M_{\nu{},{\rm{}NS}} = \sum_i m_i w_i + \frac{4\pi{}}{3} \rho{}_{\nu{}} R_{\rm{}SO}^3,
-
-where :math:`w_i` are the neutrino weights (which can be negative), and :math:`_{}` is the background density 
-of neutrinos that is also used in the SO radius calculation. The latter is obtained from the snapshot header.
-
-.. _footnote-5:
-
-**[5]** **The half mass radius** is determined by linear interpolation of the
-cumulative mass profile obtained after sorting all particles by radius. For the projected apertures, SOAP 
-uses the 2D radius (distance to the projection axis) instead of the 3D radius.
-
 .. _footnote-6:
 
-**[6]** **The satellite mass fractions** is obtained by summing the masses of all
-particles within the inclusive sphere that are bound to a subhalo that is not the central subhalo, and 
-dividing this by :math:`M_{SO}`. This uses the same membership information as is used to decide what 
-particles need to be included in the exclusive sphere and projected aperture properties. For MassFractionSatellites
-we only consider particles with the same FoF ID as the most bound particle in the central subhalo. For
-MassFractionExternal we include all particles with a FoF ID not equal to the most bound particle in the central subhalo.
-
-.. _footnote-7:
-
-**[7]** **The spin parameter** is computed following `Bullock et al. (2001) <https://ui.adsabs.harvard.edu/abs/2001ApJ...555..240B>`_:
-
-.. math::
-
-   \lambda{} = \frac{|\vec{L}_{\rm{}tot}|}{\sqrt{2}M v_{\rm{}max} R},
-
-where :math:`L_{tot}` is the total angular momentum of all particles within radius :math:`R`, and :math:`M` their 
-total mass. The angular momentum is computed relative to the halo centre and the total centre of mass 
-velocity. Since subhalos do not have a natural radius associated with them, we use the radius where the softened
-:math:`v_{max}` is reached.
-
-.. _footnote-8:
-
-**[8]** **The inertia tensor** for a set of particles is computed as
-
-.. math::
-
-   I_{ij} = \frac{1}{\sum_k m_k} \sum_k m_k \; r_{k,i} \; r_{k, j}
-
-where the index :math:`k` loops over all particles, :math:`m_k` is the mass of particle :math:`k`, and :math:`r_{k, i}` is the :math:`i`-component of the position vector of particle :math:`k` relative to the halo centre. We first compute the inertia tensor using all particles within a sphere (with radius equal to the aperture size, except for subhalos where we use the half mass radius of the particles). This is the tensor we output in the non-iterative case. In the iterative case we construct an ellipsoid with a volume equal to the initial sphere, but whose shape is given by the inertia tensor. We then recalculate the inertia tensor using only the particles within the ellipsoid. This process is repeated until the value of the :math:`q` parameter converges, or we reach 20 iterations. If at any point during the iterations there is only a single particle within the ellipsoid, we return zero. For projected apertures the process is similar, except we use circles and ellipses in the projected plane to determine which particles to include.
-
-The reduced inertia tensor is calculated as
-
-.. math::
-
-   I_{ij} = \frac{1}{\sum_k m_k} \sum_k m_k \; r_{k,i} \; r_{k, j} \; r_{k}^{-2}
-
-where :math:`r_k` is the radial distance of the particle.
-
-We do not calculate the inertia tensor if there are fewer than 20 particles within the initial sphere.
-
-When calculating the inertia tensor for a bound subhalo we use a sphere with a radius equal to the half mass radius of the particles being considered.
-
-.. _footnote-9:
-
-**[9]** **The angular momentum** of gas, dark matter, or stars is computed relative to
+**[6]** **The angular momentum** of gas, dark matter, or stars is computed relative to
 the halo centre and the centre of mass velocity of that particular component, and not to the 
 total centre of mass velocity. The full expression is
 
@@ -1779,21 +2445,70 @@ where
 We also compute the angular momentum for baryons, where the sum is then over both gas and star 
 particles.
 
-.. _footnote-10:
 
-**[10]** **The projected velocity dispersion** is computed along the projection axis.
+.. _footnote-7:
+
+**[7]** **The flow rates** are computed for three spherical
+shells: :math:`R` = :math:`f R_{SO}` with :math:`f = 0.1, 0.3, 1`. In all cases the width of the
+spherical shell is given by :math:`dR = 0.1 R`.
+
+For each particle :math:`i` within the shell we calculate their radial velocity as
+
+.. math::
+
+   v_{r,i} = (\underline{v_i} - \underline{v_{COM}}) \cdot \underline{\hat{r}} - \dot{R}
+
+where :math:`v_i` is the velocity of the particle, :math:`v_{COM}` is the centre of mass velocity of all particles within :math:`R` (therefore we use a different value for each spherical shell). The final term accounts for the "pseudo-evolution" of the halo radius and is given by
+
+.. math::
+
+   \dot{R} = f \frac{2}{3} \left(\frac{GHM_{SO}}{100}\right)^\frac{1}{3} \left( 2 \Omega_\gamma + \frac{3}{2} \Omega_m \right)
+
+This is required since accretion rates are often measured by subtracting the halo mass between consecutive snapshots and dividing by the time interval.
+To be consistent with this method we must consider that the virial radius is defined w.r.t background density (which decreases in time). Hence, the virial radius actually moves
+outward with a velocity that we can compute analytically. This means that static
+particles at the virial radius actually become inflowing. The expression is derived by taking the partial differential of the analytic expression for :math:`R_{200}` w.r.t. time.
+Note that :math:`v_{r,i}` does not include the Hubble flow relative to the halo centre.
+
+To calculate the mass inflow (outflow) rate
+we compute the following sum over particles within the spherical shell which satisfy
+:math:`v_{r,i} < 0` (:math:`v_{r,i} > 0`),
+
+.. math::
+
+   \frac{1}{dR} \sum_{i} m_i v_{r, i},
+
+where :math:`m_i` is the mass of particle :math:`i`. For energy flow rates the sum is
+
+.. math::
+
+   \frac{1}{dR} \sum_{i} m_i v_{r, i} \left(\frac{v_i^2}{2} + u_i\right),
+
+where :math:`u_i` is the internal energy per unit mass and :math:`v_i` is the total 3D velocity·
+relative to the center of mass velocity. For momentum flow rates the sum is
+
+.. math::
+
+   \frac{1}{dR} \sum_{i} m_i \left(v_{r,i}^2 + \frac{c_s^2}{\gamma}\right),
+
+where :math:`c_s` is the sound speed and :math:`` = 5/3 (the second term accounts for pressure). For the gas phases we also calculate "fast outflow" rates. These are calculated by using the equations above, but only for particles that satisfy :math:`v_{r,i} > V_{max} / 4`, where :math:`V_{max}` is the maximum circular velocity of the halo. The flow rates are always positive, so to compute the net rate you must subtract the inflow rate from the outflow rate. Flow rates are only calculated for the
+following SO definitions: :math:`200_{c}`, :math:`200_{m}`, :math:`BN98`. To calculate the total gas flow rate the individual phases should be summed together.
+
+.. _footnote-8:
+
+**[8]** **The projected velocity dispersion** is computed along the projection axis.
 Along this axis the velocity is a 1D quantity, so the velocity dispersion is simply a scalar.
 
-.. _footnote-11:
+.. _footnote-9:
 
-**[11]** **The velocity dispersion matrix** is defined as
+**[9]** **The velocity dispersion matrix** is defined as
 
 .. math::
 
    V_{\rm{}disp,comp} = \frac{1}{\sum_{i={\rm{}comp}} m_i} \sum_{i={\rm{}comp}} m_i \vec{v}_{{\rm{}comp},r,i}\vec{v}_{{\rm{}comp},r,i},
 
 where we compute the relative velocity as before, i.e. w.r.t. the centre of mass velocity of the particular 
-component of interest. While it is strictly speaking a :math:`3  3` matrix, there are only 6 independent 
+component of interest. While it is strictly speaking a :math:`3 \times 3` matrix, there are only 6 independent 
 components. We use the following convention to output those 6 components as a 6-element array:
 
 .. math::
@@ -1808,27 +2523,50 @@ Other velocity dispersion definitions can be derived from this general form. The
 
    \sigma = \sqrt{\frac{V_{xx} + V_{yy} + V_{zz}}{3}}
 
+.. _footnote-10:
+
+**[10]** **The spin parameter** is computed following `Bullock et al. (2001) <https://ui.adsabs.harvard.edu/abs/2001ApJ...555..240B>`_:
+
+.. math::
+
+   \lambda{} = \frac{|\vec{L}_{\rm{}tot}|}{\sqrt{2}M v_{\rm{}max} R},
+
+where :math:`L_{tot}` is the total angular momentum of all particles within radius :math:`R`, and :math:`M` their 
+total mass. The angular momentum is computed relative to the halo centre and the total centre of mass 
+velocity. Since subhalos do not have a natural radius associated with them, we use the radius where the softened
+:math:`v_{max}` is reached.
+
+.. _footnote-11:
+
+**[11]** **The inertia tensor** for a set of particles is computed as
+
+.. math::
+
+   I_{ij} = \frac{1}{\sum_k m_k} \sum_k m_k \; r_{k,i} \; r_{k, j}
+
+where the index :math:`k` loops over all particles, :math:`m_k` is the mass of particle :math:`k`, and :math:`r_{k, i}` is the :math:`i`-component of the position vector of particle :math:`k` relative to the halo centre. We first compute the inertia tensor using all particles within a sphere (with radius equal to the aperture size, except for subhalos where we use the half mass radius of the particles). This is the tensor we output in the non-iterative case. In the iterative case we construct an ellipsoid with a volume equal to the initial sphere, but whose shape is given by the inertia tensor. We then recalculate the inertia tensor using only the particles within the ellipsoid. This process is repeated until the value of the :math:`q` parameter converges, or we reach 20 iterations. If at any point during the iterations there is only a single particle within the ellipsoid, we return zero. For projected apertures the process is similar, except we use circles and ellipses in the projected plane to determine which particles to include.
+
+The reduced inertia tensor is calculated as
+
+.. math::
+
+   I_{ij} = \frac{1}{\sum_k m_k} \sum_k m_k \; r_{k,i} \; r_{k, j} \; r_{k}^{-2}
+
+where :math:`r_k` is the radial distance of the particle.
+
+We do not calculate the inertia tensor if there are fewer than 20 particles within the initial sphere.
+
+When calculating the inertia tensor for a bound subhalo we use a sphere with a radius equal to 10 times the half mass radius of the particles being considered.
+
 .. _footnote-12:
 
-**[12]** **The oxygen and iron masses** are computed from
-``SmoothedElementMassFractions`` and not ``ElementMassFractions``, since the latter were not output in 
-the FLAMINGO snapshots. Metal mass fractions on the other hand are based on ``MetalMassFractions``.
+**[12]** **Averaged quantities** are calculated by accumulating the quantity over
+the 10Myr/100Myr that precedes the writing of a snapshot, and then normalising. For example for SFR we start a clock precisely 10Myr before a snapshot
+dump, accumulate SFR * dt at each step during that window, and then divide by 10Myr at the point of writing.
 
 .. _footnote-13:
 
-**[13]** **The most massive black hole** is identified based using subgrid masses of the black holes.
-
-.. _footnote-14:
-
-**[14]** **When distinguishing between star-forming and non star-forming gas and computing the total star formation rate,** we have to be careful about the interpretation of the
-``StarFormationRates`` dataset in the snapshots, since negative values in that dataset are used to store 
-another quantity, the last scale factor when that particular gas particle was star-forming. Star-forming gas 
-is then gas for which ``StarFormationRates`` is strictly positive, and the total star formation rate is the 
-sum of only the strictly positive values.
-
-.. _footnote-15:
-
-**[15]** **The Compton y parameter** is computed as in `McCarthy et al. (2017) <https://ui.adsabs.harvard.edu/abs/2017MNRAS.465.2936M>`_:
+**[13]** **The Compton y parameter** is computed as in `McCarthy et al. (2017) <https://ui.adsabs.harvard.edu/abs/2017MNRAS.465.2936M>`_:
 
 .. math::
 
@@ -1840,56 +2578,46 @@ particle :math:`i`, while :math:`V_i=m_i/_i` is the SPH volume element that turn
 within the inclusive sphere into a volume integral. Note that the snapshot already contains the individual 
 :math:`y_i` values for the SPH particles.
 
+.. _footnote-14:
+
+**[14]** **Diffuse element masses are computed** by computing the corresponding element
+mass and then subtracting from that the mass of this element that is contained in dust. The latter is obtained 
+directly from the dust model by multiplying the corresponding dust grain mass with an appropriate dust 
+composition fraction which is stored as metadata in the snapshot file.
+
+.. _footnote-15:
+
+**[15]** **Dust quantities assume a six element dust model** with one type of graphite
+grains and two types of silicate grains, each of which has two size bins. The dust mass fractions are
+then based on the ``DustMassFractions`` dataset in the snapshot, assuming the following order of the
+six columns:
+
+#. Large graphite grains
+#. Large silicate grains of type 1
+#. Large silicate grains of type 2
+#. Small graphite grains
+#. Small silicate grains of type 1
+#. Small silicate grains of type 2
+
+The total graphite mass, ``DustGraphiteMass``, is then for example calculated by summing the masses 
+contained in columns 1 and 3.
+
+The mass of dust in molecular gas is defined as
+
+.. math::
+
+   \sum_i m_d \frac{m_{\rm{H}_2,i}}{m_{\rm{H}, i}}
+
+where :math:`m_d` is the dust mass of particle :math:`i`, :math:`m_{H_2,i}` is the molecular hydrogen mass of the particle,
+and :math:`m_{H,i}` is the total hydrogen mass of the particle. A similar expression is used for the mass of dust in atomic gas.
+
 .. _footnote-16:
 
-**[16]** **The Doppler B parameter** is computed as in `Roncarelli et al. (2018) <https://ui.adsabs.harvard.edu/abs/2017MNRAS.467..985R>`_:
-
-.. math::
-
-   b = \frac{\sigma{}_T}{c} \sum_i n_{e,i} v_{r,{\rm{}obs},i} \frac{m_i}{\rho{}_i A_{\rm{}obs}},
-
-where :math:`_T` is the Thomson cross section, :math:`c` the speed of light, :math:`n_{e,i}` the electron number density 
-for gas particle :math:`i`, with :math:`V_i=m_i/_i` the corresponding SPH particle volume. The relative 
-*peculiar* velocity is taken relative to the box and along a line of sight towards a particular observer, 
-so
-
-.. math::
-
-   v_{r,{\rm{}obs},i} = \vec{v}_{i} \cdot{}
-         \frac{\left(\vec{x}_i - \vec{x}_{\rm{}obs}\right)}{\left|\vec{x}_i - \vec{x}_{\rm{}obs}\right|},
-
-with :math:`x_i` and :math:`v_i` the physical position and velocity of particle :math:`i`, and :math:`x_{obs}` 
-the arbitrary observer position.
-
-The surface area :math:`A_{obs}` that turns the volume integral into a line integral is that of the aperture 
-for which :math:`b` is computed, i.e. :math:`A_{obs}= R_{SO}^2`.
-
-As the observer position we use the position of the observer for the first lightcone in the simulation, or the 
-centre of the box if no lightcone was present. This choice is arbitrary and can be adapted. Since 
-:math:`x_{obs}` can in principle coincide with :math:`x_i`, we make sure :math:`v_{r,{obs},i}` is set to 
-zero in this case to avoid division by zero.
-
-.. _footnote-17:
-
-**[17]** **The Compton Y-weighted temperature** is computed as
-
-.. math::
-
-   T = \frac{1}{\sum_i y_i} \sum_i y_i T_i,
+**[16]** **Cold dense gas particles** are particles with :math:`T < 10^{4.5}\mathrm{K}`) and (:math:`m_{H} > 10^{-1} \mathrm{cm}^{-3}`).
 
 .. _footnote-18:
 
-**[18]** **Core excised quantities** exclude the inner region of the halo when computing the quantity.
-They are only calculated for 500 crit. Any core excised calculation only uses the particles
-for which
-
-.. math::
-
-   0.15 R_{500c} \leq \mathbf{r} \leq R_{500c}
-
-.. _footnote-19:
-
-**[19]** **The mass-weighted temperature** is computed as
+**[18]** **The mass-weighted temperature** is computed as
 
 .. math::
 
@@ -1900,29 +2628,81 @@ that satisfy
 
 .. math::
 
-   0.1 \Delta{}T_{\rm{}AGN} \leq{} T_i \leq{} 10^{0.3} \Delta{}T_{\rm{}AGN},
+   \verb+LastAGNFeedbackScaleFactors+_i \geq{} a(t - 15{\rm{}Myr})
 
-and
+where :math:`t` is the cosmic time, and :math:`a()` gives the scale factor as a function of time.
+
+.. _footnote-19:
+
+**[19]** **Core excised quantities** exclude the inner region of the halo when computing the quantity.
+Any core excised calculation only uses the particles
+for which
 
 .. math::
 
-   \verb+LastAGNFeedbackScaleFactors+_i \geq{} a(t - 15{\rm{}Myr})
-
-where :math:` T_{AGN}` is the same value as used internally by SWIFT, :math:`t` is the cosmic time, and :math:`a()` 
-gives the scale factor as a function of time.
+   0.15 R_{500c} \leq \mathbf{r} \leq R_{500c}
 
 .. _footnote-20:
 
-**[20]** **The spectroscopic-like temperature** is computed as
+**[20]** **The kinetic energy** is computed using the velocities relative to the centre of mass velocity of all the particles in the aperture. The Hubble flow is included when computing the velocities.
+
+.. _footnote-21:
+
+**[21]** **Metallicity** values are calculated using two different ways to average over the particles being considered.
+
+LinearMassWeighted properties, :math:`Z_{lin}`, are calculated as (using O/H as an example)
+
+.. math::
+
+   Z_{\mathrm{lin,O/H}} = \frac{1}{\sum_i m_i} \sum_i m_i \frac{n_{\mathrm{O},i}}{n_{\mathrm{H},i}}
+
+where :math:`m_i` is the particle mass, :math:`n_{O,i}` is the number density of oxygen for particle :math:`i`, and :math:`n_{H,i}` is the number density of hydrogen for particle :math:`i`.
+When calculating gas metallicity we only sum over particles which are cold (:math:`T_i < 10^{4.5}\mathrm{K}`) and dense (:math:`m_{H,i} > 10^{-1} \mathrm{cm}^{-3}`).
+
+LogarithmicMassWeighted properties, :math:`Z_{log}`, are calculated as
+
+.. math::
+
+   \log_{10}Z_{\mathrm{log,O/H}} = \frac{1}{\sum_i m_i} \sum_i m_i \: \log_{10} \left[ \max \left( \frac{n_{O,i}}{n_{H,i}}, \frac{f n_{O,\odot}}{n_{H,\odot}} \right) \right]
+
+where :math:`n_{O,}{n_{H,}}` is the solar ratio of oxygen to hydrogen, and :math:`f` is either :math:`10^{-3}` (high limit) or :math:`10^{-4}` (low limit). The max function is required to stop us getting infinities for particles with no oxygen.
+
+.. _footnote-22:
+
+**[22]** **The most massive black hole** is identified based using subgrid masses of the black holes.
+
+.. _footnote-23:
+
+**[23]** **The spectroscopic-like temperature** is computed as
 
 .. math::
 
    T_{SL} = \frac{\sum_i \rho_i m_i T_i^{1/4}}{\sum_i \rho_i m_i T_i^{-3/4}}
 
-.. _footnote-21:
+.. _footnote-24:
 
-**[21]** **The thermal energy** of the gas is computed from the density and pressure,
-since the internal energy was not output in the FLAMINGO snapshots. The relevant equation is
+**[24]** **When distinguishing between star-forming and non star-forming gas and computing the total star formation rate,** we have to be careful about the interpretation of the
+``StarFormationRates`` dataset in the snapshots, since negative values in that dataset are used to store 
+another quantity, the last scale factor when that particular gas particle was star-forming. Star-forming gas 
+is then gas for which ``StarFormationRates`` is strictly positive, and the total star formation rate is the 
+sum of only the strictly positive values.
+
+.. _footnote-25:
+
+**[25]** **Luminosities are given in the GAMA bands** and always using the same order
+as in the snapshots: u, g, r, i, z, Y, J, H, K. These are rest-frame dust-free
+AB-luminosities of the star particles. These were computed using the `Bruzual \& Charlot 2003 <https://ui.adsabs.harvard.edu/abs/2003MNRAS.344.1000B>`_
+(GALAXEV) models convolved with different filter bands and interpolated in
+log-log (f(log(Z), log(age)) = log(flux)) as used in the dust-free modelling
+of Trayford et al. (2015). The luminosities are given in dimensionless
+units. They have been divided by 3631 Jy already, i.e. they can be turned
+into absolute AB-magnitudes (rest-frame absolute maggies) directly by
+applying -2.5 log10(L) without additional corrections.
+
+.. _footnote-26:
+
+**[26]** **The thermal energy** of the gas is computed from the density and pressure.
+The relevant equation is
 
 .. math::
 
@@ -1930,9 +2710,9 @@ since the internal energy was not output in the FLAMINGO snapshots. The relevant
 
 with :math:`=5/3`.
 
-.. _footnote-22:
+.. _footnote-27:
 
-**[22]** **X-ray quantities are** computed directly from the X-ray datasets in the
+**[27]** **X-ray quantities are** computed directly from the X-ray datasets in the
 snapshot. They are either in the emission rest-frame, or in the observed-frame of a :math:`z=0` observer, using
 the redshift of the snapshot as the emission redshift . The three bands are always given in the same 
 order as in the snapshot:
@@ -1941,9 +2721,9 @@ order as in the snapshot:
 #. eROSITA high/hard (:math:`2.3-8` keV)
 #. ROSAT (:math:`0.5-2` keV)
 
-.. _footnote-23:
+.. _footnote-28:
 
-**[23]** **DiscToTotal fractions** are computed as
+**[28]** **DiscToTotal fractions** are computed as
 
 .. math::
 
@@ -1956,9 +2736,9 @@ a larger number of particles moving slowly in the opposite direction. In this ca
 the larger number of particles could be marked as counter-rotating since the net
 angular momentum is dominated by the small number of rapidly rotating particles.
 
-.. _footnote-24:
+.. _footnote-29:
 
-**[24]** **Kappa-corot** is computed as in `Correa et al. (2017) <https://ui.adsabs.harvard.edu/abs/2017MNRAS.472L..45C>`_:
+**[29]** **Kappa-corot** is computed as in `Correa et al. (2017) <https://ui.adsabs.harvard.edu/abs/2017MNRAS.472L..45C>`_:
 
 .. math::
 
@@ -2009,19 +2789,6 @@ and the orthogonal distance to the angular momentum vector given by
 where the angular momentum vector and the relative position and velocity are the same as above for 
 consistency.
 
-.. _footnote-25:
+.. _footnote-30:
 
-**[25]** **The kinetic energy** is computed using the velocities relative to the centre of mass velocity of all the particles in the aperture. The Hubble flow is included when computing the velocities.
-
-.. _footnote-26:
-
-**[26]** **Luminosities are given in the GAMA bands** and always using the same order
-as in the snapshots: u, g, r, i, z, Y, J, H, K. These are rest-frame dust-free
-AB-luminosities of the star particles. These were computed using the `Bruzual \& Charlot 2003 <https://ui.adsabs.harvard.edu/abs/2003MNRAS.344.1000B>`_
-(GALAXEV) models convolved with different filter bands and interpolated in
-log-log (f(log(Z), log(age)) = log(flux)) as used in the dust-free modelling
-of Trayford et al. (2015). The luminosities are given in dimensionless
-units. They have been divided by 3631 Jy already, i.e. they can be turned
-into absolute AB-magnitudes (rest-frame absolute maggies) directly by
-applying -2.5 log10(L) without additional corrections.
-
+**[30]** **The progenitor/descendant index** of a subhalo points to the subhalo in the previous/next snapshot that has the same HBT TrackId. This index can therefore only be used to move up/down the main progenitor branch for a subhalo, it provides no information about subhalo mergers.

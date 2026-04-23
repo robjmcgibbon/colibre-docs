@@ -6,6 +6,8 @@ Snapshot redshifts
 The COLIBRE simulations produced 128 outputs. There are two
 types of outputs: snapshots and snipshots. Snipshots contain a smaller number
 of properties than the full snapshots.
+The :doc:`particle property tables <snapshot_particle_properties>` list whether 
+each property is available in the snipshots.
 The table below lists the redshift of each output, and whether it is a
 snapshot or a snipshot.
 This information is also available in the ``output_list.txt`` file contained
@@ -18,8 +20,6 @@ For a number of simulations a snapshot of initial conditions at :math:`z=63` is 
 
 .. note::
    The L100m6 simulation has snapshots rather than snipshots for :math:`z=11,13,16,17,18,19`
-
-TODO: Convert this into a grid (e.g. three tables side-by-side)
 
 .. container:: table-grid
 

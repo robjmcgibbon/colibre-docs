@@ -30,8 +30,8 @@ All simulations are kept at ``/cosma8/data/dp004/colibre/Runs``. The simulations
      Thermal-->powerspec["**Power spectra**
      power_spectra/"]
 
-Available simulations
----------------------
+Hydrodynamical simulations
+--------------------------
 
 Tables of the available simulations can be found on the following pages
 
@@ -40,6 +40,12 @@ Tables of the available simulations can be found on the following pages
 
    thermal
    hybrid
-   dmo
+   high_cadence
    variation
+
+Dark matter only simulations
+----------------------------
+
+For each hydrodynamical simulation, there is a corresponding DMO simulation that uses the same initial phases and the same total number of particles.
+To create the initial conditions for the DMO simulation, baryonic particles from the corresponding hydrodynamic run were converted into CDM particles.
 
