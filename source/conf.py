@@ -15,7 +15,12 @@ author = 'John Helly & Rob McGibbon'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx_design", "sphinxcontrib.mermaid"]
+extensions = [
+    "sphinx_design",
+    "sphinxcontrib.mermaid",
+    # Render equations more quickly, which is needed for our large property tables
+    "sphinxcontrib.katex",
+]
 
 templates_path = ['_templates']
 exclude_patterns = []
