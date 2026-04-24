@@ -4,8 +4,10 @@ SOAP properties table
 The tables below list the (sub)halo properties available within the SOAP catalogues. The first table contains the properties within the ``input_halos`` group.
 The second table contains the properties which are calculated for both DMO and HYDRO simulations.
 The third table contains the properties which are only calculated for the HYDRO simulations.
-The final table contains the datasets copied over from the HBT-HERONS and FoF catalogues.
+The fourth table contains the datasets copied over from the HBT-HERONS and FoF catalogues.
+The final table contains properties which are available for the simulations with hybrid AGN feedback, but not for the other runs.
 Within each table the properties are sorted based on their filters.
+The bottom of the page contains a number of footnotes, which give further explanation as to how different properties are computed.
 
 The first column gives the name of the property when opened using the `swiftsimio library <https://swiftsimio.readthedocs.io/en/latest/soap/index.html>`_. Clicking on each property name will open a dropdown box, which contains information about the dataset within the HDF5 file. The second column gives the filter applied to that property, as described in :doc:`soap_filters`. The third column indicates the halo variations for which this property is available (:avail:`green` if the property is computed for a certain variation, :snaponly:`blue` if the property is available for :ref:`snapshots but not snipshots <snapshot-redshifts>`, :unavail:`red` if not computed for that variation). The variations are as follows:
 
