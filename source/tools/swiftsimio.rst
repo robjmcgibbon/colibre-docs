@@ -1,10 +1,10 @@
-Reading snapshots with swiftsimio
-=================================
+Swiftsimio
+==========
 
 The `swiftsimio <https://swiftsimio.readthedocs.io/en/latest/>`__
-python module can be used to read snapshots. It can efficiently cut
-out regions of interest from the snapshots and handles units and
-cosmology metadata.
+python module can be used to read snapshots and soap catalogues.
+It handles units and cosmology metadata, and can be used to
+efficiently load specific subvolumes for the full box.
 
 Installation
 ------------
@@ -124,6 +124,56 @@ The property descriptions can also be access from the ``cosmo_array``::
    >> print(data.stars.masses.name)
    Masses of the particles at the current point in time (i.e. after stellar losses)
 
+Opening a SOAP catalogue
+------------------------
+
+SOAP catalogues can be also be loaded using swiftsimio
+
+.. code-block:: python
+
+   import swiftsimio as sw
+
+   base_dir = "/cosma8/data/dp004/colibre/Runs/"
+   run = "L0025N0188/Thermal"
+   snap_nr = 92 # z=1
+   soap_filename = f"{base_dir}/{run}/SOAP-HBT/halo_properties_{snap_nr:04}.hdf5"
+
+   soap = sw.load(soap_filename)
+
+Both metadata and datasets are accessed in a similar way to the snapshots.
+SOAP computes halo properties using several different halo
+definitions, which are described in :doc:`../soap/soap_halo_variations`. We
+can see what halo definitions are available in the output we opened
+above with::
+
+  >>> print(soap)
+  SWIFT dataset at /cosma8/data/dp004/colibre/Runs/L0025N0188/Thermal/SOAP-HBT/halo_properties_0092.hdf5. 
+  Available groups: bound_subhalo, exclusive_sphere_100kpc
+
+Similarly, we can find the list of halo properties which are available
+for a particular halo definition. If we're interested in properties
+evaluated using the particles bound to each subhalo, for example, the
+following will return the names of the available properties (they can 
+also by discovered by using tab completion)::
+
+  >>> print(soap.bound_subhalo)
+  SWIFT dataset at /cosma8/data/dp004/colibre/Runs/L0025N0188/Thermal/SOAP-HBT/halo_properties_0092.hdf5
+  Available fields: total_inertia_tensor_noniterative, ... , centre_of_mass, ... , total_mass, ...
+
+The available halo properties are fully documented in the
+:doc:`../soap/soap_property_table`
+The datasets all have the same length (equal to the number of subhalos) 
+and are always sorted in the same order.
+However, due to a combination of the fact that we do not compute
+spherical overdensity properties for satellites and
+the filters we use, many values will be zero. For example, we only
+compute dark matter concentration for objects with at least 100 particles::
+
+  >>> print(soap.input_halos.number_of_bound_particles)
+  [171 293 178 ...  36  25  32] dimensionless (Physical)
+  >>> print(soap.spherical_overdensity_200_crit.dark_matter_concentration)
+  [11.953125  9.890625  6.21875  ...  0.        0.        0.      ] dimensionless (Physical)
+
 Masking
 -------
 
@@ -134,6 +184,9 @@ parts of the file to read or download to find the corresponding
 particles. This is referred to as `spatial masking
 <https://swiftsimio.readthedocs.io/en/latest/masking/>`__, and can
 significantly reduce the time spent loading data.
+
+.. important::
+  Spatial only masking is approximate and allows you to only load particles within a given region. It is precise to the top-level cells that are defined within SWIFT. This means it will always load all of the particles in the region that you request, but it may also load some particles that are slightly outside of the region of interest.
 
 .. code-block:: python
 

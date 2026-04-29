@@ -11,7 +11,7 @@ between snapshot number and redshift.
 
 .. tip:: The easiest way to read the SOAP catalogues is to use
          swiftsimio so that unit metadata is read automatically. See
-         :doc:`swiftsimio` for an example.
+         :doc:`../tools/swiftsimio` for an example.
 
 .. _hbt_directory_layout:
 

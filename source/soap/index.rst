@@ -21,7 +21,6 @@ halo/galaxy definitions, as described within the following pages.
    soap_halo_variations
    soap_filters
    soap_property_table
-   Reading with swiftsimio <swiftsimio>
    soap_matching
    hbt_merger_trees
    soap_additional

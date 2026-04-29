@@ -1,6 +1,18 @@
 HBT-HERONS merger trees
 =======================
 
+.. note::
+  To track the evolution of a galaxy (i.e. the main progenitor branch) then the full HBT-HERONS merger trees are not required.
+  Each subhalo is assigned a unique ``TrackId`` which remains consistent across all snapshots,
+  and this allows the quick retrieval of the main progenitor of a given subhalo.
+  For example, the main progenitor of a :math:`z = 0` subhalo with ``TrackId = 10`` corresponds to the subhalo whose ``TrackId = 10`` at earlier times.
+  ``TrackId`` is stored in the SOAP catalogues as ``data.input_halos_hbtplus.track_id``.
+  The fields ``data.soap.progenitor_index`` and ``data.soap.descendant_index`` can also be used to track individual objects.
+  Note that, due to SOAP not storing the information for subhaloes with :math:`N_{bound} < 20` (e.g. disrupted, merged or poorly resolved),
+  some ``TrackId`` values will be missing from the SOAP catalogues. 
+  In practice, this means there could be an object with ``TrackId = 11`` in the :math:`z = 2` catalogue,
+  but no object with ``TrackId = 11`` in the :math:`z = 0` catalogue.
+
 Full merger trees are provided in the form of HBT-HERONS
 `(Forouhar Moreno et al. 2025) <https://ui.adsabs.harvard.edu/abs/2025MNRAS.543.1339F>`__
 outputs. A more detailed description of the quantities, and additional examples,

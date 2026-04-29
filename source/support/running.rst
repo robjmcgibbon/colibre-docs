@@ -4,6 +4,9 @@ Running on COSMA
 .. important::
    Basic analysis using a single CPU is permitted on the login node. However, you **must not** use the login node for heavy computation or memory-intensive processing. More significant analysis tasks should always be handled by submitting a job to the queue.
 
+`The COSMA website <https://cosma.readthedocs.io/en/latest/#>`__
+contains general information about using the COSMA HPC system.
+
 Jupyter Notebooks
 -----------------
 
@@ -112,4 +115,9 @@ The job should be submitted using the following command:
 
    sbatch plot_stellar_mass.sh
 
+Data storage
+------------
+
+You are provided with 10TB of storage at ``/cosma8/data/do019/<your_username>``,
+please clean up regularly and do not store data for longer than is necessary.
 

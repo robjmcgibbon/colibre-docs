@@ -10,7 +10,7 @@ from sphinx.application import Sphinx
 
 project = 'COLIBRE Documentation'
 copyright = '2026, The COLIBRE Team'
-author = 'John Helly & Rob McGibbon'
+author = 'Rob McGibbon & John Helly'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -32,6 +32,7 @@ html_sidebars = {
     ]
 }
 
+html_favicon = '_static/favicon.ico'
 
 
 # -- Options for HTML output -------------------------------------------------

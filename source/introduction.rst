@@ -34,3 +34,5 @@ Analysis of data products
 -------------------------
 
 A guide to running analysis on COSMA can be found :doc:`on this page <support/running>`.
+
+A collection of helpful tools and examples can be found :doc:`on this page <tools/index>`.

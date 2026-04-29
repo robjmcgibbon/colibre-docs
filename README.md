@@ -1,6 +1,6 @@
 # Documentation for the COLIBRE simulations
 
-This repository contains incomplete sphinx documentation for COLIBRE. Forked from https://github.com/jchelly/flamingo-docs.
+This repository contains sphinx documentation for COLIBRE. Forked from https://github.com/jchelly/flamingo-docs.
 
 ## Building
 
@@ -12,7 +12,8 @@ make html
 
 ## TODO:
 
-- Add script to generate a table of currently available data products
-Plotting colours
-Use of cosma-analyse queue vs notebooks on the login node
-Snapshot issues
+- Snapshot issues
+- Additional examples
+    - Plotting colours
+    - Get all satellites of a halo
+    - Plot mass evolution of an object

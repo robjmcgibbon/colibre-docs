@@ -11,7 +11,7 @@ The ``SOAP-HBT`` directory contains particle membership
 information (what subhalo each particle is bound to).
 
 .. tip:: The easiest way to access particle data is to use :doc:`swiftsimio
-         </snapshots/swiftsimio>` to read the :ref:`virtual-snapshot`
+         <../tools/swiftsimio>` to read the :ref:`virtual-snapshot`
          so that you don't need to concatenate data from multiple
          files and unit metadata is read automatically.
 
