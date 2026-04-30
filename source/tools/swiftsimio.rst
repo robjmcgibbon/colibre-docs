@@ -1,4 +1,4 @@
-Swiftsimio
+swiftsimio
 ==========
 
 The `swiftsimio <https://swiftsimio.readthedocs.io/en/latest/>`__
