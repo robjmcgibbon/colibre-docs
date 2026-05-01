@@ -17,9 +17,9 @@ Creating a SWIFTGalaxy
 ----------------------
 
 A ``SWIFTGalaxy`` needs two things: the path to the virtual snapshot
-file (the same file used by swiftsimio, which must contain the HBT-Herons
+file (the same file used with swiftsimio, which must contain the HBT-Herons
 membership information) and an initialised halo finder object. For
-COLIBRE outputs we use the ``SOAP`` halo finder class. The
+COLIBRE outputs we use the ``SOAP`` halo catalogue class. The
 ``soap_index`` identifies the row in the SOAP catalogue corresponding
 to the galaxy of interest.
 
@@ -43,7 +43,7 @@ to the galaxy of interest.
    )
 
 We can load a SOAP catalogue with swiftsimio to pick a target. Here for example a
-galaxy with :math:`M_{200c} \approx 10^{11}\,M_\odot`
+galaxy with :math:`M_{200c} \approx 10^{11}\,\mathrm{M}_\odot`
 
 .. code-block:: python
 
@@ -57,14 +57,14 @@ galaxy with :math:`M_{200c} \approx 10^{11}\,M_\odot`
         np.logical_and(
             m200c > cosmo_quantity(
                 1e11,
-                u.Msun,
+                u.solMass,
                 comoving=True,
                 scale_factor=soap.metadata.scale_factor,
                 scale_exponent=0,
             ),
             m200c < cosmo_quantity(
                 2e11,
-                u.Msun,
+                u.solMass,
                 comoving=True,
                 scale_factor=soap.metadata.scale_factor,
                 scale_exponent=0,
@@ -96,7 +96,14 @@ SOAP integrated properties are also available through the
 ``halo_catalogue`` attribute. Only the properties of the selected
 galaxy are loaded::
 
-  m200c = sg.halo_catalogue.spherical_overdensity_200_crit.total_mass.to(u.Msun)
+  m200c = sg.halo_catalogue.spherical_overdensity_200_crit.total_mass.to(u.solMass)
+
+``SWIFTGalaxy`` also provides spherical and cylindrical coordinates and 
+velocities as a convenience (they are lazily calculated/re-calculated as needed),
+for example the :math:`z`-component of the gas specific angular momentum becomes very
+easy to calculate::
+
+  jz_gas = np.sum(sg.gas.spherical_coordinates.r * sg.gas.spherical_velocities.phi)
 
 Visualisation
 -------------
@@ -187,5 +194,7 @@ frame, and subsequently loaded properties will also be in that frame.
 Further reading
 ---------------
 
-TODO: Update with link to notebook?
+``SWIFTGalaxy`` is `fully documented <https://swiftgalaxy.readthedocs.io/en/stable/index.html>`__
+and there is also a COLIBRE `quick-start guide notebook <https://github.com/SWIFTSIM/swiftgalaxy/blob/main/examples/SWIFTGalaxy_Colibre_QuickStart.ipynb>`__ 
+with additional examples.
 
