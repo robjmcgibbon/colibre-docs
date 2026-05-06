@@ -19,7 +19,7 @@ For a number of simulations a snapshot of initial conditions at :math:`z=63` is 
    The L050m6 simulation only has 124 outputs
 
 .. note::
-   The L100m6 simulation has snapshots rather than snipshots for :math:`z=11,13,16,17,18,19`
+   The L100m5 simulation has snapshots rather than snipshots for :math:`z=11,13,16,17,18,19`
 
 .. container:: table-grid
 

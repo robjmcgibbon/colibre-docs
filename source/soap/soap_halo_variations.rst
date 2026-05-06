@@ -21,43 +21,40 @@ are contained within the group ``bound_subhalo`` in the output file.
 Exclusive sphere
 ----------------
 
-Exclusive sphere properties are similar to bound subhalo quantities, but
-they include only the particles
-that are bound to the subhalo and also satisfy an additional radial cut
-(aperture). We use eight different aperture radii (10, 30, 50, 100, 300,
-500, 1000, 3000 physical kpc), so that every subhalo has eight of these.
-Exclusive sphere properties are contained within a group
-``exclusive_sphere_XXXkpc``, where ``XXX`` is the corresponding aperture
-radius.
+Exclusive sphere properties are similar to subhalo quantities as they include only the
+particles that are bound to the subhalo, but they apply an additional radial cut (aperture). Exclusive sphere
+properties are contained within the group ``ExclusiveSphere``. Groups with the label ``XXXkpc`` have an
+aperture radius of ``XXX`` **physical** kpc. Groups with a property name have a cut using the value
+of the property calculated for the bound subhalo (e.g. the aperture cut for ``ExclusiveSphere/HalfMassRadiusTotal``
+is given by the value of ``BoundSubhalo/HalfMassRadiusTotal``), meaning a different radial cut is used for each subhalo.
 
 .. _inclusive_sphere_description:
 
 Inclusive sphere
 ----------------
 
-Inclusive sphere properties use the same physical aperture radii as 
-the exclusive sphere quantities,
-but include all particles within the radius, regardless of their
-membership status. They are stored within a group
-``inclusive_sphere_XXXkpc``, where ``XXX`` is the corresponding aperture
-radius.
+Inclusive sphere properties apply an aperture radii cut, the same as the exclusive sphere
+quantities. However for the inclusive sphere we include all particles within the radius, regardless of their
+membership status.
+The quantities are stored within the group ``InclusiveSphere``.
+
+``InclusiveSphere`` properties are computed for all aperture radii smaller than the ``EncloseRadius``
+(the maximum distance between any bound particle and the halo centre),
+plus the first aperture that exceeds it. For example, if a subhalo has an
+``EncloseRadius`` of 29 kpc, the pipeline computes all apertures up to 20 kpc and
+includes the 30 kpc aperture, but omits larger radii (e.g., 50 kpc).
 
 .. _projected_aperture_description:
 
 Exclusive projected aperture
 ----------------------------
 
-The projected apertures are similar to exclusive sphere quantities, 
-except that their aperture
-filter is applied in 3 independent projections
-along the x-, y- and z-axis. Along the projection axis, we do not apply
-any radial cut, so that the depth corresponds to all particles bound to
-the subhalo. With four projected aperture radii (10, 30, 50, 100
-kpc), we then have twelve sets of projected aperture quantities for each
-subhalo. Projected aperture quantities are stored in a group named
-``projected_aperture_XXXkpc_projP``, where ``XXX`` is the corresponding
-aperture radius, and ``P`` corresponds to a particular projection
-direction (``x``, ``y`` or ``z``).
+Exclusive projected quantities are similar to exclusive sphere quantities, except that their
+aperture cut is applied in projection. For each radii there are three  independent projections: along the
+x-, y-, and z-axis. Along the projection axis, we do not apply any radial cut, meaning the depth corresponds to all particles
+bound to the subhalo. Projected aperture quantities are stored in a group named
+``ProjectedAperture/XXX/projP``, where ``XXX`` is the corresponding aperture cut, and ``P``
+corresponds to a particular projection direction (``x``, ``y`` or ``z``).
 
 .. _spherical_overdensity_description:
 

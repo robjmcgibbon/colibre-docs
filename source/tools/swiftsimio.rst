@@ -5,6 +5,7 @@ The `swiftsimio <https://swiftsimio.readthedocs.io/en/latest/>`__
 python module can be used to read snapshots and soap catalogues.
 It handles units and cosmology metadata, and can be used to
 efficiently load specific subvolumes for the full box.
+It also contains functions for visualisation and volume rendering.
 
 Installation
 ------------

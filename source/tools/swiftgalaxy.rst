@@ -2,7 +2,7 @@ SWIFTGalaxy
 ===========
 
 The `swiftgalaxy <https://swiftgalaxy.readthedocs.io/en/stable/index.html>`__
-python module can be used to analyse particles belonging to individual galaxies.
+python module can be used to analyse particles belonging to individual subhalos.
 It is build on top of :doc:`swiftsimio <swiftsimio>` and inherits all of its features,
 while adding features designed for working with individual galaxies.
 
@@ -21,7 +21,7 @@ file (the same file used with swiftsimio, which must contain the HBT-Herons
 membership information) and an initialised halo finder object. For
 COLIBRE outputs we use the ``SOAP`` halo catalogue class. The
 ``soap_index`` identifies the row in the SOAP catalogue corresponding
-to the galaxy of interest.
+to the subhalo of interest.
 
 .. code-block:: python
 
@@ -85,8 +85,8 @@ are accessed in exactly the same way as in swiftsimio, with lazy
 loading and unit-aware ``cosmo_array`` results. See
 :doc:`swiftsimio <swiftsimio>` for a full description of how to work
 with these arrays. The key difference is that the coordinates are
-automatically recentred on the galaxy of interest at construction
-time, so all coordinates are in the galaxy's rest frame. If we print
+automatically recentred on the subhalo of interest at construction
+time, so all coordinates are in the subhalo's rest frame. If we print
 the median we can see the value is close to zero as expected::
 
   >>> print(np.median(sg.stars.coordinates, axis=0)
@@ -94,7 +94,7 @@ the median we can see the value is close to zero as expected::
 
 SOAP integrated properties are also available through the
 ``halo_catalogue`` attribute. Only the properties of the selected
-galaxy are loaded::
+subhalo are loaded::
 
   m200c = sg.halo_catalogue.spherical_overdensity_200_crit.total_mass.to(u.solMass)
 
@@ -109,7 +109,7 @@ Visualisation
 -------------
 
 Because ``SWIFTGalaxy`` is a ``SWIFTDataset``, the swiftsimio
-visualisation tools work directly on it. The galaxy coordinates are
+visualisation tools work directly on it. The subhalo coordinates are
 already centred at the origin, so passing a ``region`` argument lets
 you zoom into the disc or halo straightforwardly. Always set
 ``periodic=False`` when visualising a ``SWIFTGalaxy``.
