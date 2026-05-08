@@ -118,7 +118,7 @@ The job should be submitted using the following command:
 Data storage
 ------------
 
-You are provided with 10TB of storage at ``/cosma8/data/do019/<your_username>``,
+You are provided with storage at ``/cosma8/data/do019/<your_username>``,
 please clean up regularly and do not store data for longer than is necessary.
 You should not store data within your home directory.
 
