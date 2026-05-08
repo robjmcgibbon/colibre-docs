@@ -5,7 +5,7 @@ The table below shows all the COLIBRE cosmological simulations run with hybrid A
 
 .. list-table::
    :header-rows: 1
-   :widths: 20 10 12 12 15 15 10 10
+   :widths: 17 10 12 15 15 15 10 10
    :align: center
    :class: hybrid-table simulation-table row-divider
 
