@@ -2248,6 +2248,8 @@ Copied properties
      - \-
      - Ranking by mass of the halo within its parent field halo. Zero for the most massive halo in the field halo.
 
+.. _soap_hybrid_properties:
+
 Hybrid properties
 -----------------
 

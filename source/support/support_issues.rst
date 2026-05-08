@@ -33,3 +33,133 @@ injection, such dense and hot gas can artificially distort the
 observational properties of galaxies, such as their X-ray
 emission. We therefore advise to test the effect of excluding recently heated/kicked particles, which can be done
 using the particle property tracking the last time a particle was injected with AGN feedback energy.
+
+.. _issues_snia_normalisation:
+
+SNIa normalisation
+~~~~~~~~~~~~~~~~~~
+
+In the code that implemented 
+equation of the SNIa rate (equation 13 of the overview paper)
+the sign of :math:`t_{delay}` in the exponent was incorrect
+(it was added rather than subtracted).
+This effects the normalisation of the DTD relation by ~4%.
+Runs affected:
+
+* ``L0100N0752/Thermal``
+* ``L0100N0752/Hybrid``
+* ``L0200N1504/Thermal``
+* ``L0200N1504/Hybrid``
+* ``L0050N0752/Thermal``
+* ``L0050N0752/Hybrid``
+* ``L0100N1504/Thermal``
+
+.. Also the old variation runs?
+
+Snapshots
+---------
+
+.. _issues_overflow_progenitor_id:
+
+Overflow in progenitor IDs
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The field ``ProgenitorParticleIDs`` was initialised with values that overflowed for some particles.
+Runs affected:
+
+* ``L0100N0752/Thermal``
+* ``L0100N0752/Hybrid``
+* ``L0200N1504/Thermal``
+* ``L0050N0752/Thermal``
+* ``L0050N0752/Hybrid``
+* ``L0100N1504/Thermal``
+
+.. Also the old variation runs?
+
+.. _issues_untrackable_splits:
+
+Untrackable splits
+~~~~~~~~~~~~~~~~~~
+
+The information that is used to track particle splits can accomodate up to 64 splits. A very small number of particles have > 64.
+
+Runs affected:
+
+* ``L0050N0752/Thermal``
+* ``L0050N0752/Hybrid``
+* ``L0100N1504/Thermal``
+
+.. Also the old variation runs?
+
+.. _issues_kicked_particles_tracer:
+
+Kicked particles tracer
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The jet-related tracer recording BH IDs that kicked particles had a max value of 127
+
+Runs affected:
+
+* ``L0100N0752/Hybrid``
+* ``L0200N1504/Hybrid``
+* ``L0050N0752/Hybrid``
+
+.. Also the old variation runs?
+
+.. _issues_z0_averaged:
+
+No z=0 averaged quantities
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Averaged quantities (SFR, BH accretion) are missing for the z=0 snapshot
+
+* ``L0100N0752/Thermal``
+* ``L0100N0752/Hybrid``
+* ``L0200N1504/Thermal``
+* ``L0200N1504/Hybrid``
+* ``L0050N0752/Hybrid``
+
+
+.. Also the old variation runs?
+
+.. _issues_z0_negative:
+
+Negative averaged quantities
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A small number of particles have averaged quantities (SFR, BH accretion) which are negative
+
+* ``L0100N0752/Thermal``
+* ``L0100N0752/Hybrid``
+* ``L0200N1504/Thermal``
+* ``L0200N1504/Hybrid``
+* ``L0050N0752/Hybrid``
+
+.. Also the old variation runs?
+
+SOAP
+----
+
+Missing hybrid quantities
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The SOAP catalogues for runs with hybrid AGN feedback
+:ref:`have some additional properties <soap_hybrid_properties>` not present in
+the thermal AGN runs. However, some hybrid SOAPs were run using
+the wrong paramter file, and so are missing the additional properties. These
+will be added in the future. Runs affected:
+
+* ``L01000N1504/Hybrid``: snapshots 110-118, 120-122, 124
+
+Missing descendant track id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The SOAP catalogues contain the property ``soap.descendant_index`` which gives
+the index for the descendant of each subhalo. For some SOAP catalogues these
+values are missing. These will be added in the future.
+
+Incorrect Hubble parameter for flow rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The :math:`z=0` value of the Hubble parameter was used when computing
+:ref:`the flow rates <footnote-7>` for all redshifts.
