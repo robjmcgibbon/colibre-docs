@@ -2617,7 +2617,7 @@ and :math:`m_{H,i}` is the total hydrogen mass of the particle. A similar expres
 
 .. _footnote-16:
 
-**[16]** **Cold dense gas particles** are particles with :math:`T < 10^{4.5}\mathrm{K}`) and (:math:`m_{H} > 10^{-1} \mathrm{cm}^{-3}`).
+**[16]** **Cold dense gas particles** are particles with :math:`T < 10^{4.5}\mathrm{K}`) and (:math:`n_{H} > 10^{-1} \mathrm{cm}^{-3}`).
 
 .. _footnote-18:
 
@@ -2661,7 +2661,7 @@ LinearMassWeighted properties, :math:`Z_{lin}`, are calculated as (using O/H as 
    Z_{\mathrm{lin,O/H}} = \frac{1}{\sum_i m_i} \sum_i m_i \frac{n_{\mathrm{O},i}}{n_{\mathrm{H},i}}
 
 where :math:`m_i` is the particle mass, :math:`n_{O,i}` is the number density of oxygen for particle :math:`i`, and :math:`n_{H,i}` is the number density of hydrogen for particle :math:`i`.
-When calculating gas metallicity we only sum over particles which are cold (:math:`T_i < 10^{4.5}\mathrm{K}`) and dense (:math:`m_{H,i} > 10^{-1} \mathrm{cm}^{-3}`).
+When calculating gas metallicity we only sum over particles which are cold (:math:`T_i < 10^{4.5}\mathrm{K}`) and dense (:math:`n_{H,i} > 10^{-1} \mathrm{cm}^{-3}`).
 
 LogarithmicMassWeighted properties, :math:`Z_{log}`, are calculated as
 
