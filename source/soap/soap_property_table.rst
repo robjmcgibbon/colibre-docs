@@ -2617,7 +2617,7 @@ and :math:`m_{H,i}` is the total hydrogen mass of the particle. A similar expres
 
 .. _footnote-16:
 
-**[16]** **Cold dense gas particles** are particles with :math:`T < 10^{4.5}\mathrm{K}`) and (:math:`n_{H} > 10^{-1} \mathrm{cm}^{-3}`).
+**[16]** **Cold dense gas particles** are particles with :math:`T < 10^{4.5}\mathrm{K}` and :math:`n_{H} > 10^{-1} \mathrm{cm}^{-3}`.
 
 .. _footnote-18:
 
