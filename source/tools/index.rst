@@ -1,8 +1,8 @@
 Analysis tools & examples
 =========================
 
-The following pages contain a number of examples of tools
-which can be useful to use when analysing the COILBRE simulations.
+The following pages contain a number of tools
+which can be useful to use when analysing the COLIBRE simulations.
 
 .. toctree::
    :maxdepth: 1
@@ -19,3 +19,11 @@ which can be useful to use when analysing the COILBRE simulations.
 * :doc:`soap` - Produce custom SOAP catalogues
 * :doc:`specwizard` - Compute quasar absorption spectra
 * :doc:`topsy` - GPU visualisation of simulations
+
+Additional examples
+~~~~~~~~~~~~~~~~~~~
+
+The following pages contain a number of examples of
+common tasks.
+
+* :doc:`examples/haas_environment`
