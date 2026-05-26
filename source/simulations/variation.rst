@@ -266,7 +266,7 @@ Additional variations
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_clumping1
+   * - .. dropdown:: Thermal_noClumping
 
           No dust clumping factor
      - ✅
