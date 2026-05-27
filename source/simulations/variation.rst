@@ -222,7 +222,7 @@ Cooling variations
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_eq
+   * - .. dropdown:: Thermal_equilibrium
 
           Equilibrium Chemistry also for H and He
      - ✅
@@ -245,7 +245,7 @@ Additional variations
      - L25m6
      - L50m7
      - L50m6
-   * - .. dropdown:: Thermal_equal_Ndm
+   * - .. dropdown:: Thermal_equalNdm
 
           Different number of DM particles
      - ✅
@@ -273,7 +273,7 @@ Additional variations
      - ✅
      - ❌
      - ❌
-   * - .. dropdown:: Thermal_dust_uncoupled
+   * - .. dropdown:: Thermal_uncoupledDust
 
           Dust uncoupled
      - ✅
