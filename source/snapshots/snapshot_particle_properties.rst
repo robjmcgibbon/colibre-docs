@@ -2398,11 +2398,12 @@ Footnotes
 Averaged quantities
 ~~~~~~~~~~~~~~~~~~~
 
-Averaged quantities are calculated by accumulating 
-the quantity over the 10 Myr/100 Myr that precedes the writing of a 
-snapshot, and then normalizing. For example, for SFR, we start a clock 
-precisely 10 Myr before a snapshot dump, accumulate SFR * dt at each 
-step during that window, and then divide by 10 Myr at the point of writing.
+Averaged quantities are calculated by accumulating the quantity over the 10 Myr/100 Myr
+that precedes the writing of a snapshot, and then normalizing.
+For example, for SFR, we start a clock precisely 10 Myr before a snapshot dump,
+accumulate SFR * dt at each step during that window, and then divide by 10 Myr at the point of writing.
+If the time interval between consecutive snapshots is less than 10/100 Myr,
+the averaging window is instead set equal to the interval, and the accumulated quantity is normalized accordingly.
 AveragedStarFormationRates for star particles should not be used.
 
 .. _dust-names:
