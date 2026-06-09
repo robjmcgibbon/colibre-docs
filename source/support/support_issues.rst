@@ -137,6 +137,31 @@ A small number of particles have averaged quantities (SFR, BH accretion) which a
 
 .. Also the old variation runs?
 
+HBT-HERONS
+----------
+
+.. _issues_hbt_high_cadence:
+
+High cadence runs
+~~~~~~~~~~~~~~~~~
+
+The HBT catalogues for the high cadence runs were created using an older version
+of the HBT code. This is because we needed to delete the snapshots of the runs as
+they progressed due to the large data volume, which prevented us from rerunning the
+new version of HBT-HERONS. This has the following minor effects:
+
+* In HBT-HERONS we allow gas particles to be "reattached" to
+  satellites, which allows for gas accretion onto satellite subhalos that otherwise
+  would not occur. Some of this accreted gas does form stars within the satellites,
+  and so without the reattachment step the stars are assigned to the central subhalo
+  instead of the satellites. The high cadence runs do not have gas reattachement.
+* In the high-cadence HBT-HERONS catalogues, a bug caused :math:`H(z)/h` to be
+  used as the Hubble parameter instead of :math:`H(z)`. This affects the
+  snapshots at which HBT restarted.
+  The masses in the catalogues are always stored in units of :math:`10^{10}\,M_\odot`,
+  so that value should be used directly instead of reading ``Cosmology/HubbleParam``
+  to determine the mass units.
+
 SOAP
 ----
 

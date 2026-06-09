@@ -13,5 +13,5 @@ They have the same initial conditions and subgrid model parameters as the fiduci
 However, due to noise within the simulations, the galaxies that form in these runs will not be exactly the same as those in the fiducial runs. 
 There are only a few particle properties saved for these runs, significantly less than in the normal snapshots.
 Most of the dark matter particles have been removed, although 10% of it has been kept for every 10th snapshot.
-HBT catalogues are available, but these came from an old version of HBT (no gas reattachment).
+HBT catalogues are available, but these came from an old version of HBT (:ref:`see this issue<issues_hbt_high_cadence>`).
 No SOAP catalogues are available.
