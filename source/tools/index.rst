@@ -26,4 +26,7 @@ Additional examples
 The following pages contain a number of examples of
 common tasks.
 
+* :doc:`examples/plot_colours`
 * :doc:`examples/haas_environment`
+* :doc:`examples/satellite_smf`
+* :doc:`examples/mass_evolution`
