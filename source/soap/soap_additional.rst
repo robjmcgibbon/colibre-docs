@@ -47,7 +47,7 @@ These ensure that galaxy properties are computed using the same methodology as t
 enabling a direct comparisons between the two simulations.
 We also provide versions of the EAGLE snapshots that can be read with ``swiftsimio``.
 
-There are a number of differences compared with the COLBIRE SOAP catalogues.
+There are a number of differences compared with the COLIBRE SOAP catalogues.
 
 * These catalogues depend on the original SubFind subhalo catalogues used for EAGLE (we cannot run HBT-HERONS since there are not enough snapshots).
 * A large number of properties (e.g. all dust properties) which we have in the COLIBRE SOAPs are missing.
@@ -57,5 +57,5 @@ SOAP-SmallSphericalOverdensity
 ------------------------------
 
 For the :math:`z=0` snapshots of the L200m6 and L400m7 simulations (both Thermal and DMO),
-we have run soap to compute properties for sphereical overdensity apertures of size :math:`R_{2500c}` & :math:`R_{1000c}`.
+we have run soap to compute properties for spherical overdensity apertures of size :math:`R_{2500c}` & :math:`R_{1000c}`.
 The files can be found at ``/cosma8/data/dp004/dc-mcgi1/COLIBRE/inner_spherical_overdensity``

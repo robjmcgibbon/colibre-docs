@@ -189,7 +189,7 @@ the thermal AGN runs. However, some hybrid SOAPs were run using
 the wrong paramter file, and so are missing the additional properties. These
 will be added in the future. Runs affected:
 
-* ``L01000N1504/Hybrid``: snapshots 110-118, 120-122, 124
+* ``L0100N1504/Hybrid``: snapshots 110-118, 120-122, 124
 
 Missing descendant track id
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

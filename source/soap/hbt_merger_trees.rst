@@ -188,10 +188,10 @@ Evolution of a subhalo example
     scale_factor = np.zeros(n_exist)
 
     # Loop through the catalogues and extract the mass for this object
-    hbt_basename = f"{root_dir}/{sim}/HBT-HERONS/sorted_hbt/OrderedSubSnap_{{snap_nr:03}}.hdf5"
+    hbt_basename = f"{root_dir}/{sim}/HBT-HERONS/sorted_catalogues/OrderedSubSnap_{{snap_nr:03}}.hdf5"
     for i in range(n_exist):
         hbt_filename = hbt_basename.format(snap_nr=birth_snap_nr+i)
-        with hdfstream.open('cosma', hbt_filename) as file:
+        with h5py.File(hbt_filename, "r") as file:
             # Mass is stored in units of 10^10 Msun
             mass_evolution_msun[i] = file["Subhalos/MboundType"][track_id] * 10 ** 10
             scale_factor[i] = file['Cosmology']['ScaleFactor'][0]

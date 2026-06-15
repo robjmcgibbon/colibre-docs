@@ -28,7 +28,7 @@ to the subhalo of interest.
    from swiftgalaxy import SWIFTGalaxy, SOAP
 
    sim_dir = "/cosma8/data/dp004/colibre/Runs/"
-   run = "L0025N0752/THERMAL_AGN_m5"
+   run = "L0025N0752/Thermal"
    snap_nr = 127
 
    virtual_snapshot_file = f"{sim_dir}/{run}/SOAP-HBT/colibre_with_SOAP_membership_{snap_nr:04}.hdf5"

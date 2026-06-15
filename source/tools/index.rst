@@ -30,3 +30,4 @@ common tasks.
 * :doc:`examples/haas_environment`
 * :doc:`examples/satellite_smf`
 * :doc:`examples/mass_evolution`
+* :doc:`examples/cosmic_sfrd`

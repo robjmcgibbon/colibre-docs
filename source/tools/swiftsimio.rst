@@ -30,7 +30,7 @@ references the data in all of the other files. Here we open the
    sim_dir = "/cosma8/data/dp004/colibre/Runs/"
    run = "L0025N0188/Thermal"
    snap_nr = 92 # z=1
-   snapshot_filename = f"{sim_dir}/{base_dir}/SOAP-HBT/colibre_with_SOAP_membership_{snap_nr:04}.hdf5"
+   snapshot_filename = f"{sim_dir}/{run}/SOAP-HBT/colibre_with_SOAP_membership_{snap_nr:04}.hdf5"
 
    snap = sw.load(snapshot_filename)
 

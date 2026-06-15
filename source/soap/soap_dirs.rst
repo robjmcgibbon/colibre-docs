@@ -15,7 +15,7 @@ between snapshot number and redshift.
 
 .. _hbt_directory_layout:
 
-HBT-HERONS catalgoues
+HBT-HERONS catalogues
 ---------------------
 
 Each simulation has an ``HBT-HERONS/sorted_catalogues`` directory with one

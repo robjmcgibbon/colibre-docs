@@ -1,7 +1,7 @@
 High cadence runs
 =================
 
-There are which were used to generate the videos on the colibre website. There are 3 runs:
+The following high cadence runs were used to generate the videos on the colibre website:
 
 * ``/cosma8/data/dp004/colibre/Runs/L0050N0752/Thermal_HighCadence`` - L050m6 run with 2000 outputs
 * ``/cosma8/data/dp004/colibre/Runs/L0050N0752/Hybrid_HighCadence`` - L050m6h run with 2000 outputs

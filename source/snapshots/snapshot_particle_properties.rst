@@ -276,7 +276,7 @@ Gas particles
           * **Datatype:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Fractions of the particles' masses that are in iron produced by SNIa stars (incorporating both depleted and nebular phases)Fractions of the particles' masses that are in metals (incorporating both depleted and nebular phases)
+     - Fractions of the particles' masses that are in iron produced by SNIa stars (incorporating both depleted and nebular phases)
      - ❌
    * - .. dropdown:: ``iron_mass_fractions_from_snia_diffuse``
 
@@ -402,7 +402,7 @@ Gas particles
           * **Datatype:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Fractions of the particles' masses that have been produced by AGN stars
+     - Fractions of the particles' masses that have been produced by AGB stars
      - ❌
    * - .. dropdown:: ``mass_fractions_from_cejsn``
 
@@ -645,7 +645,7 @@ Gas particles
           * **Datatype:** int64
           * **Units:** dimensionless
           * **Compression:** no compression
-     - Binary tree describing splitting events. Particles that keep the original ID have a value of zero in a splitting event, whereasparticles given a new ID have a value of one.
+     - Binary tree describing splitting events. Particles that keep the original ID have a value of zero in a splitting event, whereas particles given a new ID have a value of one.
      - ✅
    * - .. dropdown:: ``star_formation_rates``
 
@@ -744,7 +744,7 @@ Gas particles
           * **Datatype:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Visosity coefficient (alpha_visc) of the particles, multiplied by the balsara switch
+     - Viscosity coefficient (alpha_visc) of the particles, multiplied by the balsara switch
      - ❌
    * - .. dropdown:: ``xray_luminosities``
 
@@ -1126,7 +1126,7 @@ Star particles
           * **Datatype:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Fractions of the particles' masses that have been produced by AGN stars
+     - Fractions of the particles' masses that have been produced by AGB stars
      - ✅
    * - .. dropdown:: ``mass_fractions_from_cejsn``
 
@@ -1333,7 +1333,7 @@ Star particles
           * **Datatype:** int64
           * **Units:** dimensionless
           * **Compression:** no compression
-     - Binary tree describing splitting events. Particles that keep the original ID have a value of zero in a splitting event, whereasparticles given a new ID have a value of one.
+     - Binary tree describing splitting events. Particles that keep the original ID have a value of zero in a splitting event, whereas particles given a new ID have a value of one.
      - ✅
    * - .. dropdown:: ``temperature_increases_at_last_agnevent``
 
@@ -1753,7 +1753,7 @@ Black hole particles
           * **Datatype:** float32
           * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Physcial energy contained in the feedback reservoir of the particles
+     - Physical energy contained in the feedback reservoir of the particles
      - ✅
    * - .. dropdown:: ``fofgroup_ids``
 

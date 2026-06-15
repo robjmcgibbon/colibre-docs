@@ -2,7 +2,7 @@ SOAP
 ====
 
 If you need to compute properties for all subhalos in a simulation,
-it can be useful to use `SOAP <https://swiftgalaxy.readthedocs.io/en/stable/index.html>`__.
+it can be useful to use `SOAP <https://github.com/SWIFTSIM/SOAP>`__.
 The standard SOAP catalogues include a large number of precomputed properties,
 but SOAP can also be configured to compute only a selected subset, which significantly reduces runtime.
 
@@ -33,7 +33,7 @@ The repository also includes `guidance on adding new properties <https://github.
    # Which halo finder we're using, and base name for halo finder output files
    HaloFinder:
      type: HBTplus
-     filename: "{sim_dir}/{sim_name}/HBT-HERONS/OrderedSubSnap_{snap_nr:03d}.hdf5"
+     filename: "{sim_dir}/{sim_name}/HBT-HERONS/sorted_catalogues/OrderedSubSnap_{snap_nr:03d}.hdf5"
 
    GroupMembership:
      # Where to write the group membership files

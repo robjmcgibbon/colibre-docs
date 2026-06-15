@@ -14,7 +14,7 @@ yielding 232 output times in total.
 
 Each simulation has a ``los`` directory with one
 ``los_XXXX.hdf5`` file for each output.
-The line-of-sight files can be read with swiftimio, and
+The line-of-sight files can be read with swiftsimio, and
 contain all the gas fields present in the snapshots.
 
 These files are made to be used with an updated version of the
