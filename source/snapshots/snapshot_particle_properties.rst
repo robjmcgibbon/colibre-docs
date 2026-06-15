@@ -249,7 +249,7 @@ Gas particles
           * **Datatype:** float32
           * **Units:** :math:`\rm{Mpc} \cdot \rm{s} / \rm{km}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.3669{\rm{}e}10`
-     - Time until particle is in HII region. See :ref:`hii_end_time`
+     - Time at which this particle's HII region membership expires. -1 if not in an HII region. See :ref:`issues_hii_regions`
      - ❌
    * - .. dropdown:: ``halo_catalogue_index``
 
@@ -2591,13 +2591,4 @@ bands are stored in the following order:
 +-------------+---------------------+
 | 8           | K                   |
 +-------------+---------------------+
-
-.. _hii_end_time:
-
-HII regions end time
-~~~~~~~~~~~~~~~~~~~~
-
-This property was originally not enabled to be output, and so is completely missing
-from certain runs, is only available for low redshift outputs of other runs.
-
 

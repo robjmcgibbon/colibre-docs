@@ -111,7 +111,7 @@ Runs affected:
 No z=0 averaged quantities
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Averaged quantities (SFR, BH accretion) are missing for the z=0 snapshot
+Time averaged quantities (SFRs and BH accretion rates) are missing for the z=0 snapshot
 
 * ``L0100N0752/Thermal``
 * ``L0100N0752/Hybrid``
@@ -124,10 +124,10 @@ Averaged quantities (SFR, BH accretion) are missing for the z=0 snapshot
 
 .. _issues_z0_negative:
 
-Negative averaged quantities
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Negative time averaged quantities
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A small number of particles have averaged quantities (SFR, BH accretion) which are negative
+The time averaged SFRs and BH accretion rates are negative for a small number of particles
 
 * ``L0100N0752/Thermal``
 * ``L0100N0752/Hybrid``
@@ -136,6 +136,21 @@ A small number of particles have averaged quantities (SFR, BH accretion) which a
 * ``L0050N0752/Hybrid``
 
 .. Also the old variation runs?
+
+.. _issues_hii_regions:
+
+HII region flag
+~~~~~~~~~~~~~~~
+
+Gas particles have a property called ``HIIregionsEndTime``.
+This value can be useful since if it is equal -1 the particle is currently deemed to be in an HII region.
+Note however that some particles with ``HIIregionsEndTime == -1`` will have recently been hit by feedback,
+and these should probably not be counted as HII regions (depending on your analysis).
+
+This property was originally not enabled to be output, and so is completely missing
+from certain runs, is only available for low redshift outputs of other runs.
+However, selecting particles with ``HI/H == 0`` and ``density/m_h > 10**-5``
+will return the particles that are in HII regions (see :ref:`extra_info_hii_regions`).
 
 HBT-HERONS
 ----------
@@ -165,8 +180,8 @@ new version of HBT-HERONS. This has the following minor effects:
 SOAP
 ----
 
-Missing hybrid quantities
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Missing hybrid AGN feedback quantities
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The SOAP catalogues for runs with hybrid AGN feedback
 :ref:`have some additional properties <soap_hybrid_properties>` not present in
