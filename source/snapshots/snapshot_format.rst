@@ -215,6 +215,8 @@ always zero in COLIBRE. Particle positions are stored in
 There are also attributes which directly give the conversion factor to
 CGS, with and without any :math:`a` factors included.
 
+.. _snapshot_format_compression:
+
 Compression
 ^^^^^^^^^^^
 

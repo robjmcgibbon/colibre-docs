@@ -2485,6 +2485,20 @@ Note that the fraction of species i in this dataset is defined
 in terms of its number density relative to hydrogen (i.e.
 :math:`n_i` / :math:`n_{H_{tot}}`), which is not the same as the mass fraction.
 
+.. warning::
+
+   These are **number density fractions relative to total hydrogen**
+   (i.e. :math:`n_i` / :math:`n_{H_{tot}}`),
+   not mass fractions. As a result, species containing multiple
+   hydrogen atoms must be weighted by their hydrogen count to recover conservation:
+
+   .. math::
+
+      x_{\rm HI} + x_{\rm HII} + x_{\rm H^-} + 2x_{\rm H_2} + 2x_{\rm H_2^+} + 3x_{\rm H_3^+} = 1
+
+   In practice this equality will not hold exactly, as the dataset is
+   :ref:`subject to lossy compression<snapshot_format_compression>`.
+
 +-------------+---------------------+
 | Array index | Species name        |
 +=============+=====================+
