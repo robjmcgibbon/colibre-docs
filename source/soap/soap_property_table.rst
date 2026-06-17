@@ -374,7 +374,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :snaponly:`BS` :snaponly:`ES` :snaponly:`IS` :snaponly:`EP` :snaponly:`SO`
-     - Total star formation rate, averaged over past 100Myr and past 10Myr. If the time between this snapshot and the previous one was less than the averaging time, then the value is averaged over the time between the snapshots. `[12] <footnote-12_>`_
+     - Total star formation rate, averaged over past 10Myr and past 100Myr. If the time between this snapshot and the previous one was less than the averaging time, then the value is averaged over the time between the snapshots. `[12] <footnote-12_>`_
    * - .. dropdown:: ``black_holes_dynamical_mass``
 
           * **HDF5 name:** ``BlackHolesDynamicalMass``
@@ -1184,7 +1184,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
-     - Gas accretion rate of the most massive black hole, averaged over past 100Myr and past 10Myr. If the time between this snapshot and the previous one was less than the averaging time, then the value is averaged over the time between the snapshots. `[12] <footnote-12_>`_
+     - Gas accretion rate of the most massive black hole, averaged over past 10Myr and past 100Myr. If the time between this snapshot and the previous one was less than the averaging time, then the value is averaged over the time between the snapshots. `[12] <footnote-12_>`_
    * - .. dropdown:: ``most_massive_black_hole_formation_scalefactor``
 
           * **HDF5 name:** ``MostMassiveBlackHoleFormationScalefactor``
