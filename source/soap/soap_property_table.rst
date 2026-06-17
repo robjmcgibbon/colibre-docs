@@ -374,7 +374,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :snaponly:`BS` :snaponly:`ES` :snaponly:`IS` :snaponly:`EP` :snaponly:`SO`
-     - Total star formation rate, averaged over past 10Myr and past 100Myr. If the time between this snapshot and the previous one was less than the averaging time, then the value is averaged over the time between the snapshots. `[12] <footnote-12_>`_
+     - Total star formation rate, averaged over past 100Myr (index 0) and past 10Myr (index 1). If the time between this snapshot and the previous one was less than the averaging time, then the value is averaged over the time between the snapshots. `[12] <footnote-12_>`_
    * - .. dropdown:: ``black_holes_dynamical_mass``
 
           * **HDF5 name:** ``BlackHolesDynamicalMass``
@@ -1184,7 +1184,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
-     - Gas accretion rate of the most massive black hole, averaged over past 10Myr and past 100Myr. If the time between this snapshot and the previous one was less than the averaging time, then the value is averaged over the time between the snapshots. `[12] <footnote-12_>`_
+     - Gas accretion rate of the most massive black hole, averaged over past 100Myr (index 0) and past 10Myr (index 1). If the time between this snapshot and the previous one was less than the averaging time, then the value is averaged over the time between the snapshots. `[12] <footnote-12_>`_
    * - .. dropdown:: ``most_massive_black_hole_formation_scalefactor``
 
           * **HDF5 name:** ``MostMassiveBlackHoleFormationScalefactor``
@@ -2564,11 +2564,11 @@ When calculating the inertia tensor for a bound subhalo we use a sphere with a r
 
 .. _footnote-12:
 
-**[12]** **Averaged quantities** are calculated by accumulating the quantity over the 10 Myr/100 Myr
+**[12]** **Averaged quantities** are calculated by accumulating the quantity over the 100 Myr/10 Myr
 that precedes the writing of a snapshot, and then normalizing.
-For example, for SFR, we start a clock precisely 10 Myr before a snapshot dump,
-accumulate SFR * dt at each step during that window, and then divide by 10 Myr at the point of writing.
-If the time interval between consecutive snapshots is less than 10/100 Myr,
+For example, for SFR, we start a clock precisely 100 Myr (index 0) or 10 Myr (index 1) before a snapshot dump,
+accumulate SFR * dt at each step during that window, and then divide by 100 Myr or 10 Myr at the point of writing.
+If the time interval between consecutive snapshots is less than 100/10 Myr,
 the averaging window is instead set equal to the interval, and the accumulated quantity is normalized accordingly.
 
 .. _footnote-13:
