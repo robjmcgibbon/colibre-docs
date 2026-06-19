@@ -910,7 +910,7 @@ Star particles
           * **Datatype:** float32
           * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Star formation rates of the particles averaged over the period set by the first two snapshot triggers. See :ref:`footnote_averaged`
+     - Star formation rates of the particles averaged over the period set by the first two snapshot triggers. Should not be used, see :ref:`footnote_averaged`
      - ✅
    * - .. dropdown:: ``birth_densities``
 
@@ -2404,8 +2404,15 @@ The two values are stored as an array of shape 2: index 0 is the 100 Myr average
 For example, for SFR, we start a clock precisely 100 Myr (index 0) or 10 Myr (index 1) before a snapshot dump,
 accumulate SFR * dt at each step during that window, and then divide by 100 Myr or 10 Myr at the point of writing.
 If the time interval between consecutive snapshots is less than 100/10 Myr,
-the averaging window is instead set equal to the interval, and the accumulated quantity is normalized accordingly.
-AveragedStarFormationRates for star particles should not be used.
+the averaging window is instead set equal to the interval, and the accumulated quantity is normalised accordingly.
+
+AveragedStarFormationRates for star particles should not be used. When a gas particle
+converts to a star, the accumulated value is copied to the star but accumulation then
+stops. The value is still divided by the full averaging window (100 or 10 Myr), so the
+output depends strongly on when the particle converted: a star that formed 1 Myr before
+the snapshot will have a value ~10× smaller than one that formed 9 Myr before, even if
+both had the same constant SFR up to the moment of conversion.
+
 
 .. _dust-names:
 
