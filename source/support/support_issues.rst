@@ -127,15 +127,11 @@ Time averaged quantities (SFRs and BH accretion rates) are missing for the z=0 s
 Negative time averaged quantities
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The time averaged SFRs and BH accretion rates are negative for a small number of particles
-
-* ``L0100N0752/Thermal``
-* ``L0100N0752/Hybrid``
-* ``L0200N1504/Thermal``
-* ``L0200N1504/Hybrid``
-* ``L0050N0752/Hybrid``
-
-.. Also the old variation runs?
+The time averaged SFRs and BH accretion rates can be negative for a small number of particles.
+This was due to a bug in how the averaging variable was initialised for timesteps straddling the start of the recording window.
+If such a particle was hit by feedback before its timestep ends,
+a correction term was left uncompensated, which produces a negative value in the snapshot.
+Any negative values should be set to zero.
 
 .. _issues_hii_regions:
 
