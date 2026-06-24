@@ -29,7 +29,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        uv pip install -r pyproject.toml
+        uv pip install --system -r pyproject.toml
 
     - name: Build documentation
       run: |
