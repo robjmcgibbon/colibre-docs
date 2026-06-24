@@ -1,5 +1,0 @@
-sphinx
-piccolo_theme
-sphinx_design
-sphinxcontrib_mermaid
-sphinxcontrib-katex
