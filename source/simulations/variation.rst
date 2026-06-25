@@ -231,6 +231,49 @@ Cooling variations
      - ❌
 
 
+Star formation threshold variations
+-----------------------------------
+
+For all these runs HII regions cannot form stars
+
+.. list-table:: 
+   :widths: 40 15 15 15 15
+   :width: 100%
+   :header-rows: 1
+
+   * - Simulation Name
+     - L12m5
+     - L25m6
+     - L50m7
+     - L50m6
+   * - .. dropdown:: Thermal_eagleSF
+
+          Uses the EAGLE metallicity dependent density threshold
+          (eqn 2 of the EAGLE overview paper), and
+          also requires :math:`T < 10^{4.5} \rm{K}`.
+     - ❌
+     - ✅
+     - ❌
+     - ❌
+   * - .. dropdown:: Thermal_fixedRhoSF
+
+          SF threshold :math:`n_H > 0.1 \rm{cm}^{-3}` and :math:`T < 10^{4.5} \rm{K}`,
+          where :math:`n_H = \rho X_H / m_H`,
+          with :math:`X_H` the primordial hydrogen mass fraction.
+     - ❌
+     - ✅
+     - ❌
+     - ❌
+   * - .. dropdown:: Thermal_noTurbSF
+
+          Uses the same gravitational instability SF threshold criterion as
+          the fiducial COLIBRE model (eqn 6 of the overview paper), but with
+          :math:`\sigma_{turb}` set to zero.
+     - ❌
+     - ✅
+     - ❌
+     - ❌
+
 
 Additional variations
 ---------------------
