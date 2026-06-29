@@ -35,6 +35,7 @@ and linestyle to distinguish between models (thermal or hybrid) at fixed resolut
     ax.set_ylim(-0.3, 2.5)
     ax.legend(ncol=3, loc='upper center')
     ax.axis('off')
-    plt.savefig('colibre_colors.pdf')
+    plt.savefig('colibre_colours.pdf')
     plt.close()
 
+.. image:: images/colibre_colours.png
