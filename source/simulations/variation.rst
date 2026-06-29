@@ -269,7 +269,7 @@ For all these runs HII regions cannot form stars
           Uses the same gravitational instability SF threshold criterion as
           the fiducial COLIBRE model (eqn 6 of the overview paper), but with
           :math:`\sigma_{turb}` set to zero.
-     - ❌
+     - ✅
      - ✅
      - ❌
      - ❌
