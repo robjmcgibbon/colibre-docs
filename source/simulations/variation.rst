@@ -234,7 +234,9 @@ Cooling variations
 Star formation threshold variations
 -----------------------------------
 
-For all these runs HII regions cannot form stars
+The following runs use different criteria to determine whether a gas particle is star forming.
+The star formation rate of particles that satisfy the star formation criterion is still given by the Schmidt law.
+For all these runs HII regions cannot form stars.
 
 .. list-table:: 
    :widths: 40 15 15 15 15
@@ -290,7 +292,7 @@ Additional variations
      - L50m6
    * - .. dropdown:: Thermal_equalNdm
 
-          Different number of DM particles
+          Equal number of dark matter and gas particles
      - ✅
      - ✅
      - ✅
