@@ -1,13 +1,20 @@
 Analysis tools & examples
 =========================
 
-The following pages contain a number of tools
-which can be useful to use when analysing the COLIBRE simulations.
+.. admonition:: Getting started
+   :class: tip getting-started
+
+   All the COLIBRE data is stored on COSMA. Before you begin, see
+   :doc:`running` for a guide to setting up your environment and submitting jobs.
+
+The following pages describe a number of tools and examples that are
+useful when analysing the COLIBRE simulations.
 
 .. toctree::
    :maxdepth: 1
    :hidden:
 
+   running
    swiftsimio
    swiftgalaxy
    soap

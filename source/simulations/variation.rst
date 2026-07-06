@@ -9,8 +9,12 @@ and each entry can be clicked to reveal a description of the variation.
 The subsequent columns indicate the availability of these runs 
 across different box sizes and resolutions.
 
-Several of these runs are still ongoing, please contact Rob
-McGibbon if you are interested in using them.
+On COSMA the variation runs for each box size and resolution are located in a
+``VariationRuns`` directory within the corresponding run directory, e.g. the
+L25m6 variations are at ``/cosma8/data/dp004/colibre/Runs/L0025N0376/VariationRuns``.
+
+Several of these runs are still ongoing, so if you cannot find one in the
+directory above, please contact Rob McGibbon.
 These runs will be presented in an upcoming paper by Chaikin et al.
 
 Supernova feedback variations

@@ -115,6 +115,12 @@ table.hybrid-table.row-divider tr:nth-child(5) td {
     border-bottom: 2px solid #333 !important;
 }
 
+/* Slightly larger title for the "Getting started" admonition on the
+   analysis page (tools/index) */
+div.admonition.getting-started > p.admonition-title {
+  font-size: 1.2em;
+}
+
 /* Grid of tables used for list of snapshot redshifts*/
 div.table-grid {
   display: grid;

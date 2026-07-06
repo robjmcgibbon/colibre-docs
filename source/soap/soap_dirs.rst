@@ -4,6 +4,9 @@ Halo catalogue directory layout
 SOAP catalogues
 ---------------
 
+On COSMA the run directory for each simulation is located at
+``/cosma8/data/dp004/colibre/Runs/<run name>``.
+
 Each simulation has a ``SOAP-HBT`` directory with one
 ``halo_properties_XXXX.hdf5`` file for each output time, where ``XXXX`` is
 the snapshot number. See :doc:`../snapshots/snapshot_redshifts` for the relation

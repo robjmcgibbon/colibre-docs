@@ -1,6 +1,9 @@
 Snapshot directory layout
 =========================
 
+On COSMA the run directory for each simulation is located at
+``/cosma8/data/dp004/colibre/Runs/<run name>``.
+
 The layout of the snapshot files for each simulation is shown in the
 diagram below. The ``snapshots`` directory is output by SWIFT, with one
 ``colibre_XXXX`` subdirectory for each output time, where ``XXXX`` is

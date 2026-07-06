@@ -33,7 +33,7 @@ of the available data products, and example scripts.
 Analysis of data products
 -------------------------
 
-A guide to running analysis on COSMA can be found :doc:`on this page <support/running>`.
+A guide to running analysis on COSMA can be found :doc:`on this page <tools/running>`.
 
 A collection of helpful tools and examples can be found :doc:`on this page <tools/index>`.
 
@@ -46,5 +46,6 @@ A collection of helpful tools and examples can be found :doc:`on this page <tool
    Halo catalogues <soap/index>
    power_spectra/index
    tools/index
-   support/index
+   issues/index
+   questions/index
 
