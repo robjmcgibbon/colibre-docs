@@ -13,8 +13,18 @@ then please message us on slack!
    :local:
    :backlinks: none
 
-Data
-----
+Simulation
+----------
+
+.. _faq_bh_satellites:
+
+Why are many satellite galaxies missing a black hole?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+See :ref:`issues_bh_satellites`.
+
+Snapshots
+---------
 
 .. _faq_compression:
 

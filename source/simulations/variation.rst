@@ -17,6 +17,10 @@ Several of these runs are still ongoing, so if you cannot find one in the
 directory above, please contact Rob McGibbon.
 These runs will be presented in an upcoming paper by Chaikin et al.
 
+.. contents::
+   :local:
+   :backlinks: none
+
 Supernova feedback variations
 -----------------------------
 
@@ -329,3 +333,11 @@ Additional variations
      - ✅
      - ✅
      - ❌
+
+
+High redshift variations
+------------------------
+
+The following runs have been stopped at high redshift:
+
+* ``L100N0752/Thermal_noGrainGrowth`` - Run to :math:`z=9`. Contact Evgenii Chaikin
