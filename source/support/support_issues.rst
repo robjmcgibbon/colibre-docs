@@ -111,6 +111,20 @@ If such a particle was hit by feedback before its timestep ends,
 a correction term was left uncompensated, which produces a negative value in the snapshot.
 Any negative values should be set to zero.
 
+.. _issues_averaged_window:
+
+Averaging window for closely spaced snapshots
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The time averaged SFRs and BH accretion rates are normally averaged over the
+100 Myr (index 0) and 10 Myr (index 1) windows preceding each snapshot.
+If the time between two consecutive snapshots is shorter than one of these windows,
+the averaging window is instead set equal to that shorter interval.
+Note this is not a bug. The accumulated quantity is normalised over the actual window
+used, so the output is still a correctly averaged rate. For example, if two
+snapshots are only 25 Myr apart, the value stored in index 0 is a rate averaged
+over 25 Myr rather than 100 Myr.
+
 .. _issues_hii_regions:
 
 HII region flag
