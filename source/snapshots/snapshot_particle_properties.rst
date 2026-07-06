@@ -21,8 +21,8 @@ snapshots and snipshots.
           SOAP halo catalogues.
 
 The runs with hybrid AGN feedback and globular clusters contain
-additional properties not present the the standard thermal AGN runs.
-These properties are listed in a separate tables.
+additional properties not present in the standard thermal AGN runs.
+These properties are listed in separate tables.
 
 Dark matter particles
 ---------------------

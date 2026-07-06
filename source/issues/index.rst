@@ -60,7 +60,7 @@ Runs affected:
 Untrackable splits
 ~~~~~~~~~~~~~~~~~~
 
-The information that is used to track particle splits can accomodate up to 64 splits. A very small number of particles have > 64.
+The information that is used to track particle splits can accommodate up to 64 splits. A very small number of particles have > 64.
 
 Runs affected:
 
@@ -137,7 +137,7 @@ Note however that some particles with ``HIIregionsEndTime == -1`` will have rece
 and these should probably not be counted as HII regions (depending on your analysis).
 
 This property was originally not enabled to be output, and so is completely missing
-from certain runs, is only available for low redshift outputs of other runs.
+from certain runs, and is only available for low redshift outputs of other runs.
 However, selecting particles with ``HI/H == 0`` and ``density/m_h > 10**-5``
 will return the particles that are in HII regions (see :ref:`extra_info_hii_regions`).
 
@@ -158,7 +158,7 @@ new version of HBT-HERONS. This has the following minor effects:
   satellites, which allows for gas accretion onto satellite subhalos that otherwise
   would not occur. Some of this accreted gas does form stars within the satellites,
   and so without the reattachment step the stars are assigned to the central subhalo
-  instead of the satellites. The high cadence runs do not have gas reattachement.
+  instead of the satellites. The high cadence runs do not have gas reattachment.
 * In the high-cadence HBT-HERONS catalogues, a bug caused :math:`H(z)/h` to be
   used as the Hubble parameter instead of :math:`H(z)`. This affects the
   snapshots at which HBT restarted.
@@ -175,7 +175,7 @@ Missing hybrid AGN feedback quantities
 The SOAP catalogues for runs with hybrid AGN feedback
 :ref:`have some additional properties <soap_hybrid_properties>` not present in
 the thermal AGN runs. However, some hybrid SOAPs were run using
-the wrong paramter file, and so are missing the additional properties. These
+the wrong parameter file, and so are missing the additional properties. These
 will be added in the future. Runs affected:
 
 * ``L0100N1504/Hybrid``: snapshots 110-118, 120-122, 124

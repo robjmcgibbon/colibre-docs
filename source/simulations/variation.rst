@@ -4,7 +4,7 @@ Variation runs
 The following table provides a list of model variation runs,
 which are simulations where specific subgrid parameters
 have been modified relative to the fiducial COLIBRE model.
-The first column contains the internal of these variations,
+The first column contains the internal name of these variations,
 and each entry can be clicked to reveal a description of the variation.
 The subsequent columns indicate the availability of these runs 
 across different box sizes and resolutions.
