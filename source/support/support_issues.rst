@@ -34,28 +34,6 @@ observational properties of galaxies, such as their X-ray
 emission. We therefore advise to test the effect of excluding recently heated/kicked particles, which can be done
 using the particle property tracking the last time a particle was injected with AGN feedback energy.
 
-.. _issues_snia_normalisation:
-
-SNIa normalisation
-~~~~~~~~~~~~~~~~~~
-
-In the code that implemented 
-equation of the SNIa rate (equation 13 of the overview paper)
-the sign of :math:`t_{delay}` in the exponent was incorrect
-(it was added rather than subtracted).
-This effects the normalisation of the DTD relation by ~4%.
-Runs affected:
-
-* ``L0100N0752/Thermal``
-* ``L0100N0752/Hybrid``
-* ``L0200N1504/Thermal``
-* ``L0200N1504/Hybrid``
-* ``L0050N0752/Thermal``
-* ``L0050N0752/Hybrid``
-* ``L0100N1504/Thermal``
-
-.. Also the old variation runs?
-
 Snapshots
 ---------
 
