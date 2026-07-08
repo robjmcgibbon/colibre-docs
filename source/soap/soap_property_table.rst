@@ -2126,7 +2126,7 @@ Copied properties
           * **Compression:** no compression
      - basic
      - \-
-     - Latest snapshot when this subhalo was a central. -1 if the subhalo has always been a central.
+     - Latest snapshot when this subhalo was a central. -1 if the subhalo has always been a central. See :ref:`issues_overflow_snapshotindexoflastisolation`
    * - .. dropdown:: ``input_halos_hbtplus.snapshot_of_last_max_mass``
 
           * **HDF5 name:** ``InputHalos/HBTplus/SnapshotOfLastMaxMass``

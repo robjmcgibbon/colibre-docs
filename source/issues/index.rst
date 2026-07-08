@@ -192,3 +192,15 @@ Incorrect Hubble parameter for flow rate
 
 The :math:`z=0` value of the Hubble parameter was used when computing
 :ref:`the flow rates <footnote-7>` for all redshifts.
+
+.. _issues_overflow_snapshotindexoflastisolation:
+
+Overflow in SnapshotIndexOfLastIsolation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The field ``soap.input_halos_hbtplus.snapshot_of_last_isolation`` gives the
+latest snapshot when this subhalo was a central. It should be -1 if the subhalo
+has always been a central. However, the array was set to have an unsigned integer
+datatype, meaning that it could only contain positive values. When the value
+should have been -1 it wrapped around and was set as 18446744073709551615 instead
+(:math:`2^{64} - 1`, the maximum possible value for unsigned int64).
