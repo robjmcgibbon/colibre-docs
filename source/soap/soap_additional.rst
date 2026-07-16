@@ -22,6 +22,7 @@ SubFind has been run for :math:`z=0` for the following simulations:
 We have also produced SOAP catalogues using these SubFind catalogues as input.
 The runs listed above include a ``SOAP-Subfind`` directory containing the :math:`z=0` catalogue. 
 Additionally, the ``colibre_with_SOAP_membership_0127.hdf5`` file is provided, enabling the use of ``swiftgalaxy`` with these catalogues.
+The scripts used to run SubFind on COLIBRE :download:`can be found here <subfind/colibre_subfind.zip>`.
 
 ExSitu fractions
 ----------------
