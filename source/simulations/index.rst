@@ -30,6 +30,18 @@ All simulations are kept at ``/cosma8/data/dp004/colibre/Runs``. The simulations
      Thermal-->powerspec["**Power spectra**
      power_spectra/"]
 
+Directory symlinks
+-------------------
+
+The ``LXXX_mY`` box size/resolution names (e.g. ``L100_m6``) and the standardised
+AGN feedback run names (e.g. ``THERMAL_AGN_m6``, ``HYBRID_AGN_m6``)
+are symlinks rather than the real directory names. The box
+size/resolution symlinks point to directories named after the particle
+count, e.g. ``L100_m6 -> L0100N1504``. The AGN feedback run symlinks point
+to directories whose names can vary between box sizes and resolutions,
+since the ``Hybrid`` name in particular encodes the current calibration
+parameters, e.g. ``HYBRID_AGN_m6 -> Hybrid_non_equilibrium_dVplus0p5dex``.
+
 Hydrodynamical simulations
 --------------------------
 

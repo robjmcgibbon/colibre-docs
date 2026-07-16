@@ -340,4 +340,4 @@ High redshift variations
 
 The following runs have been stopped at high redshift:
 
-* ``L100N0752/Thermal_noGrainGrowth`` - Run to :math:`z=9`. Contact Evgenii Chaikin
+* ``L0100N0752/Thermal_noGrainGrowth`` - Run to :math:`z=9`. Contact Evgenii Chaikin
