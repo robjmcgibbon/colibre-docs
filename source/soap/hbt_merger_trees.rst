@@ -105,7 +105,7 @@ The catalogues are sorted by ``TrackId``. This makes file reads for single objec
      - If the subhalo has sunk or disrupted, the output when that happened. If neither has happened, it equals -1.
      - :math:`-`
    * - ``SnapshotIndexOfLastIsolation``
-     - The snapshot index of the most recent output when this subhalo was a central.
+     - The snapshot index of the most recent output when this subhalo was a central. -1 if the subhalo has always been a central. Note that for a subhalo which is currently a central but was a satellite in the past this equals the current snapshot index.
      - :math:`-`
    * - ``SnapshotIndexOfLastMaxVmax``
      - The output when the subhalo reached its maximum value of ``VmaxPhysical``.
