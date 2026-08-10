@@ -21,8 +21,8 @@ These runs will be presented in an upcoming paper by Chaikin et al.
    :local:
    :backlinks: none
 
-Supernova feedback variations
------------------------------
+Stellar feedback variations
+----------------------------
 
 .. list-table:: 
    :widths: 40 15 15 15 15
@@ -132,20 +132,6 @@ AGN feedback variations
      - ❌
      - ✅
      - ✅
-   * - .. dropdown:: Thermal_Mseed0p5dexscatter
-
-          0.5 dex scatter in the BH seed mass
-     - ✅
-     - ✅
-     - ✅
-     - ❌
-   * - .. dropdown:: Hybrid_Mseed0p5dexscatter
-
-          0.5 dex scatter in the BH seed mass
-     - ✅
-     - ✅
-     - ✅
-     - ❌
    * - .. dropdown:: Thermal_epsfplus0p3dex
 
           AGN feedback efficiency + 0.3 dex
@@ -158,6 +144,34 @@ AGN feedback variations
           AGN feedback efficiency - 0.3 dex
      - ❌
      - ❌
+     - ✅
+     - ❌
+
+Black hole seed variations
+---------------------------
+
+.. list-table::
+   :widths: 40 15 15 15 15
+   :width: 100%
+   :header-rows: 1
+
+   * - Simulation Name
+     - L12m5
+     - L25m6
+     - L50m7
+     - L50m6
+   * - .. dropdown:: Thermal_Mseed0p5dexscatter
+
+          0.5 dex scatter in the BH seed mass
+     - ✅
+     - ✅
+     - ✅
+     - ❌
+   * - .. dropdown:: Hybrid_Mseed0p5dexscatter
+
+          0.5 dex scatter in the BH seed mass
+     - ✅
+     - ✅
      - ✅
      - ❌
    * - .. dropdown:: Hybrid_thermalSeed
@@ -239,14 +253,39 @@ Cooling variations
      - ❌
 
 
-Star formation threshold variations
------------------------------------
+Star formation variations
+-------------------------
+
+.. list-table::
+   :widths: 40 15 15 15 15
+   :width: 100%
+   :header-rows: 1
+
+   * - Simulation Name
+     - L12m5
+     - L25m6
+     - L50m7
+     - L50m6
+   * - .. dropdown:: Thermal_2p0SFE
+
+          Double SF efficiency
+     - ✅
+     - ✅
+     - ✅
+     - ❌
+   * - .. dropdown:: Thermal_0p5SFE
+
+          Half SF efficiency
+     - ✅
+     - ✅
+     - ✅
+     - ❌
 
 The following runs use different criteria to determine whether a gas particle is star forming.
 The star formation rate of particles that satisfy the star formation criterion is still given by the Schmidt law.
 For all these runs HII regions cannot form stars.
 
-.. list-table:: 
+.. list-table::
    :widths: 40 15 15 15 15
    :width: 100%
    :header-rows: 1
@@ -284,11 +323,44 @@ For all these runs HII regions cannot form stars.
      - ❌
      - ❌
 
+Dust variations
+----------------
+
+.. list-table::
+   :widths: 40 15 15 15 15
+   :width: 100%
+   :header-rows: 1
+
+   * - Simulation Name
+     - L12m5
+     - L25m6
+     - L50m7
+     - L50m6
+   * - .. dropdown:: Thermal_noClumping
+
+          No dust clumping factor
+     - ✅
+     - ✅
+     - ❌
+     - ❌
+   * - .. dropdown:: Thermal_uncoupledDust
+
+          Dust uncoupled
+     - ✅
+     - ✅
+     - ✅
+     - ❌
+
+.. note::
+
+   ``L0100N0752/Thermal_noGrainGrowth`` is a dust variation run with grain growth
+   disabled. It has been run to :math:`z=9`. Contact Evgenii Chaikin.
+
 
 Additional variations
 ---------------------
 
-.. list-table:: 
+.. list-table::
    :widths: 40 15 15 15 15
    :width: 100%
    :header-rows: 1
@@ -305,39 +377,3 @@ Additional variations
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_2p0SFE
-
-          Double SF efficiency
-     - ✅
-     - ✅
-     - ✅
-     - ❌
-   * - .. dropdown:: Thermal_0p5SFE
-
-          Half SF efficiency
-     - ✅
-     - ✅
-     - ✅
-     - ❌
-   * - .. dropdown:: Thermal_noClumping
-
-          No dust clumping factor
-     - ✅
-     - ✅
-     - ❌
-     - ❌
-   * - .. dropdown:: Thermal_uncoupledDust
-
-          Dust uncoupled
-     - ✅
-     - ✅
-     - ✅
-     - ❌
-
-
-High redshift variations
-------------------------
-
-The following runs have been stopped at high redshift:
-
-* ``L0100N0752/Thermal_noGrainGrowth`` - Run to :math:`z=9`. Contact Evgenii Chaikin
