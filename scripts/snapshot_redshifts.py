@@ -1,12 +1,15 @@
 import swiftsimio as sw
 
-print('.. list-table::')
-print('   :header-rows: 1')
-print('')
-print('   * - Index')
-print('     - Redshift')
-print('     - Age [Gyr]')
-print('     - Output type')
+header = '''
+  .. list-table::
+   :header-rows: 1
+
+   * - Index
+     - Redshift
+     - Age [Gyr]
+     - Output type'''
+
+print(header)
 
 run_dir = '/cosma8/data/dp004/colibre/Runs/L0025N0188/Thermal'
 for i in range(128):
@@ -16,6 +19,9 @@ for i in range(128):
     age = snap.metadata.time.to_value('Gyr')
 
     print(f'   * - {i}')
-    print(f'     - {z:.2f}')
+    print(f'     - {z:.4f}')
     print(f'     - {age:.3f}')
     print(f'     - {output_type}')
+
+    if i in [41, 84]:
+        print(header)
