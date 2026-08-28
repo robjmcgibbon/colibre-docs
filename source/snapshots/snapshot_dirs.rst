@@ -84,9 +84,19 @@ Each one of these files contains the properties of particles for part of
 the simulation volume. To read the complete data for a snapshot, it is necessary
 to read from all of the files in the corresponding set.
 
-If you download the virtual snapshot file, it will only be readable
-if you also download all the snapshot data files and
-maintain the original directory structure.
+.. warning:: The virtual snapshot file
+   ``colibre_with_soap_membership_XXXX.hdf5`` does **not** contain any
+   particle data itself. If you download a virtual snapshot you
+   **must** also download all of its data files:
+
+   - every SWIFT chunk file in ``snapshots/colibre_XXXX/``, and
+   - every membership chunk file in ``SOAP-HBT/membership_XXXX/``.
+
+   The virtual file refers to these chunk files by their **relative
+   path**, so you must keep the ``snapshots`` and ``SOAP-HBT``
+   directories in their original relative layout. The safest approach
+   is to download each directory in full and unpack them under a common
+   parent directory.
 
 .. warning:: If HDF5 can't find the data for a virtual dataset, it
    silently returns incorrect "fill" values! So if you download a
