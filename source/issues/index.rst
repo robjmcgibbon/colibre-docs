@@ -35,6 +35,26 @@ observational properties of galaxies, such as their X-ray
 emission. We therefore advise to test the effect of excluding recently heated/kicked particles, which can be done
 using the particle property tracking the last time a particle was injected with feedback energy.
 
+.. _issues_spurious_bh_seeding:
+
+Spurious black hole seeding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the L200m6 simulation a single friends-of-friends black hole seeding pass
+at :math:`a = 0.820801` (:math:`z \approx 0.218`) produced roughly
+780,000 black holes in one step, about 45 times more than a normal seeding
+pass at this redshift (typically 16,000-17,000).
+
+These particles first appear in snapshot 114
+and can be identified with ``FormationScaleFactors == 0.82080078125``.
+At snapshot 114 about 77% of them are not in any FoF group
+(``FOFGroupIDs == 2147483647``), with the remaining 23% assigned to a FoF group.
+99% of these spurious black holes persist to :math:`z = 0`,
+but the majority remain at their seed mass and do not grow
+through accretion or mergers.
+As a result global black hole scaling relations for this run
+(e.g. the black hole mass - stellar mass relation) are unaffected.
+
 Snapshots
 ---------
 
