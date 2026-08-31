@@ -4,8 +4,9 @@ Variation runs
 The following table provides a list of model variation runs,
 which are simulations where specific subgrid parameters
 have been modified relative to the fiducial COLIBRE model.
-The first column contains the internal name of these variations,
-and each entry can be clicked to reveal a description of the variation.
+The first column contains the name of these variations,
+and each entry can be clicked to reveal a description of the variation
+along with the name of the directory containing the run.
 The subsequent columns indicate the availability of these runs 
 across different box sizes and resolutions.
 
@@ -34,14 +35,22 @@ Stellar feedback variations
      - L25m6
      - L50m7
      - L50m6
-   * - .. dropdown:: Thermal_2p0SNenergy
+   * - .. dropdown:: 2p0SNenergy
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_2p0SNenergy``
 
           Double SNII energy
      - ✅
      - ✅
      - ✅
      - ✅
-   * - .. dropdown:: Thermal_0p5SNenergy
+   * - .. dropdown:: 0p5SNenergy
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_0p5SNenergy``
 
           Half SNII energy
      - ✅
@@ -50,6 +59,10 @@ Stellar feedback variations
      - ✅
    * - .. dropdown:: Hybrid_2p0SNenergy
 
+          .. container:: run-dir
+
+             Directory name: ``Hybrid_2p0SNenergy``
+
           Double SNII energy
      - ✅
      - ✅
@@ -57,40 +70,64 @@ Stellar feedback variations
      - ❌
    * - .. dropdown:: Hybrid_0p5SNenergy
 
+          .. container:: run-dir
+
+             Directory name: ``Hybrid_0p5SNenergy``
+
           Half SNII energy
      - ✅
      - ✅
      - ❌
      - ❌
-   * - .. dropdown:: Thermal_noSN
+   * - .. dropdown:: NoSN
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_noSN``
 
           No supernova. Early feedback still enabled
      - ❌
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_noEarly
+   * - .. dropdown:: NoEarly
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_noEarly``
 
           No early feedback
      - ✅
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_noSNIa
+   * - .. dropdown:: NoSNIa
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_noSNIa``
 
           No SNIa (keeping enrichment)
      - ❌
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_noKineticFixedThermal
+   * - .. dropdown:: NoKineticFixedThermal
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_noKineticFixedThermal``
 
           No kinetic feedback (same thermal energy)
      - ✅
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_noKineticFixedTotal
+   * - .. dropdown:: NoKineticFixedTotal
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_noKineticFixedTotal``
 
           No kinetic feedback (same total energy)
      - ✅
@@ -111,35 +148,55 @@ AGN feedback variations
      - L25m6
      - L50m7
      - L50m6
-   * - .. dropdown:: Thermal_noAGN
+   * - .. dropdown:: NoAGN
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_noAGN``
 
           No AGN
      - ✅
      - ✅
      - ✅
      - ✅
-   * - .. dropdown:: Thermal_AGNdTminus0p5dex
+   * - .. dropdown:: AGNdTminus0p5dex
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_AGNdTminus0p5dex``
 
           dT_AGN - 0.5 dex
      - ❌
      - ❌
      - ✅
      - ✅
-   * - .. dropdown:: Thermal_AGNdTplus0p5dex
+   * - .. dropdown:: AGNdTplus0p5dex
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_AGNdTplus0p5dex``
 
           dT_AGN + 0.5 dex
      - ❌
      - ❌
      - ✅
      - ✅
-   * - .. dropdown:: Thermal_epsfplus0p3dex
+   * - .. dropdown:: epsfplus0p3dex
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_epsfplus0p3dex``
 
           AGN feedback efficiency + 0.3 dex
      - ❌
      - ❌
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_epsfminus0p3dex
+   * - .. dropdown:: epsfminus0p3dex
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_epsfminus0p3dex``
 
           AGN feedback efficiency - 0.3 dex
      - ❌
@@ -160,7 +217,11 @@ Black hole seed variations
      - L25m6
      - L50m7
      - L50m6
-   * - .. dropdown:: Thermal_Mseed0p5dexscatter
+   * - .. dropdown:: Mseed0p5dexscatter
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_Mseed0p5dexscatter``
 
           0.5 dex scatter in the BH seed mass
      - ✅
@@ -169,12 +230,20 @@ Black hole seed variations
      - ❌
    * - .. dropdown:: Hybrid_Mseed0p5dexscatter
 
+          .. container:: run-dir
+
+             Directory name: ``Hybrid_Mseed0p5dexscatter``
+
           0.5 dex scatter in the BH seed mass
      - ✅
      - ✅
      - ✅
      - ❌
    * - .. dropdown:: Hybrid_thermalSeed
+
+          .. container:: run-dir
+
+             Directory name: ``Hybrid_thermalSeed``
 
           Thermal seed mass (different SN parameters)
      - ❌
@@ -183,19 +252,31 @@ Black hole seed variations
      - ❌
    * - .. dropdown:: Hybrid_thermalSeed_thermalSN
 
+          .. container:: run-dir
+
+             Directory name: ``Hybrid_thermalSeed_thermalSN``
+
           Thermal seed mass & supernova
      - ❌
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_Mseedminus0p5dex
+   * - .. dropdown:: Mseedminus0p5dex
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_Mseedminus0p5dex``
 
           BH seed - 0.5 dex
      - ❌
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_Mseedplus0p5dex
+   * - .. dropdown:: Mseedplus0p5dex
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_Mseedplus0p5dex``
 
           BH seed + 0.5 dex
      - ❌
@@ -216,35 +297,55 @@ Cooling variations
      - L25m6
      - L50m7
      - L50m6
-   * - .. dropdown:: Thermal_eq_with_O
+   * - .. dropdown:: Non-equilibrium Oxygen
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_eq_with_O``
 
           Non-equil. Chemistry incl. O for H2
      - ❌
      - ❌
      - ✅
      - ✅
-   * - .. dropdown:: Thermal_ISRFx10
+   * - .. dropdown:: ISRFx10
 
-          ISRF x 10
+          .. container:: run-dir
+
+             Directory name: ``Thermal_ISRFx10``
+
+          Interstellar radiation field boosted by factor of 10
      - ✅
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_noISRF
+   * - .. dropdown:: NoISRF
 
-          No ISRF
+          .. container:: run-dir
+
+             Directory name: ``Thermal_noISRF``
+
+          No interstellar radiation field
      - ✅
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_CRx0p1
+   * - .. dropdown:: CRx0p1
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_CRx0p1``
 
           Cosmic Ray / 10
      - ✅
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_equilibrium
+   * - .. dropdown:: Chemical equilibrium
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_equilibrium``
 
           Equilibrium Chemistry also for H and He
      - ✅
@@ -266,14 +367,22 @@ Star formation variations
      - L25m6
      - L50m7
      - L50m6
-   * - .. dropdown:: Thermal_2p0SFE
+   * - .. dropdown:: 2p0SFE
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_2p0SFE``
 
           Double SF efficiency
      - ✅
      - ✅
      - ✅
      - ❌
-   * - .. dropdown:: Thermal_0p5SFE
+   * - .. dropdown:: 0p5SFE
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_0p5SFE``
 
           Half SF efficiency
      - ✅
@@ -295,16 +404,25 @@ For all these runs HII regions cannot form stars.
      - L25m6
      - L50m7
      - L50m6
-   * - .. dropdown:: Thermal_eagleSF
+   * - .. dropdown:: EagleSF
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_eagleSF``
 
           Uses the EAGLE metallicity dependent density threshold
           (eqn 2 of the EAGLE overview paper), and
           also requires :math:`T < 10^{4.5} \rm{K}`.
+
      - ❌
      - ✅
      - ❌
      - ❌
-   * - .. dropdown:: Thermal_fixedRhoSF
+   * - .. dropdown:: FixedRhoSF
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_fixedRhoSF``
 
           SF threshold :math:`n_H > 0.1 \rm{cm}^{-3}` and :math:`T < 10^{4.5} \rm{K}`,
           where :math:`n_H = \rho X_H / m_H`,
@@ -313,7 +431,11 @@ For all these runs HII regions cannot form stars.
      - ✅
      - ❌
      - ❌
-   * - .. dropdown:: Thermal_noTurbSF
+   * - .. dropdown:: NoTurbSF
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_noTurbSF``
 
           Uses the same gravitational instability SF threshold criterion as
           the fiducial COLIBRE model (eqn 6 of the overview paper), but with
@@ -336,14 +458,22 @@ Dust variations
      - L25m6
      - L50m7
      - L50m6
-   * - .. dropdown:: Thermal_noClumping
+   * - .. dropdown:: NoClumping
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_noClumping``
 
           No dust clumping factor
      - ✅
      - ✅
      - ❌
      - ❌
-   * - .. dropdown:: Thermal_uncoupledDust
+   * - .. dropdown:: UncoupledDust
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_uncoupledDust``
 
           Dust uncoupled
      - ✅
@@ -370,7 +500,11 @@ Additional variations
      - L25m6
      - L50m7
      - L50m6
-   * - .. dropdown:: Thermal_equalNdm
+   * - .. dropdown:: EqualNdm
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_equalNdm``
 
           Equal number of dark matter and gas particles
      - ✅
