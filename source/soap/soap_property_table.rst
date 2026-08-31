@@ -2057,16 +2057,6 @@ Copied properties
      - basic
      - \-
      - Level of the subhalo in the merging hierarchy.
-   * - .. dropdown:: ``input_halos_hbtplus.descendant_track_id``
-
-          * **HDF5 name:** ``InputHalos/HBTplus/DescendantTrackId``
-          * **Shape:** 1
-          * **Type:** int64
-          * **Units:** dimensionless
-          * **Compression:** no compression
-     - basic
-     - \-
-     - TrackId of the descendant of this subhalo.
    * - .. dropdown:: ``input_halos_hbtplus.host_fofid``
 
           * **HDF5 name:** ``InputHalos/HBTplus/HostFOFId``
