@@ -53,21 +53,6 @@ The repository also includes `guidance on adding new properties <https://github.
        NumberOfGasParticles: true
        NumberOfStarParticles: true
        TotalMass: true
-   ApertureProperties:
-     properties:
-       {}
-     variations:
-       {}
-   ProjectedApertureProperties:
-     properties:
-       {}
-     variations:
-       {}
-   SOProperties:
-     properties:
-       {}
-     variations:
-       {}
 
    aliases:
      PartType0/LastSNIIKineticFeedbackDensities: PartType0/DensitiesAtLastSupernovaEvent
@@ -86,24 +71,6 @@ The repository also includes `guidance on adding new properties <https://github.
          - BoundSubhalo/NumberOfStarParticles
          - BoundSubhalo/NumberOfBlackHoleParticles
        combine_properties: sum
-     baryon:
-       limit: 0
-       properties:
-         - BoundSubhalo/NumberOfGasParticles
-         - BoundSubhalo/NumberOfStarParticles
-       combine_properties: sum
-     dm:
-       limit: 0
-       properties:
-         - BoundSubhalo/NumberOfDarkMatterParticles
-     gas:
-       limit: 0
-       properties:
-         - BoundSubhalo/NumberOfGasParticles
-     star:
-       limit: 0
-       properties:
-         - BoundSubhalo/NumberOfStarParticles
    defined_constants:
      O_H_sun: 4.9e-4
      Fe_H_sun: 3.16e-5
