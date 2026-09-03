@@ -55,6 +55,15 @@ through accretion or mergers.
 As a result global black hole scaling relations for this run
 (e.g. the black hole mass - stellar mass relation) are unaffected.
 
+Run restarted from snapshot
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The L200m6 DMO run experienced a disc failure at (:math:`z \approx 0.22`) and was
+restarted from the most recent snapshot. This restart introduced minor
+discontinuities in the time integration of some particle trajectories.
+To quantify the effect of the restart, the L100m6 DMO run was restarted from the same
+snapshot and compared with the uninterrupted run, with negligible differences between the two.
+
 Snapshots
 ---------
 
