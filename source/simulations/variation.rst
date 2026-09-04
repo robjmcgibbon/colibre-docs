@@ -33,8 +33,8 @@ Stellar feedback variations
    * - Simulation Name
      - L12m5
      - L25m6
-     - L50m7
      - L50m6
+     - L50m7
    * - .. dropdown:: 2p0SNenergy
 
           .. container:: run-dir
@@ -88,8 +88,8 @@ Stellar feedback variations
           No supernova. Early feedback still enabled
      - ❌
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: NoEarly
 
           .. container:: run-dir
@@ -99,8 +99,8 @@ Stellar feedback variations
           No early feedback
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: NoSNIa
 
           .. container:: run-dir
@@ -110,8 +110,8 @@ Stellar feedback variations
           No SNIa (keeping enrichment)
      - ❌
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: NoKineticFixedThermal
 
           .. container:: run-dir
@@ -121,8 +121,8 @@ Stellar feedback variations
           No kinetic feedback (same thermal energy)
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: NoKineticFixedTotal
 
           .. container:: run-dir
@@ -132,8 +132,8 @@ Stellar feedback variations
           No kinetic feedback (same total energy)
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
 
 AGN feedback variations
 -----------------------
@@ -146,8 +146,8 @@ AGN feedback variations
    * - Simulation Name
      - L12m5
      - L25m6
-     - L50m7
      - L50m6
+     - L50m7
    * - .. dropdown:: NoAGN
 
           .. container:: run-dir
@@ -190,8 +190,8 @@ AGN feedback variations
           AGN feedback efficiency + 0.3 dex
      - ❌
      - ❌
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: epsfminus0p3dex
 
           .. container:: run-dir
@@ -201,8 +201,8 @@ AGN feedback variations
           AGN feedback efficiency - 0.3 dex
      - ❌
      - ❌
-     - ✅
      - ❌
+     - ✅
 
 Black hole seed variations
 ---------------------------
@@ -215,8 +215,8 @@ Black hole seed variations
    * - Simulation Name
      - L12m5
      - L25m6
-     - L50m7
      - L50m6
+     - L50m7
    * - .. dropdown:: Mseed0p5dexscatter
 
           .. container:: run-dir
@@ -226,8 +226,8 @@ Black hole seed variations
           0.5 dex scatter in the BH seed mass
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: Hybrid_Mseed0p5dexscatter
 
           .. container:: run-dir
@@ -237,8 +237,8 @@ Black hole seed variations
           0.5 dex scatter in the BH seed mass
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: Hybrid_thermalSeed
 
           .. container:: run-dir
@@ -248,8 +248,8 @@ Black hole seed variations
           Thermal seed mass (different SN parameters)
      - ❌
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: Hybrid_thermalSeed_thermalSN
 
           .. container:: run-dir
@@ -259,8 +259,8 @@ Black hole seed variations
           Thermal seed mass & supernova
      - ❌
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: Mseedminus0p5dex
 
           .. container:: run-dir
@@ -270,8 +270,8 @@ Black hole seed variations
           BH seed - 0.5 dex
      - ❌
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: Mseedplus0p5dex
 
           .. container:: run-dir
@@ -281,8 +281,8 @@ Black hole seed variations
           BH seed + 0.5 dex
      - ❌
      - ✅
-     - ✅
      - ❌
+     - ✅
 
 Cooling variations
 ---------------------
@@ -295,8 +295,8 @@ Cooling variations
    * - Simulation Name
      - L12m5
      - L25m6
-     - L50m7
      - L50m6
+     - L50m7
    * - .. dropdown:: Non-equilibrium Oxygen
 
           .. container:: run-dir
@@ -317,8 +317,8 @@ Cooling variations
           Interstellar radiation field boosted by factor of 10
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: NoISRF
 
           .. container:: run-dir
@@ -328,8 +328,8 @@ Cooling variations
           No interstellar radiation field
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: CRx0p1
 
           .. container:: run-dir
@@ -339,8 +339,8 @@ Cooling variations
           Cosmic Ray / 10
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: Chemical equilibrium
 
           .. container:: run-dir
@@ -350,9 +350,23 @@ Cooling variations
           Equilibrium Chemistry also for H and He
      - ✅
      - ✅
+     - ❌
+     - ✅
+   * - .. dropdown:: Full non-equilibrium chemistry
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_NEQ``
+
+          Non-equilibrium chemistry for all species in the CHIMES network
+     - ✅
      - ✅
      - ❌
+     - ✅
 
+.. note::
+
+   A L25m7 run with full non-equilibrium chemistry is also available
 
 Star formation variations
 -------------------------
@@ -365,8 +379,8 @@ Star formation variations
    * - Simulation Name
      - L12m5
      - L25m6
-     - L50m7
      - L50m6
+     - L50m7
    * - .. dropdown:: 2p0SFE
 
           .. container:: run-dir
@@ -376,8 +390,8 @@ Star formation variations
           Double SF efficiency
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
    * - .. dropdown:: 0p5SFE
 
           .. container:: run-dir
@@ -387,8 +401,8 @@ Star formation variations
           Half SF efficiency
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
 
 The following runs use different criteria to determine whether a gas particle is star forming.
 The star formation rate of particles that satisfy the star formation criterion is still given by the Schmidt law.
@@ -402,8 +416,8 @@ For all these runs HII regions cannot form stars.
    * - Simulation Name
      - L12m5
      - L25m6
-     - L50m7
      - L50m6
+     - L50m7
    * - .. dropdown:: EagleSF
 
           .. container:: run-dir
@@ -456,8 +470,8 @@ Dust variations
    * - Simulation Name
      - L12m5
      - L25m6
-     - L50m7
      - L50m6
+     - L50m7
    * - .. dropdown:: NoClumping
 
           .. container:: run-dir
@@ -478,8 +492,8 @@ Dust variations
           Dust uncoupled
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
 
 .. note::
 
@@ -498,8 +512,8 @@ Additional variations
    * - Simulation Name
      - L12m5
      - L25m6
-     - L50m7
      - L50m6
+     - L50m7
    * - .. dropdown:: EqualNdm
 
           .. container:: run-dir
@@ -509,5 +523,5 @@ Additional variations
           Equal number of dark matter and gas particles
      - ✅
      - ✅
-     - ✅
      - ❌
+     - ✅
