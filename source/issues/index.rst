@@ -62,7 +62,8 @@ The L200m6 DMO run experienced a disc failure at (:math:`z \approx 0.22`) and wa
 restarted from the most recent snapshot. This restart introduced minor
 discontinuities in the time integration of some particle trajectories.
 To quantify the effect of the restart, the L100m6 DMO run was restarted from the same
-snapshot and compared with the uninterrupted run, with negligible differences between the two.
+snapshot and compared with the uninterrupted run, with negligible differences
+found between the two.
 
 Snapshots
 ---------
@@ -72,7 +73,8 @@ Snapshots
 Overflow in progenitor IDs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The field ``ProgenitorParticleIDs`` was initialised with values that overflowed for some particles.
+For some runs the field ``ProgenitorParticleIDs`` was initialised with values that overflowed for some particles.
+
 Runs affected:
 
 * ``L0100N0752/Thermal``
@@ -89,13 +91,22 @@ Runs affected:
 Untrackable splits
 ~~~~~~~~~~~~~~~~~~
 
-The information that is used to track particle splits can accommodate up to 64 splits. A very small number of particles have > 64.
+For some runs the information that is used to track particle splits
+could only accommodate up to 64 splits.
+This limit was due to the format of the ``SplitTrees`` dataset.
+A very small number of particles in these runs have > 64 splits.
 
 Runs affected:
 
 * ``L0050N0752/Thermal``
 * ``L0050N0752/Hybrid``
 * ``L0100N1504/Thermal``
+
+The updated version of the code can correctly track particle splits up to 255 splits,
+as the ``SplitCounts`` dataset has datatype ``uint8``.
+The following runs have a small number of particles with > 255 splits:
+
+* ``L0050N1504/Thermal``
 
 .. Also the old variation runs?
 
