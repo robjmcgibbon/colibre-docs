@@ -17,7 +17,7 @@ Creating a SWIFTGalaxy
 ----------------------
 
 A ``SWIFTGalaxy`` needs two things: the path to the virtual snapshot
-file (the same file used with swiftsimio, which must contain the HBT-Herons
+file (the same file used with swiftsimio, which must contain the HBT-HERONS
 membership information) and an initialised halo finder object. For
 COLIBRE outputs we use the ``SOAP`` halo catalogue class. The
 ``soap_index`` identifies the row in the SOAP catalogue corresponding
@@ -89,7 +89,7 @@ automatically recentred on the subhalo of interest at construction
 time, so all coordinates are in the subhalo's rest frame. If we print
 the median we can see the value is close to zero as expected::
 
-  >>> print(np.median(sg.stars.coordinates, axis=0)
+  >>> print(np.median(sg.stars.coordinates, axis=0))
   [-0.00043459 -0.00018946  0.00061128] Mpc (Comoving)
 
 SOAP integrated properties are also available through the

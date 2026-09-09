@@ -166,7 +166,7 @@ Evolution of a subhalo example
     sim = 'L0025N0188/Thermal'
     final_snap_nr = 127
 
-    # Load the z=0 SOAP catalogue from the L1_m9 simulation
+    # Load the z=0 SOAP catalogue from the L025m7 simulation
     soap = sw.load(f"{root_dir}/{sim}/SOAP-HBT/halo_properties_{final_snap_nr:04}.hdf5")
 
     # Pick the most massive satellite which has lost at least 70% of its mass

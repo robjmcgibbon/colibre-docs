@@ -33,7 +33,8 @@ is given by the value of ``BoundSubhalo/HalfMassRadiusTotal``), meaning a differ
 Inclusive sphere
 ----------------
 
-Inclusive sphere properties apply an aperture radii cut, the same as the exclusive sphere
+Inclusive sphere properties apply an aperture radius cut,
+the same as the exclusive sphere
 quantities. However for the inclusive sphere we include all particles within the radius, regardless of their
 membership status.
 The quantities are stored within the group ``InclusiveSphere``.
@@ -50,8 +51,9 @@ Exclusive projected aperture
 ----------------------------
 
 Exclusive projected quantities are similar to exclusive sphere quantities, except that their
-aperture cut is applied in projection. For each radii there are three  independent projections: along the
-x-, y-, and z-axis. Along the projection axis, we do not apply any radial cut, meaning the depth corresponds to all particles
+aperture cut is applied in projection. For each radius there are three 
+independent projections: along the
+x-, y-, and z-axes. Along the projection axis, we do not apply any radial cut, meaning the depth corresponds to all particles
 bound to the subhalo. Projected aperture quantities are stored in a group named
 ``ProjectedAperture/XXX/projP``, where ``XXX`` is the corresponding aperture cut, and ``P``
 corresponds to a particular projection direction (``x``, ``y`` or ``z``).
@@ -74,7 +76,7 @@ or a multiple of such a radius (5xR 500 crit).
 See `Spherical overdensity calculations`_ for details about how the radii are
 calculated.
 Spherical overdensities are only computed for centrals,
-i.e. field halos. The inclusive sphere quantities are stored in a group
+i.e. field halos. The spherical overdensity quantities are stored in a group
 ``spherical_overdensity_XXX``, where ``XXX`` are the target density values
 listed above.
 
@@ -82,7 +84,7 @@ Input Halos
 -----------
 
 Some properties are copied directly from the original subhalo catalogue
-that was passed to SOAP. These are stored in a three separate groups.
+that was passed to SOAP. These are stored in three separate groups.
 ``input_halos`` contains the fundamental properties required for SOAP
 to run. ``input_halos_fof`` contains the FoF properties of the host of
 each central subhalo. ``input_halos_hbtplus`` contains properties copied directly
@@ -269,13 +271,6 @@ after sorting the particles by radius. The process is as follows:
       \begin{equation}
       M_{\rm{}SO} = \frac{4\pi{}}{3} R_{\rm{}SO}^{3} \rho{}_{\rm{}target}
       \end{equation}
-
-Neutrinos (if present in the model) are included in the spherical
-overdensity calculation by adding both their weighted
-masses (which can be negative), as well as the contribution from the
-background neutrino density. The latter is achieved by explicitly adding
-the cumulative mass profile at constant neutrino density to the total
-cumulative mass profile before computing the density profile.
 
 The SOAP process is different to that used by some halo finders, where 
 both the mass and the radius are obtained from independent interpolations

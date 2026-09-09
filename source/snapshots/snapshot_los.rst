@@ -18,7 +18,7 @@ The line-of-sight files can be read with swiftsimio, and
 contain all the gas fields present in the snapshots.
 
 These files are made to be used with an updated version of the
-SpecWizard (`Theuns et al 1998
-<https://ui.adsabs.harvard.edu/abs/1998MNRAS.301..478T>`__,  `Schaye et al. 2003
+SpecWizard (`Theuns et al. 1998
+<https://ui.adsabs.harvard.edu/abs/1998MNRAS.301..478T>`__, `Schaye et al. 2003
 <https://ui.adsabs.harvard.edu/abs/2003ApJ...596..768S>`__) code,
 please get in contact if you are interested.

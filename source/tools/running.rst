@@ -14,7 +14,7 @@ Setting up the environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To run notebooks on COSMA, you must first set up your environment. 
-You must logged into cosma8b, as this node hosts the `Jupyter Hub instance <https://cosma.readthedocs.io/en/latest/jupyter.html>`__.
+You must be logged into cosma8b, as this node hosts the `Jupyter Hub instance <https://cosma.readthedocs.io/en/latest/jupyter.html>`__.
 Run the following commands to log in to the node, clone the 
 `introduction notebook <https://github.com/robjmcgibbon/COLIBRE_Introduction/tree/main>`__, and execute the setup script:
 
@@ -118,7 +118,7 @@ The job should be submitted using the following command:
 Data storage
 ------------
 
-You are provided with 2TB storage at ``/cosma8/data/do019/<your_username>``,
+You are provided with 2TB of storage at ``/cosma8/data/do019/<your_username>``,
 please clean up regularly and do not store data for longer than is necessary.
 You should not store data within your home directory.
 

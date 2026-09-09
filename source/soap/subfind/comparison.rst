@@ -16,7 +16,7 @@ Most properties agree well, with the exception being properties related to cold 
 .. image:: s127_2923_gas.png
 .. image:: s127_121223_gas.png
 
-Below are three plots of quenched fractions from the pipeline, one for each resolution. At the low mass end Subfind has a lower quenched fraction. This is because the Subfind catalogue contains many individual clumps, nearly all of which will be star forming. At the high mass end Subfind has a higher quenched fraction. This is because many star forming clumps are removed from massive star forming galaxies, reducing their SFR, and making them more likely to be classified as quenched. The difference increases with resolution, and is probably worse for COLIBRE than for previous simulations without a multiphase ISM
+Below are three plots of quenched fractions from the pipeline, one for each resolution. At the low mass end Subfind has a lower quenched fraction. This is because the Subfind catalogue contains many individual clumps, nearly all of which will be star-forming. At the high mass end Subfind has a higher quenched fraction. This is because many star-forming clumps are removed from massive star-forming galaxies, reducing their SFR, and making them more likely to be classified as quenched. The difference increases with resolution, and is probably worse for COLIBRE than for previous simulations without a multiphase ISM.
 
 .. image:: quenched_m5.png
 .. image:: quenched_m6.png

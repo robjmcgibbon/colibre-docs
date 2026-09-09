@@ -42,7 +42,7 @@ information (what subhalo each particle is bound to).
     SOAP-HBT/`"]
 
     soap --> soap_v["`**Virtual snapshot**
-    colibre_with_soap_membership_0000.hdf5`"]
+    colibre_with_SOAP_membership_0000.hdf5`"]
 
     soap --> m0000["`**Membership 0**
     membership_0000/`"]
@@ -59,16 +59,16 @@ Virtual snapshot file
 ---------------------
 
 The ``SOAP-HBT`` directories contains "virtual" snapshot files which have
-names of the form ``colibre_with_soap_membership_XXXX.hdf5``. 
-These files contains HDF5
+names of the form ``colibre_with_SOAP_membership_XXXX.hdf5``. 
+These files contain HDF5
 virtual datasets which refer to particle data distributed over a
-number of additional HDF5 files. This file can
+number of additional HDF5 files. Each virtual file can
 be treated as a single, large snapshot file which contains all of the
 particle properties.
 
 Each snapshot directory (``snapshots/colibre_XXXX``) also contains a virtual 
 snapshot file named ``colibre_XXXX.hdf5``. This 
-should only be used if the ``colibre_with_soap_membership_XXXX.hdf5`` file
+should only be used if the ``colibre_with_SOAP_membership_XXXX.hdf5`` file
 is missing, since it does not contain subhalo membership information.
 
 Snapshot data files
@@ -85,7 +85,7 @@ the simulation volume. To read the complete data for a snapshot, it is necessary
 to read from all of the files in the corresponding set.
 
 .. warning:: The virtual snapshot file
-   ``colibre_with_soap_membership_XXXX.hdf5`` does **not** contain any
+   ``colibre_with_SOAP_membership_XXXX.hdf5`` does **not** contain any
    particle data itself. If you download a virtual snapshot you
    **must** also download all of its data files:
 

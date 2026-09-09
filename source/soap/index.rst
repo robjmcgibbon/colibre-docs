@@ -28,12 +28,12 @@ halo/galaxy definitions, as described within the following pages.
 .. note:: Within the cosmological simulation community people refer to both
           "halos" and "subhalos", occasionally in an inconsistent manner.
           Within COLIBRE a halo corresponds to an overdensity of particles, originally found using the 3D FoF algorithm. Each halo contains one or more
-          subhalos, which are a self-bound collection of particles identified by
+          subhalos, which are self-bound collections of particles identified by
           HBT-HERONS. Subhalos can be either centrals (each halo has a single central subhalo,
           and the halo centre is defined as the position of the most bound 
           particle of its central subhalo), or satellites.
 
-The SOAP source code is available at `on github
+The SOAP source code is available `on github
 <https://github.com/SWIFTSIM/SOAP>`__ and the exact git revision which
 was used to generate a halo catalogue can be found by inspecting the
 ``git_hash`` attribute of the ``Code`` group in the HDF5 halo

@@ -5,7 +5,7 @@ This page provides answers to common questions regarding the simulations
 and the data products.
 It will be updated to reflect new user inquiries and technical developments.
 
-If you this page does not contain an answer to your question
+If this page does not contain an answer to your question
 (or if you have any suggestions for improvements to the documentation),
 then please message us on slack!
 

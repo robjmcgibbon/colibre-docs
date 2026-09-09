@@ -8,7 +8,7 @@ The most massive halo at :math:`z=0` (by :math:`M_{200c}`) is identified via its
 ``TrackId``, which remains consistent across all snapshots, allowing the halo
 to be located in each earlier catalogue.
 Note that if you need to do this for many objects, reading the raw
-`HBT-HERONS <../../soap/hbt_merger_trees.html>`__ output files directly may
+:doc:`HBT-HERONS <../../soap/hbt_merger_trees>` output files directly may
 be more efficient, as those files are sorted by ``TrackId``.
 
 .. code-block:: python

@@ -128,8 +128,8 @@ The exact units used for each particle property are documented in
 Particle types
 --------------
 
-The COLIBRE simulations contain gas, dark matter, star, black hole
-and neutrino particles. There is an HDF5 group for each particle
+The COLIBRE simulations contain gas, dark matter, star, and black hole
+particles. There is an HDF5 group for each particle
 type. Within these groups particle properties (position, mass,
 velocity etc) are stored as HDF5 datasets. The particle type groups
 follow Gadget-2's ``PartTypeX`` naming scheme but there are also
@@ -153,9 +153,6 @@ symbolic links to the groups with more descriptive names.
    * - Black hole particles
      - ``PartType5``
      - ``BHParticles``
-   * - Neutrino particles
-     - ``PartType6``
-     - ``NeutrinoParticles``
 
 The quantities stored for each particle type are described in :doc:`snapshot_particle_properties`.
 
@@ -233,13 +230,13 @@ are:
    * - None
      - No lossy compression has been applied to this dataset
    * - HalfFloat
-     - Float numbers with 10-bits mantissa and 5-bits exponent. Accurate to about 3 decimal digits but with limited range 6.1e-5 to 6.5e4.
+     - Float numbers with 10-bit mantissa and 5-bit exponent. Accurate to about 3 decimal digits but with limited range 6.1e-5 to 6.5e4.
    * - BFloat16
-     - Floating point numbers with 7-bits mantissa and 8-bits exponent. Accurate to about 2.4 decimal digits and has the same range as a 32 bit float.
+     - Floating point numbers with 7-bit mantissa and 8-bit exponent. Accurate to about 2.4 decimal digits and has the same range as a 32-bit float.
    * - FMantissa9
-     - Floating point numbers with 9-bits mantissa and 8-bits exponent. Accurate to about 3 decimal digits and has the same range as a 32 bit float.
+     - Floating point numbers with 9-bit mantissa and 8-bit exponent. Accurate to about 3 decimal digits and has the same range as a 32-bit float.
    * - DMantissa9
-     - Floating point numbers with 9-bits mantissa and 11-bits exponent. Accurate to about 3 decimal digits and has the same range as a 64 bit double.
+     - Floating point numbers with 9-bit mantissa and 11-bit exponent. Accurate to about 3 decimal digits and has the same range as a 64-bit double.
    * - DScale1
      - Stores floating point data accurate to 1 decimal place by multiplying by 10 and storing as an integer
    * - DScale5

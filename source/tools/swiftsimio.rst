@@ -58,7 +58,6 @@ available as::
   snap.metadata.n_dark_matter
   snap.metadata.n_stars
   snap.metadata.n_black_holes
-  snap.metadata.n_neutrinos
 
 The expansion factor and redshift of the snapshot are also available::
 
@@ -93,7 +92,7 @@ all star particles in the simulation::
 
 The result is a `cosmo_array
 <https://swiftsimio.readthedocs.io/en/latest/cosmo_array/index.html>`__,
-which is is a numpy array with unit and cosmology information
+which is a numpy array with unit and cosmology information
 attached. Units are handled using the `unyt
 <https://unyt.readthedocs.io/en/stable/>`__ module. In this example,
 the cosmo array records that the particle positions are in comoving
@@ -109,7 +108,7 @@ Mpc::
     [2.40909894e+01 2.49992534e+01 2.48510784e+01]] Mpc (Comoving)
 
 Arrays can easily be converted to different units, and between comoving
-and physical. **You should should always specify the units you want**::
+and physical. **You should always specify the units you want**::
 
    >>> print(star_pos.to_physical().to('kpc'))
    [[3.36292864e+02 1.38106864e+02 1.59138036e+03]
@@ -120,15 +119,15 @@ and physical. **You should should always specify the units you want**::
     [1.17337532e+04 1.20464287e+04 1.24487142e+04]
     [1.20454947e+04 1.24996267e+04 1.24255392e+04]] kpc (Physical)
 
-The property descriptions can also be access from the ``cosmo_array``::
+The property descriptions can also be accessed from the ``cosmo_array``::
 
-   >> print(data.stars.masses.name)
+   >>> print(snap.stars.masses.name)
    Masses of the particles at the current point in time (i.e. after stellar losses)
 
 Opening a SOAP catalogue
 ------------------------
 
-SOAP catalogues can be also be loaded using swiftsimio
+SOAP catalogues can also be loaded using swiftsimio
 
 .. code-block:: python
 
@@ -155,7 +154,7 @@ Similarly, we can find the list of halo properties which are available
 for a particular halo definition. If we're interested in properties
 evaluated using the particles bound to each subhalo, for example, the
 following will return the names of the available properties (they can 
-also by discovered by using tab completion)::
+also be discovered by using tab completion)::
 
   >>> print(soap.bound_subhalo)
   SWIFT dataset at /cosma8/data/dp004/colibre/Runs/L0025N0188/Thermal/SOAP-HBT/halo_properties_0092.hdf5

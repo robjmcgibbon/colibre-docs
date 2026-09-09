@@ -1,7 +1,7 @@
 Thermal AGN Feedback
 ====================
 
-The table below shows all the COLIBRE cosmological simulations run with thermal AGN feedback. The columns list the simulation identifier (where L is followed by the side length of the cubic simulation volume in comoving Mpc; m is followed by the rounded log :sub:`10` of the mean particle mass in solar masses (for both baryons and DM); h indicates hybrid AGN feedback); the comoving box side length, L; the number of baryonic particles, N :sub:`b`; the number of CDM particles, N :sub:`CDM`; the initial mean baryonic particle mass, m :sub:`g`; the mean CDM particle mass, m :sub:`CDM`; the Plummer-equivalent comoving gravitational softening length, ε :sub:`com`; the maximum proper gravitational softening length, ε :sub:`prop`. 
+The table below shows all the COLIBRE cosmological simulations run with thermal AGN feedback. The columns list the simulation identifier (where L is followed by the side length of the cubic simulation volume in comoving Mpc; m is followed by the rounded log :sub:`10` of the mean particle mass in solar masses (for both baryons and DM);); the comoving box side length, L; the number of baryonic particles, N :sub:`b`; the number of CDM particles, N :sub:`CDM`; the initial mean baryonic particle mass, m :sub:`g`; the mean CDM particle mass, m :sub:`CDM`; the Plummer-equivalent comoving gravitational softening length, ε :sub:`com`; the maximum proper gravitational softening length, ε :sub:`prop`. 
 
 .. list-table::
    :header-rows: 1

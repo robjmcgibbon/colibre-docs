@@ -9,7 +9,7 @@ an instant in time.
 
 Snapshots contain multiple particle types which model different matter
 components: cold dark matter (CDM), gas, stars, and black holes.
-In the dark matter only simulations only CDM
+In the dark-matter-only (DMO) simulations only CDM
 particles are present, but the CDM particles account for the mass in
 baryons, which are assumed to trace the distribution of the CDM. In
 the hydro simulations all particle types are present. Many physical

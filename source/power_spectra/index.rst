@@ -273,9 +273,11 @@ The files follow the naming convention ``power_<type>_<index>.txt``. The followi
     * ``gas-starBH``: Gas and stars/Black Holes
     * ``matter-pressure``: Total matter and electron pressure
 
-The power spectra do contain some small artifacts which are due to combining foldings, and are not real.
+The power spectra do contain some small artifacts which are due to
+combining foldings, and are not real.
 
-The files are stored as plain text with a descriptive header. The data is organized into three space-separated columns:
+The files are stored as plain text with a descriptive header.
+The data is organised into three space-separated columns:
 
   * ``Column (0) - Redshift (z)``: The redshift of the output.
   * ``Column (1) - Wavenumber (k)``: The wavenumber in units of :math:`\mathrm{Mpc}^{-1}` (note that there is **no** factor of :math:`\textit{h}`).

@@ -9,7 +9,7 @@ name of the property when opened using the swiftsimio library.
 Clicking on each property name will open a dropdown box,
 which contains information about the dataset within the HDF5 file.
 The second column gives a description of the property. Certain
-properties also contain a link to a footnote at the bottom of this page
+properties also contain a link to a footnote at the bottom of this page.
 The final column indicates whether the property is present in both
 snapshots and snipshots.
 
@@ -321,7 +321,7 @@ Gas particles
           * **Datatype:** float32
           * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Masses of the last FOF haloes the particles where part of. -1 if the particle has never been in a FOF group
+     - Masses of the last FOF haloes the particles were part of. -1 if the particle has never been in a FOF group
      - ❌
    * - .. dropdown:: ``last_fofhalo_masses_scale_factors``
 
@@ -411,7 +411,7 @@ Gas particles
           * **Datatype:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Fractions of the particles' masses that have been produced by common-envelop jets SN events
+     - Fractions of the particles' masses that have been produced by common-envelope jets SN events
      - ❌
    * - .. dropdown:: ``mass_fractions_from_collapsar``
 
@@ -690,7 +690,7 @@ Gas particles
           * **Datatype:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Fractions of the particles' masses that are in dust (sum of all grains species)
+     - Fractions of the particles' masses that are in dust (sum of all grain species)
      - ✅
    * - .. dropdown:: ``total_electron_number_densities``
 
@@ -717,7 +717,7 @@ Gas particles
           * **Datatype:** float32
           * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Physical velocity dispersions (3D) squared, this is the velocity dispersion of the total velocity (peculiar velocity + Hubble flow, a H x + a (dx/dt) ). Values of the Velocity dispersion that have the value of FLT_MAX are particles that do not have neighbours and therefore the velocity dispersion of these particles cannot be calculated
+     - Physical velocity dispersions (3D) squared, this is the velocity dispersion of the total velocity (peculiar velocity + Hubble flow, a H x + a (dx/dt) ). Values of the velocity dispersion that have the value of FLT_MAX are particles that do not have neighbours and therefore the velocity dispersion of these particles cannot be calculated.
      - ❌
    * - .. dropdown:: ``velocity_divergence_time_differentials``
 
@@ -744,7 +744,7 @@ Gas particles
           * **Datatype:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Viscosity coefficient (alpha_visc) of the particles, multiplied by the balsara switch
+     - Viscosity coefficient (alpha_visc) of the particles, multiplied by the Balsara switch
      - ❌
    * - .. dropdown:: ``xray_luminosities``
 
@@ -818,7 +818,7 @@ Hybrid properties
           * **Datatype:** float32
           * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - The integrals over the shocking rates, used for radio emission modeling, in physical frame. The first integral corresponds to the electron integral, the second to the magnetic field integral, and the last to the 'minimum' auxilliary integral (see documentation).
+     - The integrals over the shocking rates, used for radio emission modeling, in physical frame. The first integral corresponds to the electron integral, the second to the magnetic field integral, and the last to the 'minimum' auxiliary integral (see documentation).
      - ❌
    * - .. dropdown:: ``kicked_by_jet_feedback``
 
@@ -1054,7 +1054,7 @@ Star particles
           * **Datatype:** float32
           * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Masses of the last FOF haloes the particles where part of when they were still a gas particle. -1 if the particle has never been in a FOF group
+     - Masses of the last FOF haloes the particles were part of when they were still a gas particle. -1 if the particle has never been in a FOF group
      - ✅
    * - .. dropdown:: ``last_fofhalo_masses_scale_factors``
 
@@ -1135,7 +1135,7 @@ Star particles
           * **Datatype:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Fractions of the particles' masses that have been produced by common-envelop jets SN events
+     - Fractions of the particles' masses that have been produced by common-envelope jets SN events
      - ✅
    * - .. dropdown:: ``mass_fractions_from_collapsar``
 
@@ -1933,7 +1933,7 @@ Black hole particles
           * **Datatype:** float32
           * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Masses of the BH particles in europium that have been produced by common-envelop jets SN events
+     - Masses of the BH particles in europium that have been produced by common-envelope jets SN events
      - ✅
    * - .. dropdown:: ``masses_from_collapsar``
 
@@ -2349,7 +2349,7 @@ Hybrid properties
           * **Datatype:** float32
           * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - The total accreted mass in each accretion mode. The components to the mass accreted in the thick, thin and slim disc modes, respectively.
+     - The total accreted mass in each accretion mode. The components correspond to the mass accreted in the thick, thin and slim disc modes, respectively.
      - ✅
    * - .. dropdown:: ``total_radiated_energies``
 
@@ -2426,13 +2426,13 @@ The ``DustMassFractions`` dataset contains the following species.
 +=============+=====================+
 | 0           | GraphiteLarge       |
 +-------------+---------------------+
-| 1           | GraphiteSmall       |
+| 1           | MgSilicatesLarge    |
 +-------------+---------------------+
-| 2           | MgSilicatesLarge    |
+| 2           | FeSilicatesLarge    |
 +-------------+---------------------+
-| 3           | MgSilicatesSmall    |
+| 3           | GraphiteSmall       |
 +-------------+---------------------+
-| 4           | FeSilicatesLarge    |
+| 4           | MgSilicatesSmall    |
 +-------------+---------------------+
 | 5           | FeSilicatesSmall    |
 +-------------+---------------------+
@@ -2586,7 +2586,7 @@ the dust-free modelling of `Trayford et al. (2015)
 
 The rest frame, absolute AB-magnitude can be computed as:
 
-  :math:`M = -2.5 \log10(L)`
+  :math:`M = -2.5 \log_{10}(L)`
 
 where ``L`` is the dimensionless number stored in the
 dataset. Luminosities for the `GAMA <https://www.gama-survey.org/>`__

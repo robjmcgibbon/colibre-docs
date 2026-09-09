@@ -1604,7 +1604,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Energy flow rate of cold gas particles ($\log T < 3$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Energy flow rate of cold gas particles (:math:`\log T < 3`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``cold_gas_mass_flow_rate``
 
           * **HDF5 name:** ``ColdGasMassFlowRate``
@@ -1614,7 +1614,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass flow rate of cold gas particles ($\log T < 3$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Mass flow rate of cold gas particles (:math:`\log T < 3`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``cold_gas_momentum_flow_rate``
 
           * **HDF5 name:** ``ColdGasMomentumFlowRate``
@@ -1624,7 +1624,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Momentum flow rate of cold gas particles ($\log T < 3$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Momentum flow rate of cold gas particles (:math:`\log T < 3`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``cool_gas_energy_flow_rate``
 
           * **HDF5 name:** ``CoolGasEnergyFlowRate``
@@ -1634,7 +1634,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Energy flow rate of cool gas particles ($3 < \log T < 5$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Energy flow rate of cool gas particles (:math:`3 < \log T < 5`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``cool_gas_mass_flow_rate``
 
           * **HDF5 name:** ``CoolGasMassFlowRate``
@@ -1644,7 +1644,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass flow rate of cool gas particles ($3 < \log T < 5$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Mass flow rate of cool gas particles (:math:`3 < \log T < 5`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``cool_gas_momentum_flow_rate``
 
           * **HDF5 name:** ``CoolGasMomentumFlowRate``
@@ -1654,7 +1654,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Momentum flow rate of cool gas particles ($3 < \log T < 5$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Momentum flow rate of cool gas particles (:math:`3 < \log T < 5`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``dark_matter_concentration``
 
           * **HDF5 name:** ``DarkMatterConcentration``
@@ -1794,7 +1794,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Energy flow rate of hot gas particles ($7 < \log T$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Energy flow rate of hot gas particles (:math:`7 < \log T`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``hot_gas_mass_flow_rate``
 
           * **HDF5 name:** ``HotGasMassFlowRate``
@@ -1804,7 +1804,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass flow rate of hot gas particles ($7 < \log T$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Mass flow rate of hot gas particles (:math:`7 < \log T`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``hot_gas_momentum_flow_rate``
 
           * **HDF5 name:** ``HotGasMomentumFlowRate``
@@ -1814,7 +1814,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Momentum flow rate of hot gas particles ($7 < \log T$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Momentum flow rate of hot gas particles (:math:`7 < \log T`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``kappa_corot_baryons``
 
           * **HDF5 name:** ``KappaCorotBaryons``
@@ -2014,7 +2014,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Energy flow rate of warm gas particles ($5 < \log T < 7$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Energy flow rate of warm gas particles (:math:`5 < \log T < 7`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``warm_gas_mass_flow_rate``
 
           * **HDF5 name:** ``WarmGasMassFlowRate``
@@ -2024,7 +2024,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Mass flow rate of warm gas particles ($5 < \log T < 7$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Mass flow rate of warm gas particles (:math:`5 < \log T < 7`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
    * - .. dropdown:: ``warm_gas_momentum_flow_rate``
 
           * **HDF5 name:** ``WarmGasMomentumFlowRate``
@@ -2034,7 +2034,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Momentum flow rate of warm gas particles ($5 < \log T < 7$) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
+     - Momentum flow rate of warm gas particles (:math:`5 < \log T < 7`) through spherical shells. Contains 9 entries: inflow rate at 0.1R, 0.3R, R, outflow rate at 0.1R, 0.3R, R, fast outflow rate at 0.1R, 0.3R, R. `[7] <footnote-7_>`_
 
 Copied properties
 -----------------
@@ -2370,7 +2370,6 @@ the R1-concentration relation for :math:`1<c<1000`. Therefore, we set a floor of
 a ceiling of 1000 for the values calculated by SOAP. This method assumes halos have
 an NFW profile, and is only calculated for the
 following SO variations: 200 crit, 200 mean, and BN98.
-Neutrinos are included in the calculation of total concentration.
 The first moment of the density distribution, :math:`R1`, can be estimated from
 the concentration. From :math:`R1` the Einasto concentration can be calculated. It
 also possible to estimate other properties, such as :math:`v_{max}`, by using the :math:`R1`
@@ -2485,7 +2484,7 @@ relative to the center of mass velocity. For momentum flow rates the sum is
 
    \frac{1}{dR} \sum_{i} m_i \left(v_{r,i}^2 + \frac{c_s^2}{\gamma}\right),
 
-where :math:`c_s` is the sound speed and :math:`` = 5/3 (the second term accounts for pressure). For the gas phases we also calculate "fast outflow" rates. These are calculated by using the equations above, but only for particles that satisfy :math:`v_{r,i} > V_{max} / 4`, where :math:`V_{max}` is the maximum circular velocity of the halo. The flow rates are always positive, so to compute the net rate you must subtract the inflow rate from the outflow rate. Flow rates are only calculated for the
+where :math:`c_s` is the sound speed and :math:`\gamma{} = 5/3` (the second term accounts for pressure). For the gas phases we also calculate "fast outflow" rates. These are calculated by using the equations above, but only for particles that satisfy :math:`v_{r,i} > V_{max} / 4`, where :math:`V_{max}` is the maximum circular velocity of the halo. The flow rates are always positive, so to compute the net rate you must subtract the inflow rate from the outflow rate. Flow rates are only calculated for the
 following SO definitions: :math:`200_{c}`, :math:`200_{m}`, :math:`BN98`. To calculate the total gas flow rate the individual phases should be summed together.
 
 .. _footnote-8:
@@ -2569,9 +2568,9 @@ the averaging window is instead set equal to the interval, and the accumulated q
 
    y \, {d_A}^2(z) = \sum_i \frac{\sigma{}_T}{m_e c^2} n_{e,i} k_B T_{e,i} V_i,
 
-where :math:`d_A(z)` is the angular diameter distance, :math:`_T` is the Thomson cross section, :math:`m_e` the electron mass, :math:`c` the speed of light and :math:`k_B` the 
+where :math:`d_A(z)` is the angular diameter distance, :math:`\sigma{}_T` is the Thomson cross section, :math:`m_e` the electron mass, :math:`c` the speed of light and :math:`k_B` the 
 Boltzmann constant. :math:`n_{e,i}` and :math:`T_{e,i}` are the electron number density and electron temperature for gas 
-particle :math:`i`, while :math:`V_i=m_i/_i` is the SPH volume element that turns the sum over all particles :math:`i` 
+particle :math:`i`, while :math:`V_i=m_i/\rho{}_i` is the SPH volume element that turns the sum over all particles :math:`i` 
 within the inclusive sphere into a volume integral. Note that the snapshot already contains the individual 
 :math:`y_i` values for the SPH particles.
 
@@ -2597,7 +2596,7 @@ six columns:
 #. Small silicate grains of type 2
 
 The total graphite mass, ``DustGraphiteMass``, is then for example calculated by summing the masses 
-contained in columns 1 and 3.
+contained in columns 0 and 3.
 
 The mass of dust in molecular gas is defined as
 
@@ -2661,9 +2660,9 @@ LogarithmicMassWeighted properties, :math:`Z_{log}`, are calculated as
 
 .. math::
 
-   \log_{10}Z_{\mathrm{log,O/H}} = \frac{1}{\sum_i m_i} \sum_i m_i \: \log_{10} \left[ \max \left( \frac{n_{O,i}}{n_{H,i}}, \frac{f n_{O,\odot}}{n_{H,\odot}} \right) \right]
+   \log_{10}Z_{\mathrm{log,O/H}} = \frac{1}{\sum_i m_i} \sum_i m_i \: \log_{10} \left[ \max \left( \frac{n_{O,i}}{n_{H,i}}, f\frac{n_{O,\odot}}{n_{H,\odot}} \right) \right]
 
-where :math:`n_{O,}{n_{H,}}` is the solar ratio of oxygen to hydrogen, and :math:`f` is either :math:`10^{-3}` (high limit) or :math:`10^{-4}` (low limit). The max function is required to stop us getting infinities for particles with no oxygen.
+where :math:`\frac{n_{O,\odot}}{n_{H,\odot}}` is the solar ratio of oxygen to hydrogen, and :math:`f` is either :math:`10^{-3}` (high limit) or :math:`10^{-4}` (low limit). The max function is required to stop us getting infinities for particles with no oxygen.
 
 .. _footnote-22:
 
@@ -2706,7 +2705,7 @@ The relevant equation is
 
    u = \frac{P}{(\gamma{}-1)\rho{}},
 
-with :math:`=5/3`.
+with :math:`\gamma{}=5/3`.
 
 .. _footnote-27:
 

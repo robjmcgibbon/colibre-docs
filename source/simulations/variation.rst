@@ -85,7 +85,7 @@ Stellar feedback variations
 
              Directory name: ``Thermal_noSN``
 
-          No supernova. Early feedback still enabled
+          No supernovae. Early feedback still enabled
      - ❌
      - ✅
      - ❌
@@ -366,7 +366,7 @@ Cooling variations
 
 .. note::
 
-   A L25m7 run with full non-equilibrium chemistry is also available
+   An L25m7 run with full non-equilibrium chemistry is also available
 
 Star formation variations
 -------------------------

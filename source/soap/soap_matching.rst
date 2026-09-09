@@ -5,10 +5,10 @@ Matching catalogues are provided to link halos containing the same particles acr
 For each halo in the first simulation we take the IDs of all the particles bound and determine which halo in the second output contains the largest number of these IDs. This matching process is then repeated in the opposite direction and we check for cases where we have consistent matches in both directions. Matching is not carried out for satellite subhalos.
 
 Each hydrodynamical simulation is matched to its corresponding DMO run at the same resolution.
-Therefore, if you wish to match halos between the Thermal and Hybrid AGN feedback variations runs, you should do this via the DMO run.
+Therefore, if you wish to match halos between the Thermal and Hybrid AGN feedback variation runs, you should do this via the DMO run.
 There are currently no matching catalogues across resolutions.
 
-The output is a HDF5 file with the following datasets:
+The output is an HDF5 file with the following datasets:
 
     * ``MatchIndex1to2`` - for each subhalo in the first soap catalogue, index of the matching halo in the second.
     * ``MatchCount1to2`` - how many of the particles from the halo in the first catalogue are in the matched halo in the second.
@@ -43,7 +43,7 @@ Matching example
     # Load matching file
     sim1 = sim1.replace('/', '_')
     sim2 = sim2.replace('/', '_')
-    match_dir = f"/cosma8/data/dp004/dc-mcgi1/COLIBRE/matching/"
+    match_dir = "/cosma8/data/dp004/dc-mcgi1/COLIBRE/matching/"
     match_filename = f"{match_dir}/match_{sim1}_{sim2}_{snap_nr:04}.{nr_part}.hdf5"
     with h5py.File(match_filename, "r") as file:
         match_index = file["MatchIndex1to2"][:]

@@ -58,7 +58,7 @@ As a result global black hole scaling relations for this run
 Run restarted from snapshot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The L200m6 DMO run experienced a disc failure at (:math:`z \approx 0.22`) and was
+The L200m6 DMO run experienced a disk failure at :math:`z \approx 0.22` and was
 restarted from the most recent snapshot. This restart introduced minor
 discontinuities in the time integration of some particle trajectories.
 To quantify the effect of the restart, the L100m6 DMO run was restarted from the same
@@ -102,7 +102,7 @@ Runs affected:
 * ``L0050N0752/Hybrid``
 * ``L0100N1504/Thermal``
 
-The updated version of the code can correctly track particle splits up to 255 splits,
+The updated version of the code can correctly track 255 particle splits,
 as the ``SplitCounts`` dataset has datatype ``uint8``.
 The following runs have a small number of particles with > 255 splits:
 
@@ -115,7 +115,8 @@ The following runs have a small number of particles with > 255 splits:
 Kicked particles tracer
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The jet-related tracer recording BH IDs that kicked particles had a max value of 127
+The jet-related tracer recording BH IDs that kicked particles
+had a maximum value of 127.
 
 Runs affected:
 
@@ -130,7 +131,9 @@ Runs affected:
 No z=0 averaged quantities
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Time averaged quantities (SFRs and BH accretion rates) are missing for the z=0 snapshot
+Time averaged quantities (SFRs and BH accretion rates) are missing for the z=0 snapshot.
+
+Runs affected:
 
 * ``L0100N0752/Thermal``
 * ``L0100N0752/Hybrid``
@@ -172,8 +175,10 @@ HII region flag
 ~~~~~~~~~~~~~~~
 
 Gas particles have a property called ``HIIregionsEndTime``.
-This value can be useful since if it is equal -1 the particle is currently deemed to be in an HII region.
-Note however that some particles with ``HIIregionsEndTime == -1`` will have recently been hit by feedback,
+This value can be useful since if it is not equal to -1 then the particle
+is currently deemed to be in an HII region.
+Note however that some particles with ``HIIregionsEndTime != -1``
+will have recently been hit by feedback,
 and these should probably not be counted as HII regions (depending on your analysis).
 
 This property was originally not enabled to be output, and so is completely missing
@@ -241,6 +246,6 @@ Overflow in SnapshotIndexOfLastIsolation
 The field ``soap.input_halos_hbtplus.snapshot_of_last_isolation`` gives the
 latest snapshot when this subhalo was a central. It should be -1 if the subhalo
 has always been a central. However, the array was set to have an unsigned integer
-datatype, meaning that it could only contain positive values. When the value
+datatype, meaning that it could only contain non-negative values. When the value
 should have been -1 it wrapped around and was set as 18446744073709551615 instead
 (:math:`2^{64} - 1`, the maximum possible value for unsigned int64).
