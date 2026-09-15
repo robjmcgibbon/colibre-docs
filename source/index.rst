@@ -3,8 +3,8 @@ Welcome to the COLIBRE documentation
 
 This service provides documentation of the `COLIBRE
 simulations <https://colibre.strw.leidenuniv.nl/>`__ described in
-`Schaye et al (2026) <https://ui.adsabs.harvard.edu/abs/2025arXiv250821126S>`__
-and `Chaikin et al (2026) <https://ui.adsabs.harvard.edu/abs/2025arXiv250904067C>`__.
+`Schaye et al (2026) <https://ui.adsabs.harvard.edu/abs/2026MNRAS.548ag375S>`__
+and `Chaikin et al (2026) <https://ui.adsabs.harvard.edu/abs/2026MNRAS.548ag300C>`__.
 
 Everyone using the simulation data is expected to abide by the :download:`COLIBRE collaboration and publication policies <_static/colibre_policies.pdf>`.
 
