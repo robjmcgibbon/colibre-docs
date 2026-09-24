@@ -7,6 +7,8 @@ Running on COSMA
 `The COSMA website <https://cosma.readthedocs.io/en/latest/#>`__
 contains general information about using the COSMA HPC system.
 
+Before starting, make sure you can SSH into COSMA. See the `SSH guide <https://cosma.readthedocs.io/en/latest/ssh.html>`__ if you're having trouble.
+
 Jupyter Notebooks
 -----------------
 
@@ -45,7 +47,7 @@ To access the interface, you must reconnect using SSH port forwarding from a ter
 
 Then do the following:
 
-1. Open https://localhost:8443 in your web browser.
+1. Open https://localhost:8443 in your web browser. Your browser may warn that the connection is not private. This is not a problem, proceed past the warning (e.g. click "Advanced" then "Proceed") to continue.
 2. Log in with your COSMA username and password.
 3. Navigate to the ``COLIBRE_Introduction`` directory and open the notebook.
 4. Switch the kernel to ``colibre_workshop`` by clicking the kernel name in the top right and selecting it from the list.
