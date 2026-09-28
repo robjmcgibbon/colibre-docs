@@ -204,6 +204,81 @@ AGN feedback variations
      - ❌
      - ✅
 
+The runs in the table below were all carried out in an L100m7 volume. ``Thermal_splitAGN``
+uses the fiducial thermal AGN model and was run to :math:`z=0`. The other runs were
+restarted from it at different times, with black hole gas accretion disabled from
+that point onwards. Without accretion the black holes cannot grow (except through
+black hole mergers) and receive no energy to use for AGN feedback.
+
+.. list-table::
+   :widths: 40 30 30
+   :width: 100%
+   :header-rows: 1
+
+   * - Simulation Name
+     - AGN switched off
+     - First snapshot after split
+   * - .. dropdown:: splitAGN
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_splitAGN``
+
+          Parent run with the fiducial thermal AGN feedback
+     - Never
+     - N/A
+   * - .. dropdown:: splitAGN_z1
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_splitAGN_z1``
+
+          Black hole accretion disabled from :math:`z=1`
+     - :math:`z=1`
+     - ``0093``
+   * - .. dropdown:: splitAGN_1e9p5yr
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_splitAGN_1e9p5yr``
+
+          Black hole accretion disabled :math:`10^{9.5}` yr before :math:`z=0`
+     - :math:`10^{9.5}` yr before :math:`z=0`
+     - ``0112``
+   * - .. dropdown:: splitAGN_1e9p0yr
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_splitAGN_1e9p0yr``
+
+          Black hole accretion disabled :math:`10^{9}` yr before :math:`z=0`
+     - :math:`10^{9}` yr before :math:`z=0`
+     - ``0121``
+   * - .. dropdown:: splitAGN_1e8p5yr
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_splitAGN_1e8p5yr``
+
+          Black hole accretion disabled :math:`10^{8.5}` yr before :math:`z=0`
+     - :math:`10^{8.5}` yr before :math:`z=0`
+     - ``0125``
+   * - .. dropdown:: splitAGN_1e8p0yr
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_splitAGN_1e8p0yr``
+
+          Black hole accretion disabled :math:`10^{8}` yr before :math:`z=0`
+     - :math:`10^{8}` yr before :math:`z=0`
+     - ``0127``
+
+.. note::
+
+   There is also ``L0100N0752/Thermal_noAGN``, which is a separate L100m7 run
+   with no black holes at all. Unlike the runs in the table above, it does not
+   share its early evolution with ``Thermal_splitAGN``.
+
 Black hole seed variations
 ---------------------------
 
@@ -337,6 +412,28 @@ Cooling variations
              Directory name: ``Thermal_CRx0p1``
 
           Cosmic Ray / 10
+     - ✅
+     - ✅
+     - ❌
+     - ✅
+   * - .. dropdown:: Nshx0p5
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_Nshx0p5``
+
+          Shielding length halved
+     - ✅
+     - ✅
+     - ❌
+     - ✅
+   * - .. dropdown:: Nshx2p0
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_Nshx2p0``
+
+          Shielding length doubled
      - ✅
      - ✅
      - ❌
