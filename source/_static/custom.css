@@ -82,37 +82,42 @@ a.download code.literal {
   Styling for tables
 */
 
-/* Header Styling: Light background with a strong border */
+/*
+  Table colours use semi-transparent overlays and theme variables rather than
+  fixed colours, so they work in both the light and dark Piccolo modes.
+*/
+
+/* Header Styling: Tinted background with a strong border */
 table.docutils thead th {
-    background-color: #f8f9fb;
-    color: #333;
-    border-bottom: 2px solid #dee2e6;
-    text-align: center !important;
+    background-color: rgba(128, 128, 128, 0.08);
+    color: var(--fontColor);
+    border-bottom: 2px solid var(--dividerColor);
+    text-align: center;
 }
 
 /* Zebra Striping: Makes long lists easier to read */
 table.docutils tbody tr:nth-child(even) {
-    background-color: #fcfcfc;
+    background-color: rgba(128, 128, 128, 0.04);
 }
 
 /* Hover effect: Highlights the current row */
 /* Only applying to the simulation tables */
 table.simulation-table tbody tr:hover {
-    background-color: #f1f4f9;
+    background-color: rgba(38, 131, 224, 0.10);  /* tint of --mainNavColor */
 }
 
 /* Custom class for horizontal dividers, place a line after each resolution end */
 table.thermal-table.row-divider tr:nth-child(4) td {
-    border-bottom: 2px solid #333 !important;
+    border-bottom: 2px solid var(--faintFontColor);
 }
 table.thermal-table.row-divider tr:nth-child(8) td {
-    border-bottom: 2px solid #333 !important;
+    border-bottom: 2px solid var(--faintFontColor);
 }
 table.hybrid-table.row-divider tr:nth-child(2) td {
-    border-bottom: 2px solid #333 !important;
+    border-bottom: 2px solid var(--faintFontColor);
 }
 table.hybrid-table.row-divider tr:nth-child(5) td {
-    border-bottom: 2px solid #333 !important;
+    border-bottom: 2px solid var(--faintFontColor);
 }
 
 /* Slightly larger title for the "Getting started" admonition on the
@@ -128,7 +133,7 @@ div.table-grid {
   gap: 1rem;
 }
 div.table-grid > table {
-  border: 2px solid #444;     /* Add border to tables within grid */
+  border: 2px solid var(--faintFontColor);     /* Add border to tables within grid */
 }
 
 /*
