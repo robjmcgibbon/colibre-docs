@@ -57,7 +57,7 @@ html_js_files = []
 
 
 # Coloured inline roles for the SOAP property table.
-def _highlight_role(background):
+def _highlight_role(background, extra_style=""):
     """Return a docutils role function that wraps text in a highlighted <span>."""
 
     def role(name, rawtext, text, lineno, inliner, options=None, content=None):
@@ -67,6 +67,7 @@ def _highlight_role(background):
             " padding: 1px 4px;"
             " border-radius: 3px;"
             " font-family: monospace;"
+            f"{extra_style}"
         )
         html = f'<span style="{style}">{text}</span>'
         # raw() node so the HTML passes through unchanged; latex() node is a
@@ -81,5 +82,6 @@ def _highlight_role(background):
 def setup(app: Sphinx):
     app.add_role("avail", _highlight_role("#c8e6c9"))     # light green
     app.add_role("snaponly", _highlight_role("#bbdefb"))  # light blue
-    app.add_role("unavail", _highlight_role("#ffcdd2"))   # light red
+    # Add a strikethrough for colourblind folks to distinguish red/green
+    app.add_role("unavail", _highlight_role("#ffcdd2", " text-decoration: line-through;"))  # light red
 
