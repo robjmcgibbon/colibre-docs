@@ -238,6 +238,14 @@ Incorrect Hubble parameter for flow rate
 The :math:`z=0` value of the Hubble parameter was used when computing
 :ref:`the flow rates <footnote-7>` for all redshifts.
 
+Missing energies for DMO runs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The properties ``soap.bound_subhalo.kinetic_energy_total`` and
+``soap.bound_subhalo.potential_energy_total`` were originally only computed
+for the hydrodynamical runs. They are therefore missing from the SOAP
+catalogues of most DMO runs. These will be added in the future.
+
 .. _issues_overflow_snapshotindexoflastisolation:
 
 Overflow in SnapshotIndexOfLastIsolation

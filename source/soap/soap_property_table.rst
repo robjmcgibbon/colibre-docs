@@ -153,6 +153,16 @@ Dark matter only properties
      - basic
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
      - Total half mass radius. `[3] <footnote-3_>`_
+   * - .. dropdown:: ``kinetic_energy_total``
+
+          * **HDF5 name:** ``KineticEnergyTotal``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Total kinetic energy of the particles, relative to the centre of mass velocity. `[20] <footnote-20_>`_
    * - .. dropdown:: ``mass_fraction_external``
 
           * **HDF5 name:** ``MassFractionExternal``
@@ -223,6 +233,16 @@ Dark matter only properties
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - Number of dark matter particles.
+   * - .. dropdown:: ``potential_energy_total``
+
+          * **HDF5 name:** ``PotentialEnergyTotal``
+          * **Shape:** 1
+          * **Type:** float32
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
+          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
+     - basic
+     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
+     - Total potential energy of the subhalo.
    * - .. dropdown:: ``soradius``
 
           * **HDF5 name:** ``SORadius``
@@ -845,16 +865,6 @@ Hydrodynamical properties
      - basic
      - :unavail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
      - Total gas mass in hydrogen.
-   * - .. dropdown:: ``kinetic_energy_total``
-
-          * **HDF5 name:** ``KineticEnergyTotal``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - basic
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Total kinetic energy of the particles, relative to the centre of mass velocity. `[20] <footnote-20_>`_
    * - .. dropdown:: ``last_supernova_event_maximum_gas_density``
 
           * **HDF5 name:** ``LastSupernovaEventMaximumGasDensity``
@@ -1315,16 +1325,6 @@ Hydrodynamical properties
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
      - Number of star particles.
-   * - .. dropdown:: ``potential_energy_total``
-
-          * **HDF5 name:** ``PotentialEnergyTotal``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - basic
-     - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
-     - Total potential energy of the subhalo.
    * - .. dropdown:: ``spectroscopic_like_temperature``
 
           * **HDF5 name:** ``SpectroscopicLikeTemperature``
