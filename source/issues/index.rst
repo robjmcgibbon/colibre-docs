@@ -232,11 +232,20 @@ The SOAP catalogues contain the property ``soap.descendant_index`` which gives
 the index for the descendant of each subhalo. For some SOAP catalogues these
 values are missing. These will be added in the future.
 
-Incorrect Hubble parameter for flow rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _issues_flow_rate_pseudo_evolution:
 
-The :math:`z=0` value of the Hubble parameter was used when computing
-:ref:`the flow rates <footnote-7>` for all redshifts.
+Incorrect pseudo-evolution correction for flow rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:ref:`The flow rates <footnote-7>` include a correction for the
+pseudo-evolution of the SO radius. In older SOAP catalogues the :math:`z=0`
+values of the density parameters were used when computing this correction
+for all redshifts. The correction also assumed the ``200_crit`` definition,
+so the flow rates for the other SO definitions (``200_mean`` and ``BN98``)
+are incorrect.
+Catalogues with the updated correction can be identified by checking the
+description of the flow rate properties. The updated version ends with
+"Pseudo-evolution correction applied to every SO radius."
 
 Missing energies for DMO runs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
