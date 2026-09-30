@@ -41,6 +41,8 @@ Stellar feedback variations
 
              Directory name: ``Thermal_2p0SNenergy``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_SNenergy/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_SNenergy/z0/>`__
+
           Double SNII energy
      - ✅
      - ✅
@@ -51,6 +53,8 @@ Stellar feedback variations
           .. container:: run-dir
 
              Directory name: ``Thermal_0p5SNenergy``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_SNenergy/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_SNenergy/z0/>`__
 
           Half SNII energy
      - ✅
@@ -63,6 +67,8 @@ Stellar feedback variations
 
              Directory name: ``Hybrid_2p0SNenergy``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Hybrid_SNenergy/z0/>`__
+
           Double SNII energy
      - ✅
      - ✅
@@ -73,6 +79,8 @@ Stellar feedback variations
           .. container:: run-dir
 
              Directory name: ``Hybrid_0p5SNenergy``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Hybrid_SNenergy/z0/>`__
 
           Half SNII energy
      - ✅
@@ -85,6 +93,8 @@ Stellar feedback variations
 
              Directory name: ``Thermal_noSN``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_disableSN/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_disableSN/z0/>`__
+
           No supernovae. Early feedback still enabled
      - ❌
      - ✅
@@ -95,6 +105,8 @@ Stellar feedback variations
           .. container:: run-dir
 
              Directory name: ``Thermal_noEarly``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_disableSN/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_disableSN/z0/>`__
 
           No early feedback
      - ✅
@@ -107,6 +119,8 @@ Stellar feedback variations
 
              Directory name: ``Thermal_noSNIa``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_disableSN/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_disableSN/z0/>`__
+
           No SNIa (keeping enrichment)
      - ❌
      - ✅
@@ -118,6 +132,8 @@ Stellar feedback variations
 
              Directory name: ``Thermal_noKineticFixedThermal``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_noKinetic/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_noKinetic/z0/>`__
+
           No kinetic feedback (same thermal energy)
      - ✅
      - ✅
@@ -128,6 +144,8 @@ Stellar feedback variations
           .. container:: run-dir
 
              Directory name: ``Thermal_noKineticFixedTotal``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_noKinetic/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_noKinetic/z0/>`__
 
           No kinetic feedback (same total energy)
      - ✅
@@ -154,6 +172,8 @@ AGN feedback variations
 
              Directory name: ``Thermal_noAGN``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_noAGN/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_noAGN/z0/>`__
+
           No AGN
      - ✅
      - ✅
@@ -164,6 +184,8 @@ AGN feedback variations
           .. container:: run-dir
 
              Directory name: ``Thermal_AGNdTminus0p5dex``
+
+             Pipeline plots: `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_AGNdT/z0/>`__
 
           dT_AGN - 0.5 dex
      - ❌
@@ -176,6 +198,8 @@ AGN feedback variations
 
              Directory name: ``Thermal_AGNdTplus0p5dex``
 
+             Pipeline plots: `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_AGNdT/z0/>`__
+
           dT_AGN + 0.5 dex
      - ❌
      - ❌
@@ -187,6 +211,8 @@ AGN feedback variations
 
              Directory name: ``Thermal_epsfplus0p3dex``
 
+             Pipeline plots: `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_epsf/z0/>`__
+
           AGN feedback efficiency + 0.3 dex
      - ❌
      - ❌
@@ -197,6 +223,8 @@ AGN feedback variations
           .. container:: run-dir
 
              Directory name: ``Thermal_epsfminus0p3dex``
+
+             Pipeline plots: `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_epsf/z0/>`__
 
           AGN feedback efficiency - 0.3 dex
      - ❌
@@ -298,6 +326,8 @@ Black hole seed variations
 
              Directory name: ``Thermal_Mseed0p5dexscatter``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_Mseed/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_Mseed/z0/>`__
+
           0.5 dex scatter in the BH seed mass
      - ✅
      - ✅
@@ -308,6 +338,8 @@ Black hole seed variations
           .. container:: run-dir
 
              Directory name: ``Hybrid_Mseed0p5dexscatter``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Hybrid_Mseed/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Hybrid_Mseed/z0/>`__
 
           0.5 dex scatter in the BH seed mass
      - ✅
@@ -320,6 +352,8 @@ Black hole seed variations
 
              Directory name: ``Hybrid_thermalSeed``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Hybrid_Mseed/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Hybrid_Mseed/z0/>`__
+
           Thermal seed mass (different SN parameters)
      - ❌
      - ✅
@@ -330,6 +364,8 @@ Black hole seed variations
           .. container:: run-dir
 
              Directory name: ``Hybrid_thermalSeed_thermalSN``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Hybrid_Mseed/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Hybrid_Mseed/z0/>`__
 
           Thermal seed mass & supernova
      - ❌
@@ -342,6 +378,8 @@ Black hole seed variations
 
              Directory name: ``Thermal_Mseedminus0p5dex``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_Mseed/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_Mseed/z0/>`__
+
           BH seed - 0.5 dex
      - ❌
      - ✅
@@ -352,6 +390,8 @@ Black hole seed variations
           .. container:: run-dir
 
              Directory name: ``Thermal_Mseedplus0p5dex``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_Mseed/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_Mseed/z0/>`__
 
           BH seed + 0.5 dex
      - ❌
@@ -389,6 +429,8 @@ Cooling variations
 
              Directory name: ``Thermal_ISRFx10``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_cooling/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_cooling/z0/>`__
+
           Interstellar radiation field boosted by factor of 10
      - ✅
      - ✅
@@ -400,6 +442,8 @@ Cooling variations
 
              Directory name: ``Thermal_noISRF``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_cooling/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_cooling/z0/>`__
+
           No interstellar radiation field
      - ✅
      - ✅
@@ -410,6 +454,8 @@ Cooling variations
           .. container:: run-dir
 
              Directory name: ``Thermal_CRx0p1``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_cooling/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_cooling/z0/>`__
 
           Cosmic Ray / 10
      - ✅
@@ -443,6 +489,8 @@ Cooling variations
           .. container:: run-dir
 
              Directory name: ``Thermal_equilibrium``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_equilibrium/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_equilibrium/z0/>`__
 
           Equilibrium Chemistry also for H and He
      - ✅
@@ -484,6 +532,8 @@ Star formation variations
 
              Directory name: ``Thermal_2p0SFE``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_SFE/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_SFE/z0/>`__
+
           Double SF efficiency
      - ✅
      - ✅
@@ -494,6 +544,8 @@ Star formation variations
           .. container:: run-dir
 
              Directory name: ``Thermal_0p5SFE``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_SFE/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_SFE/z0/>`__
 
           Half SF efficiency
      - ✅
@@ -521,6 +573,8 @@ For all these runs HII regions cannot form stars.
 
              Directory name: ``Thermal_eagleSF``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_SFthreshold/z0/>`__
+
           Uses the EAGLE metallicity dependent density threshold
           (eqn 2 of the EAGLE overview paper), and
           also requires :math:`T < 10^{4.5} \rm{K}`.
@@ -535,6 +589,8 @@ For all these runs HII regions cannot form stars.
 
              Directory name: ``Thermal_fixedRhoSF``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_SFthreshold/z0/>`__
+
           SF threshold :math:`n_H > 0.1 \rm{cm}^{-3}` and :math:`T < 10^{4.5} \rm{K}`,
           where :math:`n_H = \rho X_H / m_H`,
           with :math:`X_H` the primordial hydrogen mass fraction.
@@ -547,6 +603,8 @@ For all these runs HII regions cannot form stars.
           .. container:: run-dir
 
              Directory name: ``Thermal_noTurbSF``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_SFthreshold/z0/>`__
 
           Uses the same gravitational instability SF threshold criterion as
           the fiducial COLIBRE model (eqn 6 of the overview paper), but with
@@ -575,6 +633,8 @@ Dust variations
 
              Directory name: ``Thermal_noClumping``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_Dust/z0/>`__
+
           No dust clumping factor
      - ✅
      - ✅
@@ -585,6 +645,8 @@ Dust variations
           .. container:: run-dir
 
              Directory name: ``Thermal_uncoupledDust``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_Dust/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_Dust/z0/>`__
 
           Dust uncoupled
      - ✅
@@ -616,6 +678,8 @@ Additional variations
           .. container:: run-dir
 
              Directory name: ``Thermal_equalNdm``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_equalNdm/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_equalNdm/z0/>`__
 
           Equal number of dark matter and gas particles
      - ✅
