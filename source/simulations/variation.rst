@@ -252,6 +252,8 @@ black hole mergers) and receive no energy to use for AGN feedback.
 
              Directory name: ``Thermal_splitAGN``
 
+             Pipeline plots: `L100m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L100m7/Thermal_splitAGN/z0/>`__
+
           Parent run with the fiducial thermal AGN feedback
      - Never
      - N/A
@@ -260,6 +262,8 @@ black hole mergers) and receive no energy to use for AGN feedback.
           .. container:: run-dir
 
              Directory name: ``Thermal_splitAGN_z1``
+
+             Pipeline plots: `L100m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L100m7/Thermal_splitAGN/z0/>`__
 
           Black hole accretion disabled from :math:`z=1`
      - :math:`z=1`
@@ -270,6 +274,8 @@ black hole mergers) and receive no energy to use for AGN feedback.
 
              Directory name: ``Thermal_splitAGN_1e9p5yr``
 
+             Pipeline plots: `L100m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L100m7/Thermal_splitAGN/z0/>`__
+
           Black hole accretion disabled :math:`10^{9.5}` yr before :math:`z=0`
      - :math:`10^{9.5}` yr before :math:`z=0`
      - ``0112``
@@ -278,6 +284,8 @@ black hole mergers) and receive no energy to use for AGN feedback.
           .. container:: run-dir
 
              Directory name: ``Thermal_splitAGN_1e9p0yr``
+
+             Pipeline plots: `L100m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L100m7/Thermal_splitAGN/z0/>`__
 
           Black hole accretion disabled :math:`10^{9}` yr before :math:`z=0`
      - :math:`10^{9}` yr before :math:`z=0`
@@ -288,6 +296,8 @@ black hole mergers) and receive no energy to use for AGN feedback.
 
              Directory name: ``Thermal_splitAGN_1e8p5yr``
 
+             Pipeline plots: `L100m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L100m7/Thermal_splitAGN/z0/>`__
+
           Black hole accretion disabled :math:`10^{8.5}` yr before :math:`z=0`
      - :math:`10^{8.5}` yr before :math:`z=0`
      - ``0125``
@@ -296,6 +306,8 @@ black hole mergers) and receive no energy to use for AGN feedback.
           .. container:: run-dir
 
              Directory name: ``Thermal_splitAGN_1e8p0yr``
+
+             Pipeline plots: `L100m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L100m7/Thermal_splitAGN/z0/>`__
 
           Black hole accretion disabled :math:`10^{8}` yr before :math:`z=0`
      - :math:`10^{8}` yr before :math:`z=0`
@@ -306,6 +318,7 @@ black hole mergers) and receive no energy to use for AGN feedback.
    There is also ``L0100N0752/Thermal_noAGN``, which is a separate L100m7 run
    with no black holes at all. Unlike the runs in the table above, it does not
    share its early evolution with ``Thermal_splitAGN``.
+   `Pipeline plots <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L100m7/Thermal_noAGN/z0/>`__
 
 Black hole seed variations
 ---------------------------
@@ -468,6 +481,8 @@ Cooling variations
 
              Directory name: ``Thermal_Nshx0p5``
 
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_selfShielding/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_selfShielding/z0/>`__
+
           Shielding length halved
      - ✅
      - ✅
@@ -478,6 +493,8 @@ Cooling variations
           .. container:: run-dir
 
              Directory name: ``Thermal_Nshx2p0``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_selfShielding/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_selfShielding/z0/>`__
 
           Shielding length doubled
      - ✅
