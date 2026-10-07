@@ -140,8 +140,11 @@ The catalogues are sorted by ``TrackId``. This makes file reads for single objec
    * - ``Depth``
      - The number of hierarchical connections that the subhalo is away from the central, e.g. 0 for centrals, 1 for satellites, 2 for satellites of satellites.
      - :math:`-`
+   * - ``SOAPIndex``
+     - Index of this subhalo in the corresponding SOAP catalogue. Orphan subhaloes (``Nbound == 0``) are not included in SOAP, and have a value of -1. :ref:`Note this property is missing from some catalogues<issues_hbt_soap_index>`.
+     - :math:`-`
 
-In order to get access to :doc:`all the halo/galaxy properties calculated by SOAP<soap_property_table>`, the two catalogues can be linked using the ``TrackId`` field, as shown in the example below.
+In order to get access to :doc:`all the halo/galaxy properties calculated by SOAP<soap_property_table>`, the two catalogues can be linked using the ``TrackId`` field, as shown in the example below. Alternatively, the ``SOAPIndex`` field gives the position of each subhalo within the SOAP catalogue of the same snapshot.
 
 .. _warning_hbt_m200:
 

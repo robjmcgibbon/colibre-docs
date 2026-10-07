@@ -18,6 +18,7 @@ There are corresponding datasets with 1 and 2 reversed (e.g. ``MatchIndex2to1``)
 
 Matching catalogues can be found in ``/cosma8/data/dp004/dc-mcgi1/COLIBRE/matching/``.
 Please contact Rob McGibbon if you require them for other simulations/snapshots.
+The script to generate the matching catalogues `can be found in the SOAP repository <https://github.com/SWIFTSIM/SOAP/blob/master/scripts/COLIBRE/match_soap.sh>`__.
 
 Matching example
 ----------------

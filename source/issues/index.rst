@@ -211,6 +211,17 @@ new version of HBT-HERONS. This has the following minor effects:
   so that value should be used directly instead of reading ``Cosmology/HubbleParam``
   to determine the mass units.
 
+.. _issues_hbt_soap_index:
+
+Missing SOAPIndex
+~~~~~~~~~~~~~~~~~
+
+The ``Subhalos/SOAPIndex`` dataset, which gives the index of each subhalo in the
+corresponding SOAP catalogue, was added to the sorted HBT-HERONS catalogues after
+most of the runs had been processed. It is therefore missing from most of the sorted
+catalogues. In these cases the catalogues can be linked using ``TrackId``, which is
+stored in the SOAP catalogues as ``soap.input_halos_hbtplus.track_id``.
+
 SOAP
 ----
 
