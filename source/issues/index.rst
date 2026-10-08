@@ -169,6 +169,17 @@ used, so the output is still a correctly averaged rate. For example, if two
 snapshots are only 25 Myr apart, the value stored in index 0 is a rate averaged
 over 25 Myr rather than 100 Myr.
 
+.. _issues_averaged_split:
+
+Averaged SFRs of split particles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a gas particle is split during the averaging window, the accumulated
+SFR is not divided between the two resulting particles. Both particles therefore
+inherit the full value accumulated by the parent before the split, and summing
+``AveragedStarFormationRates`` over particles double counts the contribution of
+the parent prior to the split.
+
 .. _issues_hii_regions:
 
 HII region flag
@@ -257,6 +268,22 @@ are incorrect.
 Catalogues with the updated correction can be identified by checking the
 description of the flow rate properties. The updated version ends with
 "Pseudo-evolution correction applied to every SO radius."
+
+.. _issues_averaged_sfr_stars:
+
+Averaged star formation rates missing star particle contribution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The SOAP property ``AveragedStarFormationRate`` was originally computed by summing
+the ``AveragedStarFormationRates`` of the gas particles only. This misses the
+star formation of gas particles that were converted into stars during the averaging
+window. In newer SOAP catalogues the ``AveragedStarFormationRates`` of the star
+particles, which store the value accumulated before the particle became a star,
+are also included.
+Catalogues with the updated values can be identified by checking the
+description of ``AveragedStarFormationRate``. The updated version ends with
+"Includes the contribution of gas particles that were converted to stars during
+the averaging window."
 
 Missing energies for DMO runs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
