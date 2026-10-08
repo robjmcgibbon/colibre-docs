@@ -429,7 +429,7 @@ Cooling variations
 
           .. container:: run-dir
 
-             Directory name: ``Thermal_eq_with_O``
+             Directory name: ``Thermal_oxygenNEQ``
 
           Non-equil. Chemistry incl. O for H2
      - ❌
@@ -518,7 +518,7 @@ Cooling variations
 
           .. container:: run-dir
 
-             Directory name: ``Thermal_NEQ``
+             Directory name: ``Thermal_fullNEQ``
 
           Non-equilibrium chemistry for all species in the CHIMES network
      - ✅
