@@ -425,17 +425,6 @@ Cooling variations
      - L25m6
      - L50m6
      - L50m7
-   * - .. dropdown:: Non-equilibrium Oxygen
-
-          .. container:: run-dir
-
-             Directory name: ``Thermal_oxygenNEQ``
-
-          Non-equil. Chemistry incl. O for H2
-     - ❌
-     - ❌
-     - ✅
-     - ✅
    * - .. dropdown:: ISRFx10
 
           .. container:: run-dir
@@ -514,11 +503,26 @@ Cooling variations
      - ✅
      - ❌
      - ✅
+   * - .. dropdown:: Non-equilibrium Oxygen
+
+          .. container:: run-dir
+
+             Directory name: ``Thermal_oxygenNEQ``
+
+             Pipeline plots: `L50m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m6/Thermal_equilibrium/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_equilibrium/z0/>`__
+
+          Non-equil. Chemistry incl. O for H2
+     - ❌
+     - ❌
+     - ✅
+     - ✅
    * - .. dropdown:: Full non-equilibrium chemistry
 
           .. container:: run-dir
 
              Directory name: ``Thermal_fullNEQ``
+
+             Pipeline plots: `L25m6 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L025m6/Thermal_equilibrium/z0/>`__ · `L50m7 <https://home.strw.leidenuniv.nl/~mcgibbon/COLIBRE/documentation/pipeline/variation_runs/L050m7/Thermal_equilibrium/z0/>`__
 
           Non-equilibrium chemistry for all species in the CHIMES network
      - ✅
