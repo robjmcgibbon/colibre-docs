@@ -42,6 +42,7 @@ By comparing the ``BirthHaloCatalogueIndex`` with the current ``HaloCatalogueInd
 The snapshots are named ``SOAP-ExSitu/birth_0127.hdf5`` and can be opened using ``swiftsimio``.
 They contain all the original particle properties.
 Each run also includes a SOAP catalogue with the ``ExSituFraction`` computed for each subhalo.
+The ex-situ fractions can be computed for other snapshots by following :ref:`these instructions <soap_exsitu>`.
 
 SOAP-EAGLE
 ----------
