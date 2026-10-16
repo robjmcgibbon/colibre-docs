@@ -47,7 +47,7 @@ This is a light task, so it can be run on the login node.
 
       soap = sw.load(f"{simulation_dir}/SOAP-HBT/halo_properties_{snap_nr:04d}.hdf5")
       stellar_mass = soap.exclusive_sphere_50kpc.stellar_mass.to_physical_value("Msun")
-      halo_index = soap.input_halos.halo_catalogue_index.to_physical_value()
+      halo_index = soap.input_halos.halo_catalogue_index.to_physical_value("dimensionless")
 
       mask = stellar_mass > 1e9
       print(f"Selected {np.sum(mask)} subhalos")
@@ -112,14 +112,6 @@ You will need to set ``output_dir`` and ``scratch_dir``.
             inclusive: false
             radius_in_kpc: 50.0
 
-      aliases:
-        PartType0/LastSNIIKineticFeedbackDensities: PartType0/DensitiesAtLastSupernovaEvent
-        PartType0/LastSNIIThermalFeedbackDensities: PartType0/DensitiesAtLastSupernovaEvent
-        snipshot:
-          PartType0/SpeciesFractions: PartType0/ReducedSpeciesFractions
-          PartType0/ElementMassFractions: PartType0/ReducedElementMassFractions
-          PartType0/LastSNIIKineticFeedbackDensities: PartType0/DensitiesAtLastSupernovaEvent
-          PartType0/LastSNIIThermalFeedbackDensities: PartType0/DensitiesAtLastSupernovaEvent
       filters:
         general:
           limit: 100
@@ -129,12 +121,6 @@ You will need to set ``output_dir`` and ``scratch_dir``.
             - BoundSubhalo/NumberOfStarParticles
             - BoundSubhalo/NumberOfBlackHoleParticles
           combine_properties: sum
-      defined_constants:
-        O_H_sun: 4.9e-4
-        Fe_H_sun: 3.16e-5
-        N_O_sun: 0.138
-        C_O_sun: 0.549
-        Mg_H_sun: 3.98e-5
       calculations:
         calculate_missing_properties: false
         strict_halo_copy: false
@@ -156,6 +142,9 @@ The following script carries out two steps:
 
 Set the values at the top of the script, then submit it from the SOAP directory
 using ``sbatch compute_exsitu.sh``.
+The ``param_file`` and ``halo_indices_file`` paths are relative to the directory the job is
+submitted from, so either copy ``exsitu_params.yml`` and the subhalo list into the SOAP directory
+or set these variables to absolute paths.
 If you did not select a subset of subhalos, remove the ``--halo-indices-file`` argument.
 The default resources are suitable for the smaller boxes.
 The larger boxes will require more memory and cores.
@@ -232,14 +221,14 @@ It can be matched to the full SOAP catalogue using ``HaloCatalogueIndex``.
    exsitu = sw.load(f"{output_dir}/halo_properties_{snap_nr:04d}.hdf5")
 
    # Find the position of each processed subhalo in the full catalogue
-   soap_index = soap.input_halos.halo_catalogue_index.to_physical_value()
-   exsitu_index = exsitu.input_halos.halo_catalogue_index.to_physical_value()
+   soap_index = soap.input_halos.halo_catalogue_index.to_physical_value("dimensionless")
+   exsitu_index = exsitu.input_halos.halo_catalogue_index.to_physical_value("dimensionless")
    order = np.argsort(soap_index)
    idx = order[np.searchsorted(soap_index, exsitu_index, sorter=order)]
    assert np.all(soap_index[idx] == exsitu_index)
 
    stellar_mass = soap.exclusive_sphere_50kpc.stellar_mass.to_physical_value("Msun")[idx]
-   exsitu_fraction = exsitu.exclusive_sphere_50kpc.ex_situ_fraction.to_physical_value()
+   exsitu_fraction = exsitu.exclusive_sphere_50kpc.ex_situ_fraction.to_physical_value("dimensionless")
 
 Creating a virtual snapshot (optional)
 --------------------------------------
@@ -268,7 +257,11 @@ Run the following from the SOAP directory, with the SOAP environment activated:
      --absolute-paths
 
 The virtual snapshot can then be passed to ``SWIFTGalaxy``. For example, to find
-which star particles of a subhalo formed ex-situ:
+which star particles of a subhalo formed ex-situ.
+Note that ``soap_index`` is the row of the subhalo in the SOAP catalogue, not its ``HaloCatalogueIndex``.
+The comparison between ``HaloCatalogueIndex`` and ``BirthHaloCatalogueIndex`` is valid even though
+they come from different snapshots, since for HBT-HERONS the ``HaloCatalogueIndex`` of a subhalo
+is its ``TrackId``, which is the same at every snapshot.
 
 .. code-block:: python
 
@@ -282,10 +275,10 @@ which star particles of a subhalo formed ex-situ:
        f"{output_dir}/birth_{snap_nr:04d}.hdf5",
        SOAP(
            f"{simulation_dir}/SOAP-HBT/halo_properties_{snap_nr:04d}.hdf5",
-           soap_index=42,
+           soap_index=2826,
        ),
    )
 
-   group_nr = sg.stars.group_nr_bound.to_physical_value()
-   birth_group_nr = sg.stars.birth_halo_catalogue_index.to_physical_value()
-   is_exsitu = group_nr != birth_group_nr
+   halo_index = sg.stars.halo_catalogue_index.to_physical_value("dimensionless")
+   birth_halo_index = sg.stars.birth_halo_catalogue_index.to_physical_value("dimensionless")
+   is_exsitu = halo_index != birth_halo_index
