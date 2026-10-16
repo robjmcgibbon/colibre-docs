@@ -22,13 +22,6 @@ Setup
 
 Follow :doc:`the SOAP instructions <../tools/soap>` to clone the repository and
 install SOAP by running ``./scripts/cosma_python_env.sh``.
-Then install ``swiftsimio`` into the same environment, as it is used to select subhalos:
-
-.. code-block:: bash
-
-   cd SOAP
-   source openmpi-5.0.3-hdf5-1.12.3-env/bin/activate
-   pip install swiftsimio
 
 Selecting subhalos (optional)
 -----------------------------
@@ -39,7 +32,7 @@ which reduces the runtime.
 The following script uses the existing SOAP catalogue to select all subhalos with
 a stellar mass (within a 50kpc exclusive sphere) above :math:`10^9 \, M_\odot`,
 and writes their ``HaloCatalogueIndex`` to a text file.
-This is a light task, so it can be run on the login node (with the environment above activated).
+This is a light task, so it can be run on the login node.
 
 .. dropdown:: Click to view ``select_halos.py``
 
@@ -247,3 +240,52 @@ It can be matched to the full SOAP catalogue using ``HaloCatalogueIndex``.
 
    stellar_mass = soap.exclusive_sphere_50kpc.stellar_mass.to_physical_value("Msun")[idx]
    exsitu_fraction = exsitu.exclusive_sphere_50kpc.ex_situ_fraction.to_physical_value()
+
+Creating a virtual snapshot (optional)
+--------------------------------------
+
+To use the reordered ``BirthHaloCatalogueIndex`` values with
+:doc:`swiftgalaxy <../tools/swiftgalaxy>`, you can create a virtual snapshot which links
+the original snapshot, the SOAP membership files, and the reordered files.
+This file contains all the original particle properties, and can be opened with ``swiftsimio``.
+Creating the file only takes a few seconds, so it can be done on the login node.
+Run the following from the SOAP directory, with the SOAP environment activated:
+
+.. code-block:: bash
+
+   sim="L0025N0188/Thermal"
+   snap_nr=92
+   output_dir="/cosma8/data/do019/USER/exsitu"
+   sim_dir="/cosma8/data/dp004/colibre/Runs"
+
+   python SOAP/compression/make_virtual_snapshot.py \
+     --virtual-snapshot "${sim_dir}/${sim}/snapshots/colibre_{snap_nr:04d}/colibre_{snap_nr:04d}.hdf5" \
+     --auxiliary-snapshots \
+       "${sim_dir}/${sim}/SOAP-HBT/membership_{snap_nr:04d}/membership_{snap_nr:04d}.{file_nr}.hdf5" \
+       "${output_dir}/${sim}/birth_{snap_nr:04d}/birth_{snap_nr:04d}.{file_nr}.hdf5" \
+     --output-file "${output_dir}/${sim}/birth_{snap_nr:04d}.hdf5" \
+     --snap-nr ${snap_nr} \
+     --absolute-paths
+
+The virtual snapshot can then be passed to ``SWIFTGalaxy``. For example, to find
+which star particles of a subhalo formed ex-situ:
+
+.. code-block:: python
+
+   from swiftgalaxy import SWIFTGalaxy, SOAP
+
+   simulation_dir = "/cosma8/data/dp004/colibre/Runs/L0025N0188/Thermal"
+   output_dir = "/cosma8/data/do019/USER/exsitu/L0025N0188/Thermal"
+   snap_nr = 92
+
+   sg = SWIFTGalaxy(
+       f"{output_dir}/birth_{snap_nr:04d}.hdf5",
+       SOAP(
+           f"{simulation_dir}/SOAP-HBT/halo_properties_{snap_nr:04d}.hdf5",
+           soap_index=42,
+       ),
+   )
+
+   group_nr = sg.stars.group_nr_bound.to_physical_value()
+   birth_group_nr = sg.stars.birth_halo_catalogue_index.to_physical_value()
+   is_exsitu = group_nr != birth_group_nr
