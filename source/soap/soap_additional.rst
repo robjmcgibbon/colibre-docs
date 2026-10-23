@@ -34,7 +34,7 @@ The directory ``/cosma8/data/dp004/dc-mcgi1/COLIBRE/BirthHaloCatalogueIndex``
 contains :math:`z=0` snapshots with extra datasets available for star particles:
 
 * ``BirthHaloCatalogueIndex`` - The ``HaloCatalogueIndex`` of this star particle the snapshot it first appeared.
-* ``PreBirthHaloCatalogueIndex`` - The ``HaloCatalogueIndex`` of the star's progenitor gas particle the snapshot before the star first appeared.
+* ``PreBirthHaloCatalogueIndex`` - The ``HaloCatalogueIndex`` of the star's progenitor gas particle the snapshot before the star first appeared. Particle splits are not accounted for, so this is -99 if the progenitor gas particle cannot be found.
 * ``FirstSnapshot`` - The snapshot index when this star first appeared.
 
 By comparing the ``BirthHaloCatalogueIndex`` with the current ``HaloCatalogueIndex``, you can determine if a star formed in-situ or ex-situ.
