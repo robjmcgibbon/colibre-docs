@@ -1270,7 +1270,7 @@ Star particles
           * **Datatype:** int64
           * **Units:** dimensionless
           * **Compression:** Store less bits
-     - Progenitor ID of the gas particle that became this star. If this particle is the result of one (or many) splitting events, this ID corresponds to the ID of the particle in the initial conditions that its lineage can be traced back to. If the particle was never split, this is the same as ParticleIDs.
+     - ProgenitorParticleIDs value of the gas particle that became this star. Note this star has the same ParticleIDs value as the gas particle it formed from. See :ref:`issues_star_split_data`
      - ✅
    * - .. dropdown:: ``rank_bound``
 
@@ -2104,7 +2104,7 @@ Black hole particles
           * **Datatype:** int64
           * **Units:** dimensionless
           * **Compression:** Store less bits
-     - Progenitor ID of the gas particle that became the seed BH. If this particle is the result of one (or many) splitting events, this ID corresponds to the ID of the particle in the initial conditions that its lineage can be traced back to. If the particle was never split, this is the same as ParticleIDs.
+     - ProgenitorParticleIDs value of the gas particle that became the seed BH. Note this BH has the same ParticleIDs value as the gas particle it was seeded from.
      - ✅
    * - .. dropdown:: ``rank_bound``
 

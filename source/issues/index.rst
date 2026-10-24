@@ -86,6 +86,16 @@ Runs affected:
 
 .. Also the old variation runs?
 
+.. _issues_star_split_data:
+
+Missing splitting information for star particles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a gas particle was converted into a star particle the particle splitting
+information was not copied over. Therefore ``ProgenitorParticleIDs``,
+``SplitCounts`` and ``SplitTrees`` are zero for all star particles that formed
+during the simulation.
+
 .. _issues_untrackable_splits:
 
 Untrackable splits
