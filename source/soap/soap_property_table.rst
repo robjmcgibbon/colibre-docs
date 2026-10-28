@@ -884,7 +884,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
-     - Linear sum of the diffuse oxygen over hydrogen ratio of gas, multiplied with the gas mass. `[21] <footnote-21_>`_
+     - Linear sum of the diffuse oxygen over hydrogen ratio of cold dense gas, weighted by the gas mass. `[21] <footnote-21_>`_
    * - .. dropdown:: ``linear_mass_weighted_iron_from_snia_over_hydrogen_of_stars``
 
           * **HDF5 name:** ``LinearMassWeightedIronFromSNIaOverHydrogenOfStars``
@@ -894,7 +894,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Sum of the iron over hydrogen ratio of stars, multiplied with the stellar mass, where only iron from SNIa is included. `[21] <footnote-21_>`_
+     - Linear sum of the iron over hydrogen ratio of stars, weighted by the stellar mass, where only iron from SNIa is included. `[21] <footnote-21_>`_
    * - .. dropdown:: ``linear_mass_weighted_iron_over_hydrogen_of_stars``
 
           * **HDF5 name:** ``LinearMassWeightedIronOverHydrogenOfStars``
@@ -904,7 +904,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Linear sum of the iron over hydrogen ratio of stars, multiplied with the stellar mass. `[21] <footnote-21_>`_
+     - Linear sum of the iron over hydrogen ratio of stars, weighted by the stellar mass. `[21] <footnote-21_>`_
    * - .. dropdown:: ``linear_mass_weighted_magnesium_over_hydrogen_of_stars``
 
           * **HDF5 name:** ``LinearMassWeightedMagnesiumOverHydrogenOfStars``
@@ -914,7 +914,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Linear sum of the magnesium over hydrogen ratio of stars, multiplied with the stellar mass. `[21] <footnote-21_>`_
+     - Linear sum of the magnesium over hydrogen ratio of stars, weighted by the stellar mass. `[21] <footnote-21_>`_
    * - .. dropdown:: ``linear_mass_weighted_oxygen_over_hydrogen_of_gas``
 
           * **HDF5 name:** ``LinearMassWeightedOxygenOverHydrogenOfGas``
@@ -924,7 +924,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
-     - Linear sum of the oxygen over hydrogen ratio of gas, multiplied with the gas mass. `[21] <footnote-21_>`_
+     - Linear sum of the total oxygen over hydrogen ratio of cold dense gas, weighted by the gas mass. `[21] <footnote-21_>`_
    * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_atomic_gas_high_limit``
 
           * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfAtomicGasHighLimit``
@@ -934,7 +934,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
-     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of atomic gas, multiplied with the gas mass. Imposes a lower limit of 1.e-3 times solar O/H. `[21] <footnote-21_>`_
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of gas, weighted by the atomic hydrogen mass. Imposes a lower limit of 1.e-3 times solar O/H. See :ref:`issues_hi_h2_weighted_oxygen`. `[21] <footnote-21_>`_
    * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_atomic_gas_low_limit``
 
           * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfAtomicGasLowLimit``
@@ -944,7 +944,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
-     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of atomic gas, multiplied with the gas mass. Imposes a lower limit of 1.e-4 times solar O/H. `[21] <footnote-21_>`_
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of gas, weighted by the atomic hydrogen mass. Imposes a lower limit of 1.e-4 times solar O/H. See :ref:`issues_hi_h2_weighted_oxygen`. `[21] <footnote-21_>`_
    * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_gas_high_limit``
 
           * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfGasHighLimit``
@@ -954,7 +954,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
-     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of gas, multiplied with the gas mass. Imposes a lower limit of 1.e-3 times solar O/H. `[21] <footnote-21_>`_
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of cold dense gas, weighted by the gas mass. Imposes a lower limit of 1.e-3 times solar O/H. `[21] <footnote-21_>`_
    * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_gas_low_limit``
 
           * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfGasLowLimit``
@@ -964,7 +964,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
-     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of gas, multiplied with the gas mass. Imposes a lower limit of 1.e-4 times solar O/H. `[21] <footnote-21_>`_
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of cold dense gas, weighted by the gas mass. Imposes a lower limit of 1.e-4 times solar O/H. `[21] <footnote-21_>`_
    * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_molecular_gas_high_limit``
 
           * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfMolecularGasHighLimit``
@@ -974,7 +974,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
-     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of molecular gas, multiplied with the gas mass. Imposes a lower limit of 1.e-3 times solar O/H. `[21] <footnote-21_>`_
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of gas, weighted by the molecular hydrogen mass. Imposes a lower limit of 1.e-3 times solar O/H. See :ref:`issues_hi_h2_weighted_oxygen`. `[21] <footnote-21_>`_
    * - .. dropdown:: ``logarithmic_mass_weighted_diffuse_oxygen_over_hydrogen_of_molecular_gas_low_limit``
 
           * **HDF5 name:** ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfMolecularGasLowLimit``
@@ -984,7 +984,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :snaponly:`ES` :snaponly:`IS` :unavail:`EP` :unavail:`SO`
-     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of molecular gas, multiplied with the gas mass. Imposes a lower limit of 1.e-4 times solar O/H. `[21] <footnote-21_>`_
+     - Logarithmic sum of the diffuse oxygen over hydrogen ratio of gas, weighted by the molecular hydrogen mass. Imposes a lower limit of 1.e-4 times solar O/H. See :ref:`issues_hi_h2_weighted_oxygen`. `[21] <footnote-21_>`_
    * - .. dropdown:: ``logarithmic_mass_weighted_iron_from_snia_over_hydrogen_of_stars_low_limit``
 
           * **HDF5 name:** ``LogarithmicMassWeightedIronFromSNIaOverHydrogenOfStarsLowLimit``
@@ -994,7 +994,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Logarithmic sum of the iron over hydrogen ratio of stars, multiplied with the stellar mass, where only iron from SNIa is included. Imposes a lower limit of 1.e-4 times solar Fe/H. `[21] <footnote-21_>`_
+     - Logarithmic sum of the iron over hydrogen ratio of stars, weighted by the stellar mass, where only iron from SNIa is included. Imposes a lower limit of 1.e-4 times solar Fe/H. `[21] <footnote-21_>`_
    * - .. dropdown:: ``logarithmic_mass_weighted_iron_over_hydrogen_of_stars_high_limit``
 
           * **HDF5 name:** ``LogarithmicMassWeightedIronOverHydrogenOfStarsHighLimit``
@@ -1004,7 +1004,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Logarithmic sum of the iron over hydrogen ratio of stars, multiplied with the stellar mass. Imposes a lower limit of 1.e-3 times solar Fe/H. `[21] <footnote-21_>`_
+     - Logarithmic sum of the iron over hydrogen ratio of stars, weighted by the stellar mass. Imposes a lower limit of 1.e-3 times solar Fe/H. `[21] <footnote-21_>`_
    * - .. dropdown:: ``logarithmic_mass_weighted_iron_over_hydrogen_of_stars_low_limit``
 
           * **HDF5 name:** ``LogarithmicMassWeightedIronOverHydrogenOfStarsLowLimit``
@@ -1014,7 +1014,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Logarithmic sum of the iron over hydrogen ratio of stars, multiplied with the stellar mass. Imposes a lower limit of 1.e-4 times solar Fe/H. `[21] <footnote-21_>`_
+     - Logarithmic sum of the iron over hydrogen ratio of stars, weighted by the stellar mass. Imposes a lower limit of 1.e-4 times solar Fe/H. `[21] <footnote-21_>`_
    * - .. dropdown:: ``logarithmic_mass_weighted_magnesium_over_hydrogen_of_stars_high_limit``
 
           * **HDF5 name:** ``LogarithmicMassWeightedMagnesiumOverHydrogenOfStarsHighLimit``
@@ -1024,7 +1024,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Logarithmic sum of the magnesium over hydrogen ratio of stars, multiplied with the stellar mass. Imposes a lower limit of 1.e-3 times solar Fe/H. `[21] <footnote-21_>`_
+     - Logarithmic sum of the magnesium over hydrogen ratio of stars, weighted by the stellar mass. Imposes a lower limit of 1.e-3 times solar Mg/H. `[21] <footnote-21_>`_
    * - .. dropdown:: ``logarithmic_mass_weighted_magnesium_over_hydrogen_of_stars_low_limit``
 
           * **HDF5 name:** ``LogarithmicMassWeightedMagnesiumOverHydrogenOfStarsLowLimit``
@@ -1034,7 +1034,7 @@ Hydrodynamical properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
-     - Logarithmic sum of the magnesium over hydrogen ratio of stars, multiplied with the stellar mass. Imposes a lower limit of 1.e-4 times solar Fe/H. `[21] <footnote-21_>`_
+     - Logarithmic sum of the magnesium over hydrogen ratio of stars, weighted by the stellar mass. Imposes a lower limit of 1.e-4 times solar Mg/H. `[21] <footnote-21_>`_
    * - .. dropdown:: ``luminosity_weighted_mean_stellar_age``
 
           * **HDF5 name:** ``LuminosityWeightedMeanStellarAge``
@@ -2585,6 +2585,7 @@ For example, for SFR, we start a clock precisely 100 Myr (index 0) or 10 Myr (in
 accumulate SFR * dt at each step during that window, and then divide by 100 Myr or 10 Myr at the point of writing.
 If the time interval between consecutive snapshots is less than 100/10 Myr,
 the averaging window is instead set equal to the interval, and the accumulated quantity is normalized accordingly.
+Older SOAP catalogues did not include the contribution of star particles in ``AveragedStarFormationRate``, see :ref:`issues_averaged_sfr_stars`.
 
 .. _footnote-13:
 

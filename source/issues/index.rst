@@ -295,6 +295,24 @@ description of ``AveragedStarFormationRate``. The updated version ends with
 "Includes the contribution of gas particles that were converted to stars during
 the averaging window."
 
+.. _issues_hi_h2_weighted_oxygen:
+
+Incorrect particle selection for HI and H2 weighted abundances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The SOAP properties
+``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfAtomicGas{Low,High}Limit``
+and ``LogarithmicMassWeightedDiffuseOxygenOverHydrogenOfMolecularGas{Low,High}Limit``
+should weight the
+O/H ratio of each gas particle by its HI or H2 mass, and normalise by the
+total HI or H2 mass of the gas in the aperture. In older SOAP catalogues the
+weighted sum mistakenly only included cold dense gas particles, rather than all
+the gas in the aperture.
+Catalogues with the updated values can be identified by checking the
+description of these properties. The updated version reads "Logarithmic sum of
+the diffuse oxygen over hydrogen ratio of gas, weighted by the atomic hydrogen
+mass." (or "molecular hydrogen mass" for the H2 weighted properties).
+
 Missing energies for DMO runs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
