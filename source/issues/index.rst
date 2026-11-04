@@ -16,7 +16,7 @@ Simulation
 Black holes in satellite galaxies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For computational efficiency reasons, black hole particles are only repositioned (i.e. moved by hand down the potential gradient to compensate for unresolved dynamical friction) onto gas particles. For gas-poor galaxies, such as low-mass satellites, this can have the consequence that black holes leave their host galaxy, either temporarily or permanently. Care should therefore be taken when studying black holes and/or AGN feedback in satellite galaxies (see :ref:`extra_info_bh_occupation_fraction`).
+For computational efficiency reasons, black hole particles are only repositioned (i.e. moved by hand down the potential gradient to compensate for unresolved dynamical friction) onto gas particles. For gas-poor galaxies, such as low-mass satellites, this can have the consequence that black holes leave their host galaxy, either temporarily or permanently. Care should therefore be taken when studying black holes and/or AGN feedback in satellite galaxies (see :ref:`extra_info_bh_occupation_fraction`). To help correct for lost black holes, we provide catalogues of the peak mass of the most massive black hole along each subhalo's main progenitor branch (see :ref:`soap_history`).
 
 .. _issues_agn_heating:
 
