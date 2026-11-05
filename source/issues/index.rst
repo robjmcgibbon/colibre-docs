@@ -188,14 +188,16 @@ over 25 Myr rather than 100 Myr.
 
 .. _issues_averaged_split:
 
-*Averaged SFRs of split particles*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*Quantities not divided between split particles*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When a gas particle is split during the averaging window, the accumulated
 SFR is not divided between the two resulting particles. Both particles therefore
 inherit the full value accumulated by the parent before the split, and summing
 ``AveragedStarFormationRates`` over particles double counts the contribution of
 the parent prior to the split.
+Similarly, ``EnergiesReceivedFromJetFeedback`` is not divided when a gas particle
+is split, so both resulting particles inherit the full value of the parent.
 
 .. _issues_hii_regions:
 
@@ -319,6 +321,7 @@ Catalogues with the updated values can be identified by checking the
 description of ``AveragedStarFormationRate``. The updated version ends with
 "Includes the contribution of gas particles that were converted to stars during
 the averaging window."
+The size of this effect is shown in :ref:`extra_info_avg_sfr_stars`.
 
 *Missing energies for DMO runs*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
