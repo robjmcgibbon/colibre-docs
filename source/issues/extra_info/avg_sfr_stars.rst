@@ -21,6 +21,5 @@ The second plot shows the specific star formation rate as a function of stellar
 mass. The lines show the median and the shaded regions show the 16th to 84th
 percentiles. The effect increases with stellar mass, and the median is
 about 8% higher for subhalos with stellar masses of :math:`10^{10}-10^{10.5} M_\odot`.
-The total star formation rate of the sample increases by about 7.5%.
 
 .. image:: images/avg_sfr_stars_ssfr.png
