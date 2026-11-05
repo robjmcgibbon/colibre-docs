@@ -151,3 +151,8 @@ div.run-dir {
 div.run-dir p {
     margin-bottom: 0;
 }
+
+/* Minor issues are italic in the on-page contents, but not in the sidebar */
+.sidebar-localtoc em {
+    font-style: normal;
+}

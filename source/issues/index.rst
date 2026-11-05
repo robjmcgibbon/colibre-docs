@@ -4,6 +4,13 @@ Known issues
 This page tracks known technical issues related to the data products.
 It will be updated as new issues are discovered.
 
+Major issues, which are those most likely to affect scientific results, are
+shown in full. Minor issues are in italics in the list below and are collapsed;
+click on a title to show the description.
+
+.. An issue with an italic title is minor, and is rendered as a dropdown
+   (see MinorIssueDropdowns in conf.py).
+
 .. contents::
    :local:
    :backlinks: none
@@ -37,8 +44,8 @@ using the particle property tracking the last time a particle was injected with 
 
 .. _issues_spurious_bh_seeding:
 
-Spurious black hole seeding
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*Spurious black hole seeding*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the L200m6 simulation a single friends-of-friends black hole seeding pass
 at :math:`a = 0.820801` (:math:`z \approx 0.218`) produced roughly
@@ -55,8 +62,8 @@ through accretion or mergers.
 As a result global black hole scaling relations for this run
 (e.g. the black hole mass - stellar mass relation) are unaffected.
 
-Run restarted from snapshot
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*Run restarted from snapshot*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The L200m6 DMO run experienced a disk failure at :math:`z \approx 0.22` and was
 restarted from the most recent snapshot. This restart introduced minor
@@ -68,10 +75,28 @@ found between the two.
 Snapshots
 ---------
 
+.. _issues_z0_averaged:
+
+No z=0 averaged quantities
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Time averaged quantities (SFRs and BH accretion rates) are missing for the z=0 snapshot.
+
+Runs affected:
+
+* ``L0100N0752/Thermal``
+* ``L0100N0752/Hybrid``
+* ``L0200N1504/Thermal``
+* ``L0200N1504/Hybrid``
+* ``L0050N0752/Hybrid``
+
+
+.. Also the old variation runs?
+
 .. _issues_overflow_progenitor_id:
 
-Overflow in progenitor IDs
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+*Overflow in progenitor IDs*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For some runs the field ``ProgenitorParticleIDs`` was initialised with values that overflowed for some particles.
 
@@ -88,8 +113,8 @@ Runs affected:
 
 .. _issues_star_split_data:
 
-Missing splitting information for star particles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*Missing splitting information for star particles*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When a gas particle was converted into a star particle the particle splitting
 information was not copied over. Therefore ``ProgenitorParticleIDs``,
@@ -98,8 +123,8 @@ during the simulation.
 
 .. _issues_untrackable_splits:
 
-Untrackable splits
-~~~~~~~~~~~~~~~~~~
+*Untrackable splits*
+~~~~~~~~~~~~~~~~~~~~
 
 For some runs the information that is used to track particle splits
 could only accommodate up to 64 splits.
@@ -122,8 +147,8 @@ The following runs have a small number of particles with > 255 splits:
 
 .. _issues_kicked_particles_tracer:
 
-Kicked particles tracer
-~~~~~~~~~~~~~~~~~~~~~~~
+*Kicked particles tracer*
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The jet-related tracer recording BH IDs that kicked particles
 had a maximum value of 127.
@@ -136,28 +161,10 @@ Runs affected:
 
 .. Also the old variation runs?
 
-.. _issues_z0_averaged:
-
-No z=0 averaged quantities
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Time averaged quantities (SFRs and BH accretion rates) are missing for the z=0 snapshot.
-
-Runs affected:
-
-* ``L0100N0752/Thermal``
-* ``L0100N0752/Hybrid``
-* ``L0200N1504/Thermal``
-* ``L0200N1504/Hybrid``
-* ``L0050N0752/Hybrid``
-
-
-.. Also the old variation runs?
-
 .. _issues_z0_negative:
 
-Negative time averaged quantities
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*Negative time averaged quantities*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The time averaged SFRs and BH accretion rates can be negative for a small number of particles.
 This was due to a bug in how the averaging variable was initialised for timesteps straddling the start of the recording window.
@@ -167,7 +174,7 @@ Any negative values should be set to zero.
 
 .. _issues_averaged_window:
 
-Averaging window for closely spaced snapshots
+*Averaging window for closely spaced snapshots*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The time averaged SFRs and BH accretion rates are normally averaged over the
@@ -181,8 +188,8 @@ over 25 Myr rather than 100 Myr.
 
 .. _issues_averaged_split:
 
-Averaged SFRs of split particles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*Averaged SFRs of split particles*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When a gas particle is split during the averaging window, the accumulated
 SFR is not divided between the two resulting particles. Both particles therefore
@@ -192,8 +199,8 @@ the parent prior to the split.
 
 .. _issues_hii_regions:
 
-HII region flag
-~~~~~~~~~~~~~~~
+*HII region flag*
+~~~~~~~~~~~~~~~~~
 
 Gas particles have a property called ``HIIregionsEndTime``.
 This value can be useful since if it is not equal to -1 then the particle
@@ -212,8 +219,8 @@ HBT-HERONS
 
 .. _issues_hbt_high_cadence:
 
-High cadence runs
-~~~~~~~~~~~~~~~~~
+*High cadence runs*
+~~~~~~~~~~~~~~~~~~~
 
 The HBT catalogues for the high cadence runs were created using an older version
 of the HBT code. This is because we needed to delete the snapshots of the runs as
@@ -234,8 +241,8 @@ new version of HBT-HERONS. This has the following minor effects:
 
 .. _issues_hbt_soap_index:
 
-Missing SOAPIndex
-~~~~~~~~~~~~~~~~~
+*Missing SOAPIndex*
+~~~~~~~~~~~~~~~~~~~
 
 The ``Subhalos/SOAPIndex`` dataset, which gives the index of each subhalo in the
 corresponding SOAP catalogue, was added to the sorted HBT-HERONS catalogues after
@@ -245,24 +252,6 @@ stored in the SOAP catalogues as ``soap.input_halos_hbtplus.track_id``.
 
 SOAP
 ----
-
-Missing hybrid AGN feedback quantities
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The SOAP catalogues for runs with hybrid AGN feedback
-:ref:`have some additional properties <soap_hybrid_properties>` not present in
-the thermal AGN runs. However, some hybrid SOAPs were run using
-the wrong parameter file, and so are missing the additional properties. These
-will be added in the future. Runs affected:
-
-* ``L0100N1504/Hybrid``: snapshots 110-118, 120-122, 124
-
-Missing descendant track id
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The SOAP catalogues contain the property ``soap.descendant_index`` which gives
-the index for the descendant of each subhalo. For some SOAP catalogues these
-values are missing. These will be added in the future.
 
 .. _issues_flow_rate_pseudo_evolution:
 
@@ -278,22 +267,6 @@ are incorrect.
 Catalogues with the updated correction can be identified by checking the
 description of the flow rate properties. The updated version ends with
 "Pseudo-evolution correction applied to every SO radius."
-
-.. _issues_averaged_sfr_stars:
-
-Averaged star formation rates missing star particle contribution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The SOAP property ``AveragedStarFormationRate`` was originally computed by summing
-the ``AveragedStarFormationRates`` of the gas particles only. This misses the
-star formation of gas particles that were converted into stars during the averaging
-window. In newer SOAP catalogues the ``AveragedStarFormationRates`` of the star
-particles, which store the value accumulated before the particle became a star,
-are also included.
-Catalogues with the updated values can be identified by checking the
-description of ``AveragedStarFormationRate``. The updated version ends with
-"Includes the contribution of gas particles that were converted to stars during
-the averaging window."
 
 .. _issues_hi_h2_weighted_oxygen:
 
@@ -313,8 +286,42 @@ description of these properties. The updated version reads "Logarithmic sum of
 the diffuse oxygen over hydrogen ratio of gas, weighted by the atomic hydrogen
 mass." (or "molecular hydrogen mass" for the H2 weighted properties).
 
-Missing energies for DMO runs
+*Missing hybrid AGN feedback quantities*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The SOAP catalogues for runs with hybrid AGN feedback
+:ref:`have some additional properties <soap_hybrid_properties>` not present in
+the thermal AGN runs. However, some hybrid SOAPs were run using
+the wrong parameter file, and so are missing the additional properties. These
+will be added in the future. Runs affected:
+
+* ``L0100N1504/Hybrid``: snapshots 110-118, 120-122, 124
+
+*Missing descendant track id*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The SOAP catalogues contain the property ``soap.descendant_index`` which gives
+the index for the descendant of each subhalo. For some SOAP catalogues these
+values are missing. These will be added in the future.
+
+.. _issues_averaged_sfr_stars:
+
+*Averaged star formation rates missing star particle contribution*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The SOAP property ``AveragedStarFormationRate`` was originally computed by summing
+the ``AveragedStarFormationRates`` of the gas particles only. This misses the
+star formation of gas particles that were converted into stars during the averaging
+window. In newer SOAP catalogues the ``AveragedStarFormationRates`` of the star
+particles, which store the value accumulated before the particle became a star,
+are also included.
+Catalogues with the updated values can be identified by checking the
+description of ``AveragedStarFormationRate``. The updated version ends with
+"Includes the contribution of gas particles that were converted to stars during
+the averaging window."
+
+*Missing energies for DMO runs*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The properties ``soap.bound_subhalo.kinetic_energy_total`` and
 ``soap.bound_subhalo.potential_energy_total`` were originally only computed
@@ -323,8 +330,8 @@ catalogues of most DMO runs. These will be added in the future.
 
 .. _issues_overflow_snapshotindexoflastisolation:
 
-Overflow in SnapshotIndexOfLastIsolation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*Overflow in SnapshotIndexOfLastIsolation*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The field ``soap.input_halos_hbtplus.snapshot_of_last_isolation`` gives the
 latest snapshot when this subhalo was a central. It should be -1 if the subhalo

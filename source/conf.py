@@ -4,6 +4,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 from docutils import nodes
 from sphinx.application import Sphinx
+from sphinx.transforms.post_transforms import SphinxPostTransform
+from sphinx_design.shared import create_component
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -79,7 +81,42 @@ def _highlight_role(background, extra_style=""):
     return role
 
 
+class MinorIssueDropdowns(SphinxPostTransform):
+    """Render sections of the known issues page with italic titles as dropdowns.
+
+    Keeping them as sections until this point means they still appear in the
+    page contents, and can be linked to with a plain :ref:.
+    """
+
+    # Must run before the sphinx_design transform which renders the dropdowns
+    default_priority = 198
+    formats = ("html",)
+
+    def run(self):
+        if self.env.docname != "issues/index":
+            return
+        for section in list(self.document.findall(nodes.section)):
+            title = section[0]
+            if len(title) != 1 or not isinstance(title[0], nodes.emphasis):
+                continue
+            dropdown = create_component(
+                "dropdown",
+                opened=False,
+                type="dropdown",
+                has_title=True,
+                icon=None,
+                chevron=None,
+                container_classes=["sd-mb-3"],
+                title_classes=[],
+                body_classes=[],
+            )
+            dropdown += nodes.rubric("", "", *title[0].children, ids=section["ids"])
+            dropdown.extend(section.children[1:])
+            section.replace_self(dropdown)
+
+
 def setup(app: Sphinx):
+    app.add_post_transform(MinorIssueDropdowns)
     app.add_role("avail", _highlight_role("#c8e6c9"))     # light green
     app.add_role("snaponly", _highlight_role("#bbdefb"))  # light blue
     # Add a strikethrough for colourblind folks to distinguish red/green
