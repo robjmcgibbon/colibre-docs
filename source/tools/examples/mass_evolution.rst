@@ -170,20 +170,24 @@ sample, a small number of zeros does not have a large effect.
     halo_masses = np.zeros((n_halo, snap_nrs.shape[0]))
     stellar_masses = np.zeros((n_halo, snap_nrs.shape[0]))
 
+    # Sort our sample by TrackId, so we can use np.searchsorted below
+    sample_order = np.argsort(track_ids)
+    sorted_track_ids = track_ids[sample_order]
+
     for j, snap_nr in enumerate(snap_nrs):
         print(f"Loading snapshot {snap_nr} ({j + 1}/{len(snap_nrs)})")
         soap = sw.load(soap_basename.format(snap_nr=snap_nr))
         scale_factors[j] = soap.metadata.a
 
-        # TrackIds are unique within a catalogue. idx_sample is the position of
-        # each matched subhalo in our sample, and idx_soap is its position in
-        # the SOAP catalogue for this snapshot
-        _, idx_sample, idx_soap = np.intersect1d(
-            track_ids,
-            soap.input_halos_hbtplus.track_id.value,
-            assume_unique=True,
-            return_indices=True,
-        )
+        # Find the position in the SOAP catalogue of each subhalo in our
+        # sample which is resolved at this snapshot. The SOAP catalogue is
+        # large, so we use np.isin rather than sorting all of its TrackIds
+        soap_track_ids = soap.input_halos_hbtplus.track_id.value
+        idx_soap = np.nonzero(np.isin(soap_track_ids, track_ids))[0]
+
+        # Find the position of each of these subhalos in our sample.
+        # TrackIds are unique, so each subhalo matches exactly one entry
+        idx_sample = sample_order[np.searchsorted(sorted_track_ids, soap_track_ids[idx_soap])]
 
         halo_mass = soap.spherical_overdensity_200_crit.total_mass.to_physical_value("Msun")
         stellar_mass = soap.exclusive_sphere_50kpc.stellar_mass.to_physical_value("Msun")
