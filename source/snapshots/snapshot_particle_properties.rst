@@ -510,7 +510,7 @@ Gas particles
           * **Datatype:** float32
           * **Units:** dimensionless
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - Fractions of the particles' masses that are in metals (incorporating both depleted and nebular phases)
+     - Fractions of the particles' masses that are in metals. This is the total metal content, including metals depleted onto dust grains as well as those in the gas phase
      - ✅
    * - .. dropdown:: ``metal_mass_fractions_from_agb``
 
