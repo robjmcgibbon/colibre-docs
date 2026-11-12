@@ -312,7 +312,7 @@ values are missing. They are available in the additional
 *Descendant index only follows the main branch*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the current SOAP catalogues ``soap.descendant_index`` only points to the
+In old SOAP catalogues ``soap.descendant_index`` only points to the
 subhalo with the same ``TrackId`` in the next snapshot, and is -1 if that
 subhalo is not resolved in the next snapshot (e.g. because it has merged).
 The property ``soap.descendant_type`` is missing. Newer versions of SOAP set

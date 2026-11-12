@@ -2196,7 +2196,7 @@ Copied properties
           * **Compression:** no compression
      - basic
      - \-
-     - Index (within the next snapshot SOAP arrays) of the descendant of this subhalo. This is the subhalo itself if it survives, otherwise the subhalo it merged with. -1 if there is no descendant. `[30] <footnote-30_>`_
+     - Index (within the next snapshot SOAP arrays) of the descendant of this subhalo. This is the subhalo itself if it survives, otherwise the subhalo it merged with. -1 if there is no descendant. See :ref:`soap_descendant_info`. `[30] <footnote-30_>`_
    * - .. dropdown:: ``soap.descendant_type``
 
           * **HDF5 name:** ``SOAP/DescendantType``
@@ -2206,7 +2206,7 @@ Copied properties
           * **Compression:** no compression
      - basic
      - \-
-     - What happens to this subhalo by the next snapshot. 0: survives, 1: disrupts, 2: sinks, 3: disrupts with no descendant, -1: no catalogue for the next snapshot. `[30] <footnote-30_>`_
+     - What happens to this subhalo by the next snapshot. 0: survives, 1: disrupts, 2: sinks, 3: disrupts with no descendant, -1: no catalogue for the next snapshot. See :ref:`soap_descendant_info`. `[30] <footnote-30_>`_
    * - .. dropdown:: ``soap.host_halo_index``
 
           * **HDF5 name:** ``SOAP/HostHaloIndex``
@@ -2236,7 +2236,7 @@ Copied properties
           * **Compression:** no compression
      - basic
      - \-
-     - Index (within the previous snapshot SOAP arrays) of the main progenitor of this subhalo. `[30] <footnote-30_>`_
+     - Index (within the previous snapshot SOAP arrays) of the main progenitor of this subhalo. See :ref:`soap_descendant_info`. `[30] <footnote-30_>`_
    * - .. dropdown:: ``soap.subhalo_rank_by_bound_mass``
 
           * **HDF5 name:** ``SOAP/SubhaloRankByBoundMass``

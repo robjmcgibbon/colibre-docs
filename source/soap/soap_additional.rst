@@ -160,12 +160,9 @@ If it disrupts or sinks then it points to the subhalo which it merged with, as i
 
 A full description is given in :ref:`footnote 30 <footnote-30>` of the SOAP property table.
 
-.. TODO: Update the location and list the runs once the catalogues have been generated
-
-The catalogues can be found in ``/cosma8/data/dp004/dc-mcgi1/COLIBRE/<run>/SOAP-DescendantInfo``, and are named ``SOAP-DescendantInfo/descendant_info_XXXX.hdf5``.
-They have the same ordering as the standard SOAP catalogues, and contain ``InputHalos/HBTplus/TrackId`` and ``InputHalos/HaloCatalogueIndex`` for matching. They can be opened using ``swiftsimio``.
-The catalogues are generated directly from the HBT-HERONS catalogues, sorting the subhalos in the same way as SOAP.
-They are therefore available for every snapshot, including snapshots which do not have a SOAP catalogue.
+The catalogues can be found in ``/cosma8/data/dp004/dc-mcgi1/COLIBRE/SOAP-DescendantInfo``, and are named ``SOAP-DescendantInfo/descendant_info_XXXX.hdf5``.
+They have the same ordering as the standard SOAP catalogues, and contain ``InputHalos/HBTplus/TrackId`` and ``InputHalos/HaloCatalogueIndex`` for matching.
+They can be opened using ``swiftsimio``.
 The script to generate these catalogues `can be found in the SOAP repository <https://github.com/SWIFTSIM/SOAP/blob/master/scripts/COLIBRE/compute_descendant_info.sh>`__.
 
 An example of using ``SOAP/ProgenitorIndex`` to follow the main progenitor branch of a subhalo is given in
