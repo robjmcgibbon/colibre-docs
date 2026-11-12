@@ -34,7 +34,7 @@ The directory ``/cosma8/data/dp004/dc-mcgi1/COLIBRE/BirthHaloCatalogueIndex``
 contains :math:`z=0` snapshots with extra datasets available for star particles:
 
 * ``BirthHaloCatalogueIndex`` - The ``HaloCatalogueIndex`` of this star particle the snapshot it first appeared.
-* ``PreBirthHaloCatalogueIndex`` - The ``HaloCatalogueIndex`` of the star's progenitor gas particle the snapshot before the star first appeared.
+* ``PreBirthHaloCatalogueIndex`` - The ``HaloCatalogueIndex`` of the star's progenitor gas particle the snapshot before the star first appeared. Particle splits are not accounted for, so this is -99 if the progenitor gas particle cannot be found.
 * ``FirstSnapshot`` - The snapshot index when this star first appeared.
 
 By comparing the ``BirthHaloCatalogueIndex`` with the current ``HaloCatalogueIndex``, you can determine if a star formed in-situ or ex-situ.
@@ -42,6 +42,7 @@ By comparing the ``BirthHaloCatalogueIndex`` with the current ``HaloCatalogueInd
 The snapshots are named ``SOAP-ExSitu/birth_0127.hdf5`` and can be opened using ``swiftsimio``.
 They contain all the original particle properties.
 Each run also includes a SOAP catalogue with the ``ExSituFraction`` computed for each subhalo.
+The ex-situ fractions can be computed for other snapshots by following :ref:`these instructions <soap_exsitu>`.
 
 SOAP-EAGLE
 ----------
@@ -63,6 +64,77 @@ SOAP-SmallSphericalOverdensity
 For the :math:`z=0` snapshots of the L200m6 and L400m7 simulations (both Thermal and DMO),
 we have run soap to compute properties for spherical overdensity apertures of size :math:`R_{2500c}` & :math:`R_{1000c}`.
 The files can be found at ``/cosma8/data/dp004/dc-mcgi1/COLIBRE/inner_spherical_overdensity``
+
+Cosmic web classifications
+--------------------------
+
+The DisPerSE and T-web cosmic web finders have been run on COLIBRE.
+If you are interested in using these classifications, please contact Jake Howard (Durham).
+
+.. _soap_history:
+
+SOAP-History
+------------
+
+We provide catalogues of properties which depend on the history of each subhalo.
+These are computed by following the main progenitor branch of each subhalo through all previous SOAP catalogues,
+where the main progenitor branch is identified using the HBT-HERONS ``TrackId``.
+Note that some history properties are already available in the standard SOAP catalogues,
+since they are output directly by HBT-HERONS
+(e.g. ``InputHalos/HBTplus/LastMaxMass`` and ``InputHalos/HBTplus/SnapshotOfLastIsolation``).
+
+Black hole maximum
+^^^^^^^^^^^^^^^^^^
+
+Black holes can be lost from subhaloes, e.g. satellites can lose their black holes
+due to the way they are repositioned (see :ref:`issues_bh_satellites`),
+and some centrals (e.g. backsplash galaxies) lose their black hole and then start regrowing a new one.
+To help correct for this, the following properties are computed for ``BoundSubhalo`` and each ``ExclusiveSphere`` aperture:
+
+* ``MainBranchMaximumMostMassiveBlackHoleMass`` - The maximum value of ``MostMassiveBlackHoleMass`` along the main progenitor branch (including the current snapshot).
+* ``MainBranchMaximumMostMassiveBlackHoleID`` - The ID of the most massive black hole at the snapshot where the maximum was reached.
+* ``MainBranchMaximumMostMassiveBlackHoleSnapshot`` - The snapshot number where the maximum was reached.
+
+For subhaloes which have never contained a black hole the mass and ID are zero, and the snapshot is -1.
+
+Stellar mass maximum
+^^^^^^^^^^^^^^^^^^^^
+
+The following properties are computed for ``BoundSubhalo`` and each ``ExclusiveSphere`` aperture:
+
+* ``MainBranchMaximumStellarMass`` - The maximum value of ``StellarMass`` along the main progenitor branch (including the current snapshot).
+* ``MainBranchMaximumStellarMassSnapshot`` - The snapshot number where the maximum was reached.
+
+For subhaloes which have never contained any stars the mass is zero, and the snapshot is -1.
+
+Formation snapshots
+^^^^^^^^^^^^^^^^^^^
+
+The formation snapshot is defined as the first snapshot of the final continuous stretch, ending at the current snapshot,
+during which the mass along the main progenitor branch is at least half of its current value.
+Snapshots in which the subhalo is not present in the SOAP catalogue are ignored.
+The value is -1 if the current mass is zero.
+
+* ``HalfMassFormationSnapshot`` - Computed using ``TotalMass``, for ``BoundSubhalo`` and each ``SO`` definition.
+* ``HalfStellarMassFormationSnapshot`` - Computed using ``StellarMass``, for ``BoundSubhalo`` and each ``ExclusiveSphere`` aperture.
+
+There are a number of caveats when using these properties:
+
+* Satellites which have been stripped will have a current mass below their peak mass, and so will appear to have formed earlier.
+* ``SO`` properties are only computed for central subhaloes, so the ``SO`` formation snapshot is -1 for satellites. Snapshots where the subhalo was a satellite are ignored when computing the ``SO`` formation snapshot.
+* The ``SO`` masses include pseudo-evolution, so the ``SO`` formation snapshots are biased late.
+* ``SO/BN98`` properties are only computed for subhaloes with at least 100 bound particles, so ``SO/BN98`` formation snapshots are biased late for subhaloes near this limit.
+
+Catalogues
+^^^^^^^^^^
+
+The catalogues can be found in ``/cosma8/data/dp004/dc-mcgi1/COLIBRE/soap_history/<run>/SOAP-History``.
+The catalogues are available for :math:`z=0,1,2,3`, and are named ``SOAP-History/history_XXXX.hdf5``.
+
+They have the same ordering as the standard SOAP catalogues, and contain ``InputHalos/HBTplus/TrackId`` and ``InputHalos/HaloCatalogueIndex`` for matching.
+They can be opened using ``swiftsimio``.
+
+The script to generate these catalogues `can be found in the SOAP repository <https://github.com/SWIFTSIM/SOAP/blob/master/scripts/COLIBRE/compute_history_properties.sh>`__.
 
 .. _soap_descendant_info:
 
@@ -101,4 +173,3 @@ An example of using ``SOAP/ProgenitorIndex`` to follow the main progenitor branc
 mergers of a galaxy is given in :doc:`../tools/examples/merger_history`. An example of following
 a population of satellites forward in time to determine their fate is given in :doc:`../tools/examples/descendant_fate`.
 
-# TODO: Add an example of how to load all the progenitors of a galaxy (or how to compute the merger rate?)

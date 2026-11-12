@@ -2,7 +2,7 @@ Matching halos across simulations
 =================================
 
 Matching catalogues are provided to link halos containing the same particles across different simulations.
-For each halo in the first simulation we take the IDs of all the particles bound and determine which halo in the second output contains the largest number of these IDs. This matching process is then repeated in the opposite direction and we check for cases where we have consistent matches in both directions. Matching is not carried out for satellite subhalos.
+For each halo in the first simulation we take the IDs of all the particles bound and determine which halo in the second output contains the largest number of these IDs. This matching process is then repeated in the opposite direction and we check for cases where we have consistent matches in both directions. By default only central subhalos are matched, and any particles bound to a satellite in the second simulation are counted as belonging to its host. Separate catalogues which also match satellite subhalos are available, see :ref:`below <matching_satellites>`.
 
 Each hydrodynamical simulation is matched to its corresponding DMO run at the same resolution.
 Therefore, if you wish to match halos between the Thermal and Hybrid AGN feedback variation runs, you should do this via the DMO run.
@@ -20,6 +20,21 @@ Matching catalogues can be found in ``/cosma8/data/dp004/dc-mcgi1/COLIBRE/matchi
 Please contact Rob McGibbon if you require them for other simulations/snapshots.
 The script to generate the matching catalogues `can be found in the SOAP repository <https://github.com/SWIFTSIM/SOAP/blob/master/scripts/COLIBRE/match_soap.sh>`__.
 
+.. _matching_satellites:
+
+Matching satellite subhalos
+---------------------------
+
+Catalogues which match both central and satellite subhalos have the prefix ``match_withSat`` instead of ``match``, e.g. ``match_withSat_L0100N1504_DMO_L0100N1504_Thermal_0127.-1.hdf5``.
+They contain the same datasets as the standard catalogues, and are in the same directory.
+In these catalogues particles are not reassigned to the host halo, so each subhalo is matched to the individual subhalo which contains the largest number of its particles.
+They are available at snapshot 127 for L0025N0188, L0025N0376, L0025N0752, L0100N1504, L0200N3008, and L0400N3008.
+
+Two things to be aware of when using these catalogues:
+
+    * A satellite which has been heavily stripped in one simulation may have most of its particles in its host in the other simulation. It will then be matched to the host, and the match will not be consistent.
+    * Some consistent matches are based on very few particles, in some cases only one. You may wish to apply a cut on ``MatchCount1to2`` when working with low mass subhalos.
+
 Matching example
 ----------------
 
@@ -34,6 +49,7 @@ Matching example
     sim1 = "L0100N1504/DMO"
     sim2 = "L0100N1504/Thermal"
     nr_part = -1  # -1 indicates all particles were used to do the matching
+    match_prefix = "match"  # Use "match_withSat" to include satellites
     snap_nr = 127
 
     # Load SOAP catalogues
@@ -45,7 +61,7 @@ Matching example
     sim1 = sim1.replace('/', '_')
     sim2 = sim2.replace('/', '_')
     match_dir = "/cosma8/data/dp004/dc-mcgi1/COLIBRE/matching/"
-    match_filename = f"{match_dir}/match_{sim1}_{sim2}_{snap_nr:04}.{nr_part}.hdf5"
+    match_filename = f"{match_dir}/{match_prefix}_{sim1}_{sim2}_{snap_nr:04}.{nr_part}.hdf5"
     with h5py.File(match_filename, "r") as file:
         match_index = file["MatchIndex1to2"][:]
         consistent = file["Consistent1to2"][:] == 1
