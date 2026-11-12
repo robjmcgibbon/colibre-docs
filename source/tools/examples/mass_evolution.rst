@@ -134,9 +134,10 @@ and finds them in the SOAP catalogues for a selection of earlier snapshots by ma
 All of the subhalos are matched at once, so each catalogue only needs to be read once.
 The median mass evolution of the sample is then plotted.
 
-Bound subhalo masses are used rather than :math:`M_{200c}`, since spherical overdensity
-properties are only computed for central subhalos, and some of the main progenitors
-will have been satellites at earlier times.
+Spherical overdensity properties are only computed for central subhalos, so :math:`M_{200c}`
+is zero at any snapshot where a main progenitor was a satellite. We also set the masses to zero at any
+snapshot where a main progenitor is not resolved. Since we plot the median of the
+sample, a small number of zeros does not have a large effect.
 
 .. code-block:: python
 
@@ -163,11 +164,11 @@ will have been satellites at earlier times.
     # ---------------------------------------------------------
     # Match the TrackIds in each snapshot
     # ---------------------------------------------------------
-    # Subhalos which are not resolved in a snapshot are left as NaN
+    # Subhalos which are not resolved in a snapshot are given a mass of zero
     snap_nrs = np.arange(22, final_snap_nr + 1, 5)
     scale_factors = np.zeros(snap_nrs.shape[0])
-    bound_masses = np.full((n_halo, snap_nrs.shape[0]), np.nan)
-    stellar_masses = np.full((n_halo, snap_nrs.shape[0]), np.nan)
+    halo_masses = np.zeros((n_halo, snap_nrs.shape[0]))
+    stellar_masses = np.zeros((n_halo, snap_nrs.shape[0]))
 
     for j, snap_nr in enumerate(snap_nrs):
         print(f"Loading snapshot {snap_nr} ({j + 1}/{len(snap_nrs)})")
@@ -184,9 +185,9 @@ will have been satellites at earlier times.
             return_indices=True,
         )
 
-        bound_mass = soap.bound_subhalo.total_mass.to_physical_value("Msun")
+        halo_mass = soap.spherical_overdensity_200_crit.total_mass.to_physical_value("Msun")
         stellar_mass = soap.exclusive_sphere_50kpc.stellar_mass.to_physical_value("Msun")
-        bound_masses[idx_sample, j] = bound_mass[idx_soap]
+        halo_masses[idx_sample, j] = halo_mass[idx_soap]
         stellar_masses[idx_sample, j] = stellar_mass[idx_soap]
 
     # ---------------------------------------------------------
@@ -195,10 +196,10 @@ will have been satellites at earlier times.
     fig, ax = plt.subplots(1)
 
     for masses, label, color in [
-        (bound_masses, "Bound mass", "k"),
+        (halo_masses, "$M_{200c}$", "k"),
         (stellar_masses, "Stars (50 kpc)", "tab:orange"),
     ]:
-        lo, med, hi = np.nanpercentile(masses, [16, 50, 84], axis=0)
+        lo, med, hi = np.percentile(masses, [16, 50, 84], axis=0)
         ax.plot(scale_factors, med, label=label, color=color)
         ax.fill_between(scale_factors, lo, hi, color=color, alpha=0.2)
 
