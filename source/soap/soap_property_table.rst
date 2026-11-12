@@ -2196,7 +2196,17 @@ Copied properties
           * **Compression:** no compression
      - basic
      - \-
-     - Index (within the next snapshot SOAP arrays) of the main descendant of this subhalo. `[30] <footnote-30_>`_
+     - Index (within the next snapshot SOAP arrays) of the descendant of this subhalo. This is the subhalo itself if it survives, otherwise the subhalo it merged with. -1 if there is no descendant. `[30] <footnote-30_>`_
+   * - .. dropdown:: ``soap.descendant_type``
+
+          * **HDF5 name:** ``SOAP/DescendantType``
+          * **Shape:** 1
+          * **Type:** int32
+          * **Units:** dimensionless
+          * **Compression:** no compression
+     - basic
+     - \-
+     - What happens to this subhalo by the next snapshot. 0: survives, 1: disrupts, 2: sinks, 3: disrupts with no descendant, -1: no catalogue for the next snapshot. `[30] <footnote-30_>`_
    * - .. dropdown:: ``soap.host_halo_index``
 
           * **HDF5 name:** ``SOAP/HostHaloIndex``
@@ -2814,4 +2824,14 @@ consistency.
 
 .. _footnote-30:
 
-**[30]** **The progenitor/descendant index** of a subhalo points to the subhalo in the previous/next snapshot that has the same HBT TrackId. This index can therefore only be used to move up/down the main progenitor branch for a subhalo, it provides no information about subhalo mergers.
+**[30]** **The progenitor/descendant index** of a subhalo points to its progenitor/descendant in the SOAP catalogue of the previous/next snapshot. The progenitor index points to the subhalo that has the same HBT TrackId, and is -1 if that subhalo was not resolved in the previous snapshot. It can therefore only be used to move up the main progenitor branch, and provides no information about subhalo mergers.
+
+The descendant index includes merger information. What happens to each subhalo between this snapshot and the next is given by ``DescendantType``, which is determined from the entry with the same TrackId in the HBT catalogue of the next snapshot:
+
+* 0 (survives): the subhalo is still resolved. The descendant is the subhalo with the same TrackId.
+* 1 (disrupts): the subhalo is no longer self-bound. The descendant is the subhalo which contains the majority of its most bound tracer particles (HBT ``DescendantTrackId``).
+* 2 (sinks): the core of the subhalo overlaps in phase-space with another subhalo (HBT ``SinkTrackId != -1``). The descendant is given by HBT ``DescendantTrackId``, which agrees with ``SinkTrackId`` in almost all cases. We do not use ``SinkTrackId`` since it can point to a subhalo which itself sinks at the same snapshot.
+* 3 (disrupts with no descendant): the subhalo disrupts or sinks, but the majority of its most bound tracer particles are not bound to any subhalo (HBT ``DescendantTrackId == -1``). The descendant index is -1.
+* -1: the HBT catalogue for the next snapshot was not available (e.g. this is the final snapshot). The descendant index is -1.
+
+Subhalos which disrupt and later sink in HBT ("unresolved sinking") have type 1, since only the snapshot at which the subhalo stops being resolved is considered.

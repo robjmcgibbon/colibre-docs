@@ -252,7 +252,42 @@ Missing descendant track id
 
 The SOAP catalogues contain the property ``soap.descendant_index`` which gives
 the index for the descendant of each subhalo. For some SOAP catalogues these
-values are missing. These will be added in the future.
+values are missing. They are available in the additional
+:ref:`SOAP-DescendantInfo catalogues <soap_descendant_info>`.
+
+.. _issues_descendant_merger_info:
+
+Descendant index only follows the main branch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the current SOAP catalogues ``soap.descendant_index`` only points to the
+subhalo with the same ``TrackId`` in the next snapshot, and is -1 if that
+subhalo is not resolved in the next snapshot (e.g. because it has merged).
+The property ``soap.descendant_type`` is missing. Newer versions of SOAP set
+``soap.descendant_index`` to the subhalo which a subhalo merges with, and
+``soap.descendant_type`` indicates whether the subhalo survives, disrupts, or
+sinks (see :ref:`footnote 30 <footnote-30>`). These values are available for
+the existing catalogues in the additional
+:ref:`SOAP-DescendantInfo catalogues <soap_descendant_info>`.
+
+.. _issues_progenitor_descendant_index_order:
+
+Incorrect progenitor and descendant indices for some snapshots
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To compute ``soap.progenitor_index`` and ``soap.descendant_index``, SOAP
+reconstructs the order of the subhalos in the SOAP catalogue of the
+previous/next snapshot. Due to a bug in this reconstruction, subhalos lying
+exactly on the boundary of a SWIFT cell could be placed in the wrong cell,
+which shifts the position of the other subhalos in that cell. This means that
+for a small number of snapshots the progenitor and descendant indices which
+point into that snapshot are incorrect for some subhalos. For example, in
+``L0025N0752/Thermal`` the descendant indices of a few thousand subhalos
+in snapshot 102 and the progenitor indices of a few thousand subhalos in
+snapshot 104 are incorrect. Indices which are -1 are not affected.
+Corrected values of both indices are available in the
+additional :ref:`SOAP-DescendantInfo catalogues <soap_descendant_info>`.
+Alternatively, the ``TrackId`` can be used to match subhalos between snapshots.
 
 .. _issues_flow_rate_pseudo_evolution:
 

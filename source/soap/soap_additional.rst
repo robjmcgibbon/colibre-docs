@@ -63,3 +63,42 @@ SOAP-SmallSphericalOverdensity
 For the :math:`z=0` snapshots of the L200m6 and L400m7 simulations (both Thermal and DMO),
 we have run soap to compute properties for spherical overdensity apertures of size :math:`R_{2500c}` & :math:`R_{1000c}`.
 The files can be found at ``/cosma8/data/dp004/dc-mcgi1/COLIBRE/inner_spherical_overdensity``
+
+.. _soap_descendant_info:
+
+SOAP-DescendantInfo
+-------------------
+
+In the current SOAP catalogues ``soap.descendant_index`` only follows the main progenitor branch
+(see :ref:`issues_descendant_merger_info`), and both ``soap.progenitor_index`` and ``soap.descendant_index``
+are incorrect for some subhalos in a small number of snapshots (see :ref:`issues_progenitor_descendant_index_order`).
+We provide catalogues containing the corrected ``SOAP/ProgenitorIndex``, and the updated ``SOAP/DescendantIndex``
+and ``SOAP/DescendantType``, for every snapshot.
+``SOAP/ProgenitorIndex`` points to the subhalo with the same ``TrackId`` in the previous snapshot, and is -1 if
+that subhalo is not resolved in the previous snapshot.
+If a subhalo survives to the next snapshot then ``SOAP/DescendantIndex`` points to the subhalo with the same ``TrackId``.
+If it disrupts or sinks then it points to the subhalo which it merged with, as identified by HBT-HERONS.
+``SOAP/DescendantType`` indicates what happened to the subhalo between this snapshot and the next:
+
+* 0 - The subhalo survives.
+* 1 - The subhalo disrupts.
+* 2 - The subhalo sinks.
+* 3 - The subhalo disrupts or sinks, but there is no descendant since the majority of its most bound particles are not bound to any subhalo. ``SOAP/DescendantIndex`` is -1.
+* -1 - This is the final snapshot. ``SOAP/DescendantIndex`` is -1.
+
+A full description is given in :ref:`footnote 30 <footnote-30>` of the SOAP property table.
+
+.. TODO: Update the location and list the runs once the catalogues have been generated
+
+The catalogues can be found in ``/cosma8/data/dp004/dc-mcgi1/COLIBRE/<run>/SOAP-DescendantInfo``, and are named ``SOAP-DescendantInfo/descendant_info_XXXX.hdf5``.
+They have the same ordering as the standard SOAP catalogues, and contain ``InputHalos/HBTplus/TrackId`` and ``InputHalos/HaloCatalogueIndex`` for matching. They can be opened using ``swiftsimio``.
+The catalogues are generated directly from the HBT-HERONS catalogues, sorting the subhalos in the same way as SOAP.
+They are therefore available for every snapshot, including snapshots which do not have a SOAP catalogue.
+The script to generate these catalogues `can be found in the SOAP repository <https://github.com/SWIFTSIM/SOAP/blob/master/scripts/COLIBRE/compute_descendant_info.sh>`__.
+
+An example of using ``SOAP/ProgenitorIndex`` to follow the main progenitor branch of a subhalo is given in
+:doc:`../tools/examples/mass_evolution`, and an example of using ``SOAP/DescendantIndex`` to count the
+mergers of a galaxy is given in :doc:`../tools/examples/merger_history`. An example of following
+a population of satellites forward in time to determine their fate is given in :doc:`../tools/examples/descendant_fate`.
+
+# TODO: Add an example of how to load all the progenitors of a galaxy (or how to compute the merger rate?)

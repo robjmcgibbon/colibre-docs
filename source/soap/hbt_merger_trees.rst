@@ -8,6 +8,9 @@ HBT-HERONS merger trees
   For example, the main progenitor of a :math:`z = 0` subhalo with ``TrackId = 10`` corresponds to the subhalo whose ``TrackId = 10`` at earlier times.
   ``TrackId`` is stored in the SOAP catalogues as ``data.input_halos_hbtplus.track_id``.
   The fields ``data.soap.progenitor_index`` and ``data.soap.descendant_index`` can also be used to track individual objects.
+  The descendant index points to the subhalo itself if it survives to the next snapshot, otherwise to the subhalo it merged with,
+  and ``data.soap.descendant_type`` indicates whether the subhalo survives, disrupts, or sinks
+  (see the :doc:`SOAP property table <soap_property_table>`).
   Note that, due to SOAP not storing the information for subhaloes with :math:`N_{bound} < 20` (e.g. disrupted, merged or poorly resolved),
   some ``TrackId`` values will be missing from the SOAP catalogues. 
   In practice, this means there could be an object with ``TrackId = 11`` in the :math:`z = 2` catalogue,

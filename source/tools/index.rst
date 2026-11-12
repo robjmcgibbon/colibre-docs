@@ -37,4 +37,6 @@ common tasks.
 * :doc:`examples/haas_environment`
 * :doc:`examples/satellite_smf`
 * :doc:`examples/mass_evolution`
+* :doc:`examples/merger_history`
+* :doc:`examples/descendant_fate`
 * :doc:`examples/cosmic_sfrd`
