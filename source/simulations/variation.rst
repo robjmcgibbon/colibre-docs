@@ -513,7 +513,7 @@ Cooling variations
 
           Non-equil. Chemistry incl. O for H2
      - ❌
-     - ❌
+     - ✅
      - ✅
      - ✅
    * - .. dropdown:: Full non-equilibrium chemistry
